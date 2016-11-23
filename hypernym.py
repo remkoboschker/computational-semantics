@@ -110,10 +110,11 @@ def findAllHypernyms(synset):
 def addToRelations(relations,objects,sense):
     #adds objects to a relation. If the relations do not yet have a sense related to any objects, adds it.
     if sense in relations:
-        for o in objects:
-            relations[sense].add(o)
+        objects = objects.union(relations[sense])#merge new and old objects
+        relations.pop(sense)
+        relations[sense] = objects#putting the elements in the dict again lowers them, putting the largely shared properties as low as possible
     else:
-        relations[sense] = objects
+        relations[sense] = objects.copy()
 
 def expandModel(relations):
     #add all hypernyms to all relations
