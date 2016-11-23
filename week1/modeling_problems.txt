@@ -1,0 +1,11 @@
+Modelling problems:
+1. Ambiguity about the ethnicity or nationality of a person.
+Solution: We don't take this into account. 
+2. Ambiguity about the colour of an object.
+Solution: We only take the most common colours into account, i.e. all different shades and variations of blue are just annotated as 'blue'.
+3. The amount of objects that we take into account; which are relevant?
+Solution: We try to think as a user: which queries am I interested in. 
+4. To what extent do we subdivide an item into its parts? 
+Solution: We don't subdivide an item, unless we think the part is very relevant (see 3.) an almost an separate item by itself.
+5. If we are not sure what an object is. 
+Solution: We make assumptions of what we think is the most obvious. (e.g. Cup of coffee on wood. Assumption: the cup of coffee is on a table) 
