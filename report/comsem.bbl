@@ -1,0 +1,26 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citename{Blackburn and Bos}2005]{BlackburnBos2005CSLI}
+Patrick Blackburn and Johan Bos.
+\newblock 2005.
+\newblock {\em Representation and Inference for Natural Language. A First
+  Course in Computational Semantics}.
+\newblock CSLI Publications.
+
+\bibitem[\protect\citename{Bos}2015]{Bos2015NoDaLiDa}
+Johan Bos.
+\newblock 2015.
+\newblock Open-domain semantic parsing with boxer.
+\newblock In Be{\'a}ta Megyesi, editor, {\em Proceedings of the 20th Nordic
+  Conference of Computational Linguistics (NODALIDA 2015)}, pages 301--304.
+
+\bibitem[\protect\citename{Monroe \bgroup et al.\egroup
+  }2016]{monroe-goodman-potts:2016:EMNLP2016}
+Will Monroe, Noah~D. Goodman, and Christopher Potts.
+\newblock 2016.
+\newblock Learning to generate compositional color descriptions.
+\newblock In {\em Proceedings of the 2016 Conference on Empirical Methods in
+  Natural Language Processing}, pages 2243--2248, Austin, Texas, November.
+  Association for Computational Linguistics.
+
+\end{thebibliography}
