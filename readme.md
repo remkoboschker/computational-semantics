@@ -10,7 +10,7 @@ Members: Remko Boschker, Leonardo Velozo, Joost Doornkamp, Gunnar Gerstenkorn
 
 If the domain list is in the entity hypernym, then we are done.
 
-Chose to use nltk / python in stead of prolog, because of ease of use.
+Chose to use nltk / python instead of prolog, because of ease of use.
 
 Leonardo wrote a basic script to extract hypernyms. Joost will write a wrapper loading the models and writing out the modified ones.
 
