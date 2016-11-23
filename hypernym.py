@@ -1,5 +1,6 @@
 import re
 from nltk.corpus import wordnet as wn
+from collections import OrderedDict
 
 ###########
 ##  I/O  ##
@@ -56,7 +57,7 @@ def loadModel(path):
     objects = stripped[0].split(',')
     print(objects)
     relations = re.findall('f\(.+?\)',stripped[1])
-    reldict = {}
+    reldict = OrderedDict()
     ignoredRels = []
     for r in relations:
         r = splitAsList(r,'(',')')[0]
@@ -116,10 +117,11 @@ def addToRelations(relations,objects,sense):
 
 def expandModel(relations):
     #add all hypernyms to all relations
-    newRelations = relations.copy()
+    newRelations = OrderedDict()
     for sense in relations.keys():
         print("----PROCESSING " + sense + "----")
         objects = relations[sense]
+        addToRelations(newRelations,objects,sense)
         hypernyms = findAllHypernyms(wn.synset(sense))#returns all hypernyms, as synsets
         for h in hypernyms:
             addToRelations(newRelations,objects,h.name())
