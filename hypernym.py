@@ -83,12 +83,12 @@ def saveModel(path,objects,reldict,ignoredRels):
     keys = list(reldict.keys())
     if len(keys) != 0:
         r = keys[0]
-        s.append("f(1," + wordnetToModel(r) + ',' + listToStr(reldict[r]) + ")")
+        s.append("f(1," + wordnetToModel(r) + ',' + listToStr(sorted(reldict[r])) + ")")
     elif len(ignoredRels) != 0:
         s.append("f(" + ','.join(r) + ")")
         ignoredRels = ignoredRels[1:]
     for r in keys[1:]:
-        s.append(",\n\t f(1," + wordnetToModel(r) + ',' + listToStr(reldict[r]) + ")")
+        s.append(",\n\t f(1," + wordnetToModel(r) + ',' + listToStr(sorted(reldict[r])) + ")")
     for r in ignoredRels:
         s.append(",\n\t f(" + ','.join(r) + ")")
     s.append("]).")
