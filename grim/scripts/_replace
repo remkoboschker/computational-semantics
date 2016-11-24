@@ -1,0 +1,76 @@
+#!/bin/bash
+
+OUTFILE=index.html
+
+replace()
+{
+    REPLACE=replace-verb.txt
+    if [ -f ${REPLACE} ]; then 
+	LEN=`cat ${REPLACE} | wc -l`
+	for I in `seq 1 ${LEN}`; do
+	    OLD=`cat ${REPLACE} | head -${I} | tail -1 | cut -f1 -d","`
+    	    IMG=`cat ${REPLACE} | head -${I} | tail -1 | cut -f2 -d","` 
+	    NEW=`cat ${REPLACE} | head -${I} | tail -1 | cut -f3 -d","` 
+	    if [ -f ${IMG}.mod ]; then
+		cat ${IMG}.mod | sed "s/,${OLD},\[/,${NEW},\[/g" > tmp.mod
+		ed -s tmp.mod <<< w
+		mv tmp.mod ${IMG}.mod
+		cat ${IMG}.mod
+	    else
+		echo "${IMG}.mod does not exist"
+	    fi
+	done
+    else
+	echo "${REPLACE} does not exist"
+    fi
+}
+
+# replace X for Y in all *.mod files
+replaceall()
+{
+    REPLACE=replace.txt
+    if [ -f ${REPLACE} ]; then 
+	LEN=`cat ${REPLACE} | wc -l`
+	for I in `seq 1 ${LEN}`; do
+	    OLD=`cat ${REPLACE} | head -${I} | tail -1 | cut -f1`
+	    NEW=`cat ${REPLACE} | head -${I} | tail -1 | cut -f2` 
+	    for IMG in `ls data/*.mod`; do 
+		if [ `cat ${IMG} | grep ${OLD} | wc -l` -gt 0 ]; then
+		    cat ${IMG} | sed "s/,${OLD},\[/,${NEW},\[/g" > tmp.mod
+		    ed -s tmp.mod <<< w
+		    mv tmp.mod ${IMG}
+		    cat ${IMG}
+		fi
+	    done
+	done
+    else
+	echo "${REPLACE} does not exist"
+    fi
+}
+
+
+reformat()
+{
+    for IMG in `ls data/*.mod`; do 
+	cat ${IMG} | tr "\t" " " | tr -d " " | tr "\n" " " \
+        | sed 's/], \[f/],@ \[f/g' \
+        | sed 's/), f/),@ f/g' \
+        | sed 's/], \[g/],@ \[g/g' \
+        | sed 's/), g/),@ g/g' \
+        | tr "@" "\n" \
+        | sed 's/^ \[f(/      \[f(/' \
+        | sed 's/^ \[g(/      \[g(/' \
+        | sed 's/^ f(/       f(/' \
+        | sed 's/^ g(/       g(/' > tmp.mod
+	ed -s tmp.mod <<< w
+	cat tmp.mod
+	mv tmp.mod ${IMG}
+    done
+}
+
+
+#replace
+#replaceall
+reformat
+
+exit 0

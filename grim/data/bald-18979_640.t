@@ -1,0 +1,3 @@
+There are three boulders.
+A bald eagle has a yellow claw.
+There is a forest behind the bald eagle.

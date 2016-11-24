@@ -32,13 +32,19 @@ def strToList(string):
     
 def modelToWordnet(sense):
     #turn sense names from the model syntax (pos_name_num) into the wordnet syntax (name.pos.num)
+    sense = sense.strip('\'')
     parts = sense.split('_')
+    parts[1] = parts[1].replace(' ','_')
     parts[0], parts[1] = parts[1], parts[0]
     return '.'.join(parts)
     
 def wordnetToModel(sense):
     #turn sense names from the wordnet syntax (name.pos.num) into the model syntax (pos_name_num)
     parts = sense.split('.')
+    if '_' in parts[0]:
+        parts[0] = parts[0].replace('_',' ')
+        parts[1] = '\'' + parts[1]#add to parts[1] because we swap 1 and 0 later on
+        parts[2] = parts[2] + '\''
     parts[0], parts[1] = parts[1], parts[0]
     parts[2] = parts[2].lstrip('0')
     return '_'.join(parts)
@@ -49,7 +55,8 @@ def loadModel(path):
     #  objects; the list of all objects in the model (names are strings)
     #  reldict; a dictionary that maps word senses to the objects they relate to. Keys (word senses) are strings and values are set of object names (strings)
     #  ignoredRels; the relations with an arity above 2 are ignored but returned for when the model file is reconstructed. It's a list of [arity, sense, object], all strings.
-    basemodel = open(path, 'r').read().translate(dict.fromkeys(map(ord,' \n\t'), None))#load the file and cut out all spaces, newlines and tabs.
+    basemodel = open(path, 'r').read()#load the file
+    basemodel = re.sub('\n|\t|  +','',basemodel)#cut out all newlines, tabs and spaces if more than one (single spaces may occur with senses).
     print(basemodel)
     basemodel = basemodel.lstrip('model(')
     basemodel = basemodel.rstrip(').')
@@ -134,6 +141,6 @@ def expandModel(relations):
 ## Main ##
 ##########
 
-(os,rel,ign) = loadModel('week1/automobile-176989_640.mod')
+(os,rel,ign) = loadModel('week1/cat-1022999_640.mod')
 rel = expandModel(rel)
-saveModel('week1/automobile-176989_640-EDIT.mod',os,rel,ign)
+saveModel('output.mod',os,rel,ign)

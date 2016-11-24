@@ -1,0 +1,3 @@
+A child and a puddle.
+Two green boots and a yellow jacket. 
+Sand and sea.

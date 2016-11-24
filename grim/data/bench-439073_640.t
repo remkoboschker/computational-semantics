@@ -1,0 +1,3 @@
+The bench has two arms.
+A ship is on the sea.
+The bench is near the tree.

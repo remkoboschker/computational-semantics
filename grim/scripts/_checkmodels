@@ -1,0 +1,29 @@
+#!/bin/bash
+
+CHECKER='../doc/tea/ComputationalSemantics/model_checker.pl'
+
+check()
+{
+    FORMULA=$1
+    echo "\\documentclass{article}" 
+    echo "\\usepackage{graphicx}" 
+    echo "\\begin{document}" 
+    echo "\\begin{quote}" 
+    echo "\\verb+${FORMULA}+" 
+    echo "\\end{quote}" 
+    for MODEL in `ls data/*.mod`; do 
+	swipl -g "['../doc/tea/ComputationalSemantics/model_checker'],main(${FORMULA},'${MODEL}'),halt." | sed "s/mod'/jpg'/" | tr -d "'"
+    done
+    echo "\\end{document}" 
+}
+
+if [ -e $CHECKER ]; then
+    if [ $# -eq 1 ]; then
+	check "$1"
+    else
+	echo "usage: _checkmodels <FORMULA> > output.txt"
+    fi
+else
+    echo "$CHECKER not found"
+fi
+exit 0

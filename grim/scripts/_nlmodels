@@ -1,0 +1,36 @@
+#!/bin/bash
+
+
+CHECKER='../doc/tea/ComputationalSemantics/model_checker.pl'
+PARSER='../doc/tea/ComputationalSemantics/semdcg.pl'
+
+parse()
+{
+    SENTENCE=$1
+    swipl -g "['${PARSER}'],parse('${SENTENCE}','out.txt'), halt."
+    FORMULA=`cat out.txt`
+    echo "\\documentclass{article}" 
+    echo "\\usepackage{graphicx}" 
+    echo "\\begin{document}" 
+    echo "\\begin{quote}" 
+    echo "${SENTENCE}"
+    echo "\\end{quote}" 
+    echo "\\begin{quote}" 
+    echo "\\verb+${FORMULA}+" 
+    echo "\\end{quote}" 
+    for MODEL in `ls data/*.mod`; do 
+	swipl -g "['${CHECKER}'],main(${FORMULA},'${MODEL}'),halt." | sed "s/mod'/jpg'/" | tr -d "'"
+    done
+    echo "\\end{document}" 
+}
+
+if [ -e $CHECKER ]; then
+    if [ $# -eq 1 ]; then
+        parse "$1"
+    else
+	echo "usage: _nlmodels <SENTENCE> > output.txt"
+    fi
+else
+    echo "$CHECKER not found"
+fi
+exit 0

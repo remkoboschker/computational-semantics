@@ -1,0 +1,3 @@
+Two pidgeons are next to each other.
+Two birds are sitting on a pole.
+Two birds are blue.

@@ -1,0 +1,4 @@
+There are four goslings.
+All the goslings are yellow.
+The birds are swimming in a lake.
+

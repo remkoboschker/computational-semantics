@@ -1,0 +1,3 @@
+Two owls are standing in the desert.
+One owl is orange and one owl is brown.
+Four eyes are yellow.

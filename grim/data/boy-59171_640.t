@@ -1,0 +1,4 @@
+A boy is eating ice cream.
+The boy is holding an ice cream.
+The boy is covered in dirt.
+
