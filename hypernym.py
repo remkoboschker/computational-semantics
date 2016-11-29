@@ -1,10 +1,18 @@
 import re
+import sys
+from os import listdir
+from os.path import isdir
+from os import sep as PATHSEP
 from nltk.corpus import wordnet as wn
 from collections import OrderedDict
 
 ###########
 ##  I/O  ##
 ###########
+
+DEBUG = False
+def debug(msg): 
+    if DEBUG: print(msg)
 
 def splitAsList(string,openingbracket,closingbracket):
     #return the list of substringings surrounded by one of the brackets, respecting nested lists.
@@ -77,28 +85,28 @@ def loadModel(path):
     #  ignoredRels; the relations with an arity above 2 are ignored but returned for when the model file is reconstructed. It's a list of [arity, sense, object], all strings.
     basemodel = open(path, 'r').read()#load the file
     basemodel = re.sub('\n|\t|  +','',basemodel)#cut out all newlines, tabs and spaces if more than one (single spaces may occur with senses).
-    print(basemodel)
+    debug(basemodel)
     basemodel = basemodel.lstrip('model(')
     basemodel = basemodel.rstrip(').')
     stripped = splitAsList(basemodel,'[',']')#we now have the list of objects and the relations (and optionally the grounded relations)
     objects = stripped[0].split(',')
-    print(objects)
+    debug(objects)
     relations = splitAsList(stripped[1],'(',')')
     reldict = OrderedDict()
     ignoredRels = []
     for r in relations:
         r = r.split(',',2)
-        print(r)
+        debug(r)
         if r[0] == '1':
             reldict[modelToWordnet(r[1])] = set(strToList(r[2]))
         else:
             ignoredRels.append(r)   
-    print(reldict)
-    print(ignoredRels)
+    debug(reldict)
+    debug(ignoredRels)
     grounds = None
     if len(stripped) > 2:
         grounds = splitAsList(stripped[2],'(',')')
-    print(grounds)
+    debug(grounds)
     return(objects,reldict,ignoredRels,grounds)
     
 def saveModel(path,objects,reldict,ignoredRels,grounds):
@@ -130,7 +138,7 @@ def saveModel(path,objects,reldict,ignoredRels,grounds):
 def findAllHypernyms(synset):
     hypernyms = synset.hypernyms()
     for h in hypernyms:
-        print(h)
+        debug(h)
         hypernyms.extend(h.hypernyms())#Fascinating: Python can do editing of the list during iteration over the list!
     return(hypernyms)
     
@@ -147,7 +155,7 @@ def expandModel(relations):
     #add all hypernyms to all relations
     newRelations = OrderedDict()
     for sense in relations.keys():
-        print("----PROCESSING " + sense + "----")
+        debug("----PROCESSING " + sense + "----")
         objects = relations[sense]
         addToRelations(newRelations,objects,sense)
         hypernyms = findAllHypernyms(wn.synset(sense))#returns all hypernyms, as synsets
@@ -160,7 +168,23 @@ def expandModel(relations):
 ## Main ##
 ##########
 
-(os,rel,ign,grs) = loadModel('grim/data/animal-196172_640.mod')
-rel = expandModel(rel)
-print(rel)
-saveModel('output.mod',os,rel,ign,grs)
+print('File- or directory name: ')
+for path in sys.stdin:
+    if path == '\n': break
+    path = path.rstrip('\n \t')
+    printnames = False
+    #construct list of files to process
+    if isdir(path):
+        #if not path.endswith(PATHSEP): path = path + PATHSEP
+        files = [path + f for f in listdir(path) if f.endswith(".mod") and not f.endswith("EXPANDED.mod")]
+        printnames = True
+    else:
+        files = [path]
+    for filename in files:
+        if printnames or not sys.stdin.isatty(): print(filename)
+        print('Working...')
+        (os,rel,ign,grs) = loadModel(filename)
+        rel = expandModel(rel)
+        saveModel(filename.rstrip('.mod') + '-EXPANDED.mod',os,rel,ign,grs)
+        print('Done!')
+        print('File- or directory name: ')

@@ -1,0 +1,3 @@
+C:\Users\joost\Dropbox\KI\Year 4\Computational Semantics\src\grim\data\animal-196172_640.mod
+C:\Users\joost\Dropbox\KI\Year 4\Computational Semantics\src\grim\data\apple-15687_640.mod
+C:\Users\joost\Dropbox\KI\Year 4\Computational Semantics\src\grim\data\baby-84686_640.mod
