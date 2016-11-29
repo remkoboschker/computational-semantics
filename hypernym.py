@@ -33,7 +33,7 @@ def splitIgnoringSublists(string,sep,openingbracket,closingbracket):
             if c == openingbracket:
                 level += 1
             elif c == sep:
-                substrings.append(string[start:idx+1])
+                substrings.append(string[start:idx])
                 start = idx+1
         else:
             if c == closingbracket:
@@ -47,22 +47,24 @@ def strToList(string):
     els = splitIgnoringSublists(string[1:len(string)-1],',','(',')')
     return els
     
+def listToStr(list):
+    #variation on the normal str(list) function
+    return '[' + ','.join(list) + ']'
+    
 def modelToWordnet(sense):
     #turn sense names from the model syntax (pos_name_num) into the wordnet syntax (name.pos.num)
+    #TODO add num normalizer (1 to 01)
     sense = sense.strip('\'')
     parts = sense.split('_')
     pos = parts[0]
     sense = '_'.join([w.replace(' ','_') for w in parts[1:len(parts)-1]])
     num = parts[len(parts)-1]
+    num = ('0' * (2-len(num))) + num #add leading zero's
     return '.'.join([sense,pos,num])
     
 def wordnetToModel(sense):
     #turn sense names from the wordnet syntax (name.pos.num) into the model syntax (pos_name_num)
     parts = sense.split('.')
-    if '_' in parts[0]:
-        parts[0] = parts[0].replace('_',' ')
-        parts[1] = '\'' + parts[1]#add to parts[1] because we swap 1 and 0 later on
-        parts[2] = parts[2] + '\''
     parts[0], parts[1] = parts[1], parts[0]
     parts[2] = parts[2].lstrip('0')
     return '_'.join(parts)
@@ -98,10 +100,6 @@ def loadModel(path):
         grounds = splitAsList(stripped[2],'(',')')
     print(grounds)
     return(objects,reldict,ignoredRels,grounds)
-
-def listToStr(list):
-    #variation on the normal str(list) function
-    return '[' + ','.join(list) + ']'
     
 def saveModel(path,objects,reldict,ignoredRels,grounds):
     #save a (edited) model back to a file
@@ -164,4 +162,5 @@ def expandModel(relations):
 
 (os,rel,ign,grs) = loadModel('grim/data/animal-196172_640.mod')
 rel = expandModel(rel)
+print(rel)
 saveModel('output.mod',os,rel,ign,grs)
