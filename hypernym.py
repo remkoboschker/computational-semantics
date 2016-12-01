@@ -67,6 +67,7 @@ def modelToWordnet(sense):
     parts = sense.split('_')
     pos = parts[0]
     sense = '_'.join([w.replace(' ','_') for w in parts[1:len(parts)-1]])
+    sense = sense.replace('\\\'','\'')
     num = parts[len(parts)-1]
     num = ('0' * (2-len(num))) + num #add leading zero's
     return '.'.join([sense,pos,num])
@@ -74,6 +75,7 @@ def modelToWordnet(sense):
 def wordnetToModel(sense):
     #turn sense names from the wordnet syntax (name.pos.num) into the model syntax (pos_name_num)
     parts = sense.split('.')
+    parts[0] = parts[0].replace('\'','\\\'')
     parts[0], parts[1] = parts[1], parts[0]
     parts[2] = parts[2].lstrip('0')
     return '_'.join(parts)
