@@ -1,10 +1,11 @@
 import re
 import sys
 from os import listdir
-from os.path import isdir
+from os.path import isdir, abspath
 from os import sep as PATHSEP
 from nltk.corpus import wordnet as wn
 from collections import OrderedDict
+from nltk.corpus.reader.wordnet import WordNetError
 
 ###########
 ##  I/O  ##
@@ -170,21 +171,33 @@ def expandModel(relations):
 
 print('File- or directory name: ')
 for path in sys.stdin:
+    failed_files = []
+    failed_errors = []
     if path == '\n': break
     path = path.rstrip('\n \t')
     printnames = False
     #construct list of files to process
     if isdir(path):
-        #if not path.endswith(PATHSEP): path = path + PATHSEP
+        if not path.endswith(PATHSEP): path = path + PATHSEP
         files = [path + f for f in listdir(path) if f.endswith(".mod") and not f.endswith("EXPANDED.mod")]
         printnames = True
     else:
         files = [path]
     for filename in files:
-        if printnames or not sys.stdin.isatty(): print(filename)
-        print('Working...')
-        (os,rel,ign,grs) = loadModel(filename)
-        rel = expandModel(rel)
-        saveModel(filename.rstrip('.mod') + '-EXPANDED.mod',os,rel,ign,grs)
-        print('Done!')
-        print('File- or directory name: ')
+        try:
+            if printnames or not sys.stdin.isatty(): print(filename)
+            print('Working...')
+            (os,rel,ign,grs) = loadModel(filename)
+            rel = expandModel(rel)
+            saveModel(filename.rstrip('.mod') + '-EXPANDED.mod',os,rel,ign,grs)
+            print('Done!')
+        except WordNetError as e:
+            print('ERROR OPENING MODEL!')
+            print(e)
+            failed_files.append(filename)
+            failed_errors.append(str(e))
+        print('\nFile- or directory name: ')
+    if failed_files != []:
+        max_len = max(map(len,failed_files))
+        print('\n-----\n\nFAILED TO PROCESS THE FOLLOWING FILES (likely due to an error in the model):\n' + '\n'.join([failed_files[i].ljust(max_len+1) + ': ' + failed_errors[i] for i in range(len(failed_files))]))
+        print('\n\nFile- or directory name: ')
