@@ -1,3 +1,0 @@
-A dog and a a guinea pig are lying on a couch.
-The dog is brown.
-The guinea pig is on top of a red couch.

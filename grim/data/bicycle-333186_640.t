@@ -1,3 +1,0 @@
-A man is lying in the grass.
-The man has a bicycle.
-The man is wearing no shirt.

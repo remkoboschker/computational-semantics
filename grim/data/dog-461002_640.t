@@ -1,3 +1,0 @@
-A white dog and a green field.
-The dog is sitting and the sheep are standing.
-A dog and brown sheep.

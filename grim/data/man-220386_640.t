@@ -1,3 +1,0 @@
-A man and a beach. 
-A dog and a man. 
-The sea and a bird.

@@ -1,4 +1,0 @@
-There are several trees.
-There is a kookaburra sitting in a tree.
-The bird is not eating a fish.
-

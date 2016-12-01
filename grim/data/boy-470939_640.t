@@ -1,3 +1,0 @@
-A boy is wearing blue pants.
-The boy is touching a fence.
-There is a brown dog.

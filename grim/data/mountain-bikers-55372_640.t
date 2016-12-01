@@ -1,4 +1,0 @@
-There are several mountains.
-A man is wearing a helmet and a red top.
-The person is holding his bycicle.
-

@@ -1,3 +1,0 @@
-A woman is cycling near a building.
-There are several pedestrians.
-A woman in a green dress is walking on the street.

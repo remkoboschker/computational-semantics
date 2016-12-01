@@ -1,3 +1,0 @@
-Two black cats are walking in the grass.
-There are two animals with green eyes.
-No cat is chasing a bird.

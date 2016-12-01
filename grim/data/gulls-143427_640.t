@@ -1,3 +1,0 @@
-There are several gulls sitting on a roof.
-There are six birds sitting on a roof.
-Several birds are flying in the blue sky.

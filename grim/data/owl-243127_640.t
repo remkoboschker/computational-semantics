@@ -1,3 +1,0 @@
-An owl has yellow eyes.
-An owl in the snow.
-An owl and its prey.

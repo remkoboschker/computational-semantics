@@ -1,3 +1,0 @@
-The girl has a cat on her lap.
-A girl with blonde hair.
-A girl is sitting and holding a cat.

@@ -1,3 +1,0 @@
-A woman is biting in a green apple.
-The woman is wearing a ring.
-A woman with brown hair is eating an apple.

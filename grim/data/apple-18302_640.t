@@ -1,3 +1,0 @@
-A woman is holding a green apple.
-The woman is smiling and has long hair.
-The woman is wearing a ring.

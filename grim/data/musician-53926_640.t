@@ -1,3 +1,0 @@
-A man has a beard.
-A man is playing hurdygurdy.
-A man is stting.

@@ -1,4 +1,0 @@
-The woman is carrying a backpack.
-A woman in a white jacket is riding a bicycle.
-The woman is wearing blue jeans.
-No man is cycling.

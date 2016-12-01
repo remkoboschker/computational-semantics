@@ -1,3 +1,0 @@
-A student has a yellow shirt.
-Each student has a mouse.
-The chairs are blue.

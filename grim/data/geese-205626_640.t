@@ -1,3 +1,0 @@
-The mute swan is white.
-The honkers are grey.
-The animals is swimming in a body of water.

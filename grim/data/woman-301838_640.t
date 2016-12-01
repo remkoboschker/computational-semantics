@@ -1,3 +1,0 @@
-A woman is riding a brown horse.
-The woman is smiling.
-The woman is wearing a helmet.

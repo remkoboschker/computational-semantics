@@ -1,3 +1,0 @@
-The violinist is wearing a blue hat.
-The violinist is old.
-There is a tree behind the violinist.

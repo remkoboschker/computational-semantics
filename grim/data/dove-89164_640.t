@@ -1,4 +1,0 @@
-The dove is sitting on a bench.
-There is a rock behind the bench.
-Nobody is sitting on the park bench.
-The bird is not flying.

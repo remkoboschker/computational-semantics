@@ -1,4 +1,0 @@
-The cat and the kid are touching noses.
-The child has a bottle in his hand.
-The cat is walking on four legs.
-The child is wearing green shorts.

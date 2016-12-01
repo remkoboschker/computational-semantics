@@ -1,3 +1,0 @@
-A cat is standing on the lawn.
-The cat is grey and white.
-The tulip is red.

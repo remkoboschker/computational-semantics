@@ -1,3 +1,0 @@
-A cassowary has a blue head.
-A cassowary has a red neck.
-The lawn is green.

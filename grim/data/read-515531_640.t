@@ -1,3 +1,0 @@
-The woman reads the book.
-Aa woman looks at a book.
-The couch is red.

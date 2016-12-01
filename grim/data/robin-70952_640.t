@@ -1,3 +1,0 @@
-There is a tree.
-A bird sits on a fence.
-The fence is brown.

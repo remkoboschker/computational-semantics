@@ -1,3 +1,0 @@
-A girl is writing on paper.
-A painting hangs on the wall.
-The sweater of the girl is purple.
