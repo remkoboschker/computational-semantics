@@ -1,10 +1,11 @@
 import re
 import sys
 from os import listdir
-from os.path import isdir
+from os.path import isdir, abspath
 from os import sep as PATHSEP
 from nltk.corpus import wordnet as wn
 from collections import OrderedDict
+from nltk.corpus.reader.wordnet import WordNetError
 
 ###########
 ##  I/O  ##
@@ -165,47 +166,28 @@ def expandModel(relations):
 
 def reducedModel(relations):
     # remove all relations for which there is also a hyperonym in the relations
-    newRelations = relations
+    newRelations = relations.copy()
 
     # run time complexity wise better: get all objects and look at their relations
     objects = {}
     for sense, obj in relations.items():
         for o in obj:
-            if obj not in objects: # although the objects can have simple permutations those are not considered hyperonyms as they show different distibutions
+            if o not in objects: # although the objects can have simple permutations those are not considered hyperonyms as they show different distibutions
                 objects[o] = [sense] # might be probleatic, if o is iterable, since python doesn't allow those to be keys
             else:
                 objects[o].append(sense)
 
     # remove hypernyms
-    for senses in objects.values() if len(obj) > 1:
-        #debug("----PROCESSING " + senses + "----")
-        for sense in senses:
-            hypernyms = findAllHypernyms(wn.synset(sense))
-            for h in hyperonyms:
-                if h in senses:
-                    del newRelations[h]
-
-    # remove very similar (0.9 of 0 - 1 range) senses of a given realtion of object(s) based on path similarity
-    # would include removing meronymes --> no additional checking
-    # any reasoning for choosing any of the two?
-    for senses in objects.values() if len(obj) > 1:
-        #debug("----PROCESSING " + senses + "----")
-        for sense in senses:
-            senses.pop(sense)
-            for s in senses:
-                if s.path_similarity(sense) >= 0.9:
-                    del newRelations[s]
-
-    # # higher runtime complexity, but easier key handling. uncomment if prefered
-    # for sense in newRelations.keys():
-    #     debug("----PROCESSING " + sense + "----")
-    #     # moving the path "up" by using hypernyms as this is assumably shorter than finding all hyperonyms
-    #     hypernyms = findAllHypernyms(wn.synset(sense)) #returns all hypernyms, as synsets
-    #     for h in hypernyms:
-    #         if h in newRelations.keys():
-    #             # hyperonym and sense need to refer to same object(s) otherwise it is a different relation
-    #             if newRelations[h] == newRelations[sense]:
-    #                 del newRelations[h]
+    for senses in objects.values():
+        if len(senses) > 1:
+            #debug("----PROCESSING " + senses + "----")
+            for sense in senses:
+                #hypernyms = findAllHypernyms(wn.synset(sense))
+                hypernyms = [synset.name() for synset in findAllHypernyms(wn.synset(sense))]
+                for h in hypernyms:
+                    #debug(h)
+                    if h in newRelations.keys():#senses:
+                        del newRelations[h]
 
     return newRelations
 
@@ -215,23 +197,35 @@ def reducedModel(relations):
 
 print('File- or directory name: ')
 for path in sys.stdin:
+    failed_files = []
+    failed_errors = []
     if path == '\n': break
     path = path.rstrip('\n \t')
     printnames = False
     #construct list of files to process
     if isdir(path):
-        #if not path.endswith(PATHSEP): path = path + PATHSEP
+        if not path.endswith(PATHSEP): path = path + PATHSEP
         files = [path + f for f in listdir(path) if f.endswith(".mod") and not f.endswith("EXPANDED.mod")]
         printnames = True
     else:
         files = [path]
     for filename in files:
-        if printnames or not sys.stdin.isatty(): print(filename)
-        print('Working...')
-        (os,rel,ign,grs) = loadModel(filename)
-        # reduce model
-        reducedModel = reducedModel(rel)
-        rel = expandModel(rel)
-        saveModel(filename.rstrip('.mod') + '-EXPANDED.mod',os,rel,ign,grs)
-        print('Done!')
-        print('File- or directory name: ')
+        try:
+            if printnames or not sys.stdin.isatty(): print(filename)
+            print('Working...')
+            (os,rel,ign,grs) = loadModel(filename)
+            reducedModel = reducedModel(rel)
+            debug(reducedModel)
+            rel = expandModel(rel)
+            saveModel(filename.rstrip('.mod') + '-EXPANDED.mod',os,rel,ign,grs)
+            print('Done!')
+        except WordNetError as e:
+            print('ERROR OPENING MODEL!')
+            print(e)
+            failed_files.append(filename)
+            failed_errors.append(str(e))
+        print('\nFile- or directory name: ')
+    if failed_files != []:
+        max_len = max(map(len,failed_files))
+        print('\n-----\n\nFAILED TO PROCESS THE FOLLOWING FILES (likely due to an error in the model):\n' + '\n'.join([failed_files[i].ljust(max_len+1) + ': ' + failed_errors[i] for i in range(len(failed_files))]))
+        print('\n\nFile- or directory name: ')
