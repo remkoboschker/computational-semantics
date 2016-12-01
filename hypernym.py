@@ -10,9 +10,9 @@ from collections import OrderedDict
 ##  I/O  ##
 ###########
 
-DEBUG = False
-def debug(msg): 
-    if DEBUG: print(msg)
+DEBUG = True
+def debug(msg):
+    if DEBUG: print(msg,file=sys.stderr)
 
 def splitAsList(string,openingbracket,closingbracket):
     #return the list of substringings surrounded by one of the brackets, respecting nested lists.
@@ -22,14 +22,14 @@ def splitAsList(string,openingbracket,closingbracket):
         c = string[idx]
         if c == openingbracket:
             level += 1
-            if level == 1: 
+            if level == 1:
                 start = idx
         elif level > 0 and c == closingbracket:
             level -= 1
             if level == 0:
-                substrings.append(string[start+1:idx])
+                substrings.append(string[start+1:idx]) # problem with "coffee_cup" in model and "coffee cup" in wordnet here solvable
     return(substrings)
-    
+
 def splitIgnoringSublists(string,sep,openingbracket,closingbracket):
     #splits string on sep, but not if sep occurs in a sublist (enclosed in brackets)
     substrings = []
@@ -54,11 +54,11 @@ def strToList(string):
     assert string.startswith('[') and string.endswith(']')
     els = splitIgnoringSublists(string[1:len(string)-1],',','(',')')
     return els
-    
+
 def listToStr(list):
     #variation on the normal str(list) function
     return '[' + ','.join(list) + ']'
-    
+
 def modelToWordnet(sense):
     #turn sense names from the model syntax (pos_name_num) into the wordnet syntax (name.pos.num)
     #TODO add num normalizer (1 to 01)
@@ -69,14 +69,14 @@ def modelToWordnet(sense):
     num = parts[len(parts)-1]
     num = ('0' * (2-len(num))) + num #add leading zero's
     return '.'.join([sense,pos,num])
-    
+
 def wordnetToModel(sense):
     #turn sense names from the wordnet syntax (name.pos.num) into the model syntax (pos_name_num)
     parts = sense.split('.')
     parts[0], parts[1] = parts[1], parts[0]
     parts[2] = parts[2].lstrip('0')
     return '_'.join(parts)
-    
+
 def loadModel(path):
     #load a model from file
     #RETURNS:
@@ -100,7 +100,7 @@ def loadModel(path):
         if r[0] == '1':
             reldict[modelToWordnet(r[1])] = set(strToList(r[2]))
         else:
-            ignoredRels.append(r)   
+            ignoredRels.append(r)
     debug(reldict)
     debug(ignoredRels)
     grounds = None
@@ -108,7 +108,7 @@ def loadModel(path):
         grounds = splitAsList(stripped[2],'(',')')
     debug(grounds)
     return(objects,reldict,ignoredRels,grounds)
-    
+
 def saveModel(path,objects,reldict,ignoredRels,grounds):
     #save a (edited) model back to a file
     s = ["model("] #using lists as a stringBuilder substitute
@@ -141,7 +141,7 @@ def findAllHypernyms(synset):
         debug(h)
         hypernyms.extend(h.hypernyms())#Fascinating: Python can do editing of the list during iteration over the list!
     return(hypernyms)
-    
+
 def addToRelations(relations,objects,sense):
     #adds objects to a relation. If the relations do not yet have a sense related to any objects, adds it.
     if sense in relations:
@@ -162,7 +162,52 @@ def expandModel(relations):
         for h in hypernyms:
             addToRelations(newRelations,objects,h.name())
     return(newRelations)
-        
+
+def reducedModel(relations):
+    # remove all relations for which there is also a hyperonym in the relations
+    newRelations = relations
+
+    # run time complexity wise better: get all objects and look at their relations
+    objects = {}
+    for sense, obj in relations.items():
+        for o in obj:
+            if obj not in objects: # although the objects can have simple permutations those are not considered hyperonyms as they show different distibutions
+                objects[o] = [sense] # might be probleatic, if o is iterable, since python doesn't allow those to be keys
+            else:
+                objects[o].append(sense)
+
+    # remove hypernyms
+    for senses in objects.values() if len(obj) > 1:
+        #debug("----PROCESSING " + senses + "----")
+        for sense in senses:
+            hypernyms = findAllHypernyms(wn.synset(sense))
+            for h in hyperonyms:
+                if h in senses:
+                    del newRelations[h]
+
+    # remove very similar (0.9 of 0 - 1 range) senses of a given realtion of object(s) based on path similarity
+    # would include removing meronymes --> no additional checking
+    # any reasoning for choosing any of the two?
+    for senses in objects.values() if len(obj) > 1:
+        #debug("----PROCESSING " + senses + "----")
+        for sense in senses:
+            senses.pop(sense)
+            for s in senses:
+                if s.path_similarity(sense) >= 0.9:
+                    del newRelations[s]
+
+    # # higher runtime complexity, but easier key handling. uncomment if prefered
+    # for sense in newRelations.keys():
+    #     debug("----PROCESSING " + sense + "----")
+    #     # moving the path "up" by using hypernyms as this is assumably shorter than finding all hyperonyms
+    #     hypernyms = findAllHypernyms(wn.synset(sense)) #returns all hypernyms, as synsets
+    #     for h in hypernyms:
+    #         if h in newRelations.keys():
+    #             # hyperonym and sense need to refer to same object(s) otherwise it is a different relation
+    #             if newRelations[h] == newRelations[sense]:
+    #                 del newRelations[h]
+
+    return newRelations
 
 ##########
 ## Main ##
@@ -184,6 +229,8 @@ for path in sys.stdin:
         if printnames or not sys.stdin.isatty(): print(filename)
         print('Working...')
         (os,rel,ign,grs) = loadModel(filename)
+        # reduce model
+        reducedModel = reducedModel(rel)
         rel = expandModel(rel)
         saveModel(filename.rstrip('.mod') + '-EXPANDED.mod',os,rel,ign,grs)
         print('Done!')
