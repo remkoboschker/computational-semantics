@@ -1,7 +1,7 @@
 import re
 import sys
-from os import listdir
-from os.path import isdir, abspath
+from os import listdir, mkdir
+from os.path import isdir, abspath, basename
 from os import sep as PATHSEP
 from nltk.corpus import wordnet as wn
 from collections import OrderedDict
@@ -175,6 +175,8 @@ def expandModel(relations):
 ##########
 
 print('File- or directory name: ')
+if not isdir('output'):
+    mkdir('output')
 for path in sys.stdin:
     failed_files = []
     failed_errors = []
@@ -194,7 +196,7 @@ for path in sys.stdin:
             print('Working...')
             (os,rel,ign,grs) = loadModel(filename)
             rel = expandModel(rel)
-            saveModel(filename.rstrip('.mod') + '-EXPANDED.mod',os,rel,ign,grs)
+            saveModel('output' + PATHSEP + basename(filename),os,rel,ign,grs)
             print('Done!')
         except WordNetError as e:
             print('ERROR OPENING MODEL!')
