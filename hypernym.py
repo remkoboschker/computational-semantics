@@ -75,7 +75,10 @@ def modelToWordnet(sense):
 def wordnetToModel(sense):
     #turn sense names from the wordnet syntax (name.pos.num) into the model syntax (pos_name_num)
     parts = sense.split('.')
-    parts[0] = parts[0].replace('\'','\\\'')
+    if '\'' in parts[0]:
+        parts[0] = parts[0].replace('\'','\\\'')
+        parts[1] = '\'' + parts[1]
+        parts[2] = parts[2] + '\''
     parts[0], parts[1] = parts[1], parts[0]
     parts[2] = parts[2].lstrip('0')
     return '_'.join(parts)
