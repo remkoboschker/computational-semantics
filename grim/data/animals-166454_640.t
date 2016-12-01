@@ -1,3 +1,0 @@
-The boy wears a striped shirt. 
-A pigeon is eating. 
-There is at least one bird flying. 

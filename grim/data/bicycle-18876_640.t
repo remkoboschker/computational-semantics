@@ -1,3 +1,0 @@
-The bike is not pink.
-A blue bike is leaning against the wall.
-Nobody is cycling.

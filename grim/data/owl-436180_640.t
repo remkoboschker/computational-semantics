@@ -1,3 +1,0 @@
-An owl is sitting on a twig.
-There are two trees.
-The owl is white and brown.

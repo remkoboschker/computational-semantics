@@ -1,3 +1,0 @@
-There are two wineglasses and a table.
-The lamp is on and the napkins are red.
-There is a chair and a lamp.

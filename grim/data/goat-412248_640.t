@@ -1,4 +1,0 @@
-No goat is not eating a carrot.
-While looking annoyed, the goat has a carrot in its mouth, as if it were a cigar.
-There is only one goat.
-A goat is eating a carrot.

@@ -1,3 +1,0 @@
-There is one swanling.
-All swans that are not swanlings are black.
-There are three black swans.

@@ -1,3 +1,0 @@
-A goose and a basin.
-A goose with a tail.
-A goose with an eye.

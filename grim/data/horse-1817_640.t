@@ -1,3 +1,0 @@
-The brown horse is bigger than the white horse.
-There is a brown horse eating grass.
-Both horses are grazing.

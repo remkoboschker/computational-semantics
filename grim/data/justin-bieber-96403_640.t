@@ -1,3 +1,0 @@
-A boy and a red cap.
-A white piano and smoke.
-Justin Bieber and a microphone.

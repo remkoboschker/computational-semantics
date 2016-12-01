@@ -1,4 +1,0 @@
-Several people are riding a bicycle.
-Everyone iswearing a helmet.
-There are four bicycles.
-

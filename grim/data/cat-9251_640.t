@@ -1,4 +1,0 @@
-A cat is sitting on someone's lap.
-Somebody is petting the cat.
-The cat is not running.
-The cat is not eating anything.

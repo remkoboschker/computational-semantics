@@ -1,3 +1,0 @@
-A flock of sheep and a horse.
-An orange sky and a flock of sheep and ahorseman.
-A dog and a horse and a sheep.

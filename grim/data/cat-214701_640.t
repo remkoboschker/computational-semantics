@@ -1,3 +1,0 @@
-There is milk in the bowl.
-Three cats are sitting on a newspaper.
-The cats are eating near a brick wall.

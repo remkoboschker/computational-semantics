@@ -1,3 +1,0 @@
-A girl is playing with rocks.
-A girl with a stuffed animal.
-The girl is not wearing shoes.

@@ -1,5 +1,0 @@
-A child is chasing a bird.
-A child is wearing a white hat.
-The bird flies.
-No bird is eating.
-The boy is running.

@@ -1,3 +1,0 @@
-A boy and a mouse.
-A boy with brown hair.
-A desk and a keyboard.

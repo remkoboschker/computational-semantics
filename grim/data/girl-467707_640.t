@@ -1,3 +1,0 @@
-The cat is being stroked by a woman.
-A girl is caressing her cat.
-A girl is looking at a cat.

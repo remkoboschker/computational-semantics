@@ -1,4 +1,0 @@
-The dog is looking at a cat.
-A cat is not eating something.
-There is grass near a wall.
-There are flowers in the field.

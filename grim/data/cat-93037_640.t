@@ -1,5 +1,0 @@
-The cat is perched on a tree.
-A black-and-white cat is walking next to a tree.
-The tree has leaves.
-The cat has no collar.
-

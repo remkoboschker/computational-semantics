@@ -1,3 +1,0 @@
-An old man and an old woman.
-There are four chairs and green plants.
-The man is wearing glasses and the woman is wearing a red shirt.

@@ -1,3 +1,0 @@
-The table is round.
-The oranges are on the table.
-Nobody is sitting on the chair. 

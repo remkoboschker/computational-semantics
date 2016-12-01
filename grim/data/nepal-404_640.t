@@ -1,3 +1,0 @@
-A girl is holding a goat.
-There are two goats and a girl.
-The girl is sitting.

@@ -1,3 +1,0 @@
-A grey cat is sitting on the chair.
-The eyes of the cat are open.
-The chair is black.

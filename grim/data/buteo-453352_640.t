@@ -1,5 +1,0 @@
-An osprey is flying over a lake.
-The bird is spreading its wings.
-The bird is near the water.
-The osprey is not eating.
-

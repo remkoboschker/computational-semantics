@@ -1,3 +1,0 @@
-A businessman is holding a cellphone.
-The necktie is red.
-There is a window.

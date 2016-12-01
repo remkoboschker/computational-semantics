@@ -1,3 +1,0 @@
-A white mute swan in a beak.
-A hand and a mute swan and water.
-A mute swan and water.

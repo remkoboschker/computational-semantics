@@ -1,3 +1,0 @@
-The lipstick of the woman is red. 
-The woman holds an apple and a pear. 
-The apple is red. 

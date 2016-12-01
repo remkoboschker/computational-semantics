@@ -1,3 +1,0 @@
-The bride is playing piano.
-The bride is sitting on a bench.
-The woman has brown hair.

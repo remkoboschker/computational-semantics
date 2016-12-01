@@ -1,7 +1,7 @@
 import re
 import sys
-from os import listdir
-from os.path import isdir, abspath
+from os import listdir, mkdir
+from os.path import isdir, abspath, basename
 from os import sep as PATHSEP
 from nltk.corpus import wordnet as wn
 from collections import OrderedDict
@@ -67,6 +67,7 @@ def modelToWordnet(sense):
     parts = sense.split('_')
     pos = parts[0]
     sense = '_'.join([w.replace(' ','_') for w in parts[1:len(parts)-1]])
+    sense = sense.replace('\\\'','\'')
     num = parts[len(parts)-1]
     num = ('0' * (2-len(num))) + num #add leading zero's
     return '.'.join([sense,pos,num])
@@ -74,6 +75,10 @@ def modelToWordnet(sense):
 def wordnetToModel(sense):
     #turn sense names from the wordnet syntax (name.pos.num) into the model syntax (pos_name_num)
     parts = sense.split('.')
+    if '\'' in parts[0]:
+        parts[0] = parts[0].replace('\'','\\\'')
+        parts[1] = '\'' + parts[1]
+        parts[2] = parts[2] + '\''
     parts[0], parts[1] = parts[1], parts[0]
     parts[2] = parts[2].lstrip('0')
     return '_'.join(parts)
@@ -196,6 +201,8 @@ def reducedModel(relations):
 ##########
 
 print('File- or directory name: ')
+if not isdir('output'):
+    mkdir('output')
 for path in sys.stdin:
     failed_files = []
     failed_errors = []
@@ -217,7 +224,7 @@ for path in sys.stdin:
             reducedModel = reducedModel(rel)
             debug(reducedModel)
             rel = expandModel(rel)
-            saveModel(filename.rstrip('.mod') + '-EXPANDED.mod',os,rel,ign,grs)
+            saveModel('output' + PATHSEP + basename(filename),os,rel,ign,grs)
             print('Done!')
         except WordNetError as e:
             print('ERROR OPENING MODEL!')

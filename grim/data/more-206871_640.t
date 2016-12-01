@@ -1,4 +1,0 @@
-Someone is sitting on a mat in a field.
-Two bicycles are lying in the grass.
-The person is not wearing a helmet.
-

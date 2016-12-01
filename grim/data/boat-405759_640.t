@@ -1,3 +1,0 @@
-A heron sits on the boat.
-The boat floats on the pond.	
-There is vegetation around the pond.

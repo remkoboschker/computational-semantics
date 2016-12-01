@@ -1,3 +1,0 @@
-The boy is riding a red bike.
-The person on the bike is wearing glasses.
-The boy wears blue shorts.

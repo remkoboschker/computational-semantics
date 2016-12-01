@@ -1,3 +1,0 @@
-The furs of the dogs are golden.
-A dog is walking on the beach.
-The woman has brown hair.

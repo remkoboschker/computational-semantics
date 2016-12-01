@@ -1,3 +1,0 @@
-The beggar is wearing a hat.
-A pigeon is standing on the beggar's hand.
-There is a street.

@@ -1,3 +1,0 @@
-The girl is carrying the boy.
-The boy is wearing a red t-shirt.
-A blond girl with a white dress.
