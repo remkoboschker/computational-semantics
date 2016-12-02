@@ -11,7 +11,7 @@ from nltk.corpus.reader.wordnet import WordNetError
 ##  I/O  ##
 ###########
 
-DEBUG = True
+DEBUG = False
 def debug(msg):
     if DEBUG: print(msg,file=sys.stderr)
 
@@ -169,7 +169,7 @@ def expandModel(relations):
             addToRelations(newRelations,objects,h.name())
     return(newRelations)
 
-def reducedModel(relations):
+def reduceModel(relations):
     # remove all relations for which there is also a hyperonym in the relations
     newRelations = relations.copy()
 
@@ -221,7 +221,7 @@ for path in sys.stdin:
             if printnames or not sys.stdin.isatty(): print(filename)
             print('Working...')
             (os,rel,ign,grs) = loadModel(filename)
-            reducedModel = reducedModel(rel)
+            reducedModel = reduceModel(rel)
             debug(reducedModel)
             rel = expandModel(rel)
             saveModel('output' + PATHSEP + basename(filename),os,rel,ign,grs)
