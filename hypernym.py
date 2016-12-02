@@ -156,6 +156,14 @@ def addToRelations(relations,objects,sense):
         relations[sense] = objects#putting the elements in the dict again lowers them, putting the largely shared properties as low as possible
     else:
         relations[sense] = objects.copy()
+        
+def removeFromRelation(relations,objects,sense):
+    #remove objects from the relations list, removing the key if this was the last object
+    if objects.issubset(relations[sense]):
+        if len(relations[sense]) == len(objects):
+            del relations[sense]
+        else:
+            relations[sense] = relations[sense].difference(objects)
 
 def expandModel(relations):
     #add all hypernyms to all relations
@@ -167,10 +175,11 @@ def expandModel(relations):
         hypernyms = findAllHypernyms(wn.synset(sense))#returns all hypernyms, as synsets
         for h in hypernyms:
             addToRelations(newRelations,objects,h.name())
+    debug(newRelations)
     return(newRelations)
 
 def reduceModel(relations):
-    # remove all relations for which there is also a hyperonym in the relations
+    # remove all relations for which there is also a hypernym in the relations
     newRelations = relations.copy()
 
     # run time complexity wise better: get all objects and look at their relations
@@ -178,22 +187,21 @@ def reduceModel(relations):
     for sense, obj in relations.items():
         for o in obj:
             if o not in objects: # although the objects can have simple permutations those are not considered hyperonyms as they show different distibutions
-                objects[o] = [sense] # might be probleatic, if o is iterable, since python doesn't allow those to be keys
+                objects[o] = [sense] # might be problematic, if o is iterable, since python doesn't allow those to be keys
             else:
                 objects[o].append(sense)
 
     # remove hypernyms
-    for senses in objects.values():
+    for o in objects.keys():
+        senses = objects[o]
         if len(senses) > 1:
-            #debug("----PROCESSING " + senses + "----")
             for sense in senses:
-                #hypernyms = findAllHypernyms(wn.synset(sense))
                 hypernyms = [synset.name() for synset in findAllHypernyms(wn.synset(sense))]
                 for h in hypernyms:
-                    #debug(h)
                     if h in newRelations.keys():#senses:
-                        del newRelations[h]
+                        removeFromRelation(newRelations,set([o]),h)
 
+    debug(newRelations)
     return newRelations
 
 ##########
@@ -222,8 +230,7 @@ for path in sys.stdin:
             print('Working...')
             (os,rel,ign,grs) = loadModel(filename)
             reducedModel = reduceModel(rel)
-            debug(reducedModel)
-            rel = expandModel(rel)
+            rel = expandModel(reducedModel)
             saveModel('output' + PATHSEP + basename(filename),os,rel,ign,grs)
             print('Done!')
         except WordNetError as e:
