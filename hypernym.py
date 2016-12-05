@@ -142,21 +142,30 @@ def saveModel(path,objects,reldict,ignoredRels,grounds):
 ########################
 
 def findAllHypernyms(synset):
+    multi = 0
     hypernyms = synset.hypernyms()
+    if len(hypernyms) > 1:
+        multi += 1
     for h in hypernyms:
         debug(h)
-        hypernyms.extend(h.hypernyms())#Fascinating: Python can do editing of the list during iteration over the list!
-    return(hypernyms)
+        hyp = h.hypernyms()
+        if len(hyp) > 1:
+            multi += 1
+        hypernyms.extend(hyp)#Fascinating: Python can do editing of the list during iteration over the list!
+    return(hypernyms, multi)
 
 def addToRelations(relations,objects,sense):
+    addCnt = 0
     #adds objects to a relation. If the relations do not yet have a sense related to any objects, adds it.
     if sense in relations:
         objects = objects.union(relations[sense])#merge new and old objects
         relations.pop(sense)
         relations[sense] = objects#putting the elements in the dict again lowers them, putting the largely shared properties as low as possible
+        addCnt = 1
     else:
         relations[sense] = objects.copy()
-        
+    return addCnt
+
 def removeFromRelation(relations,objects,sense):
     #remove objects from the relations list, removing the key if this was the last object
     if objects.issubset(relations[sense]):
@@ -164,23 +173,31 @@ def removeFromRelation(relations,objects,sense):
             del relations[sense]
         else:
             relations[sense] = relations[sense].difference(objects)
+        return 1
+    return 0
 
 def expandModel(relations):
     #add all hypernyms to all relations
+    expandCnt = 0
+    multiCnt = 0
     newRelations = OrderedDict()
     for sense in relations.keys():
         debug("----PROCESSING " + sense + "----")
         objects = relations[sense]
         addToRelations(newRelations,objects,sense)
-        hypernyms = findAllHypernyms(wn.synset(sense))#returns all hypernyms, as synsets
+        hypernyms, mCnt = findAllHypernyms(wn.synset(sense))#returns all hypernyms, as synsets
+        multiCnt += mCnt
         for h in hypernyms:
-            addToRelations(newRelations,objects,h.name())
+            expandCnt += addToRelations(newRelations,objects,h.name())
     debug(newRelations)
-    return(newRelations)
+    print("expand {}".format(expandCnt))
+    print("multi {}".format(multiCnt))
+    return(newRelations, expandCnt, multiCnt)
 
 def reduceModel(relations):
     # remove all relations for which there is also a hypernym in the relations
     newRelations = relations.copy()
+    reduceCount = 0
 
     # run time complexity wise better: get all objects and look at their relations
     objects = {}
@@ -196,13 +213,15 @@ def reduceModel(relations):
         senses = objects[o]
         if len(senses) > 1:
             for sense in senses:
-                hypernyms = [synset.name() for synset in findAllHypernyms(wn.synset(sense))]
+                alll, cnt = findAllHypernyms(wn.synset(sense))
+                hypernyms = [synset.name() for synset in alll]
                 for h in hypernyms:
                     if h in newRelations.keys():#senses:
-                        removeFromRelation(newRelations,set([o]),h)
-
+                        reCnt = removeFromRelation(newRelations,set([o]),h)
+                        reduceCount += reCnt
     debug(newRelations)
-    return newRelations
+    print("reduce {}".format(reduceCount))
+    return newRelations, reduceCount
 
 ##########
 ## Main ##
@@ -217,6 +236,9 @@ for path in sys.stdin:
     if path == '\n': break
     path = path.rstrip('\n \t')
     printnames = False
+    countRemoval = 0
+    countExpansion = 0
+    mulCnt = 0
     #construct list of files to process
     if isdir(path):
         if not path.endswith(PATHSEP): path = path + PATHSEP
@@ -229,8 +251,11 @@ for path in sys.stdin:
             if printnames or not sys.stdin.isatty(): print(filename)
             print('Working...')
             (os,rel,ign,grs) = loadModel(filename)
-            reducedModel = reduceModel(rel)
-            rel = expandModel(reducedModel)
+            reducedModel, reCnt = reduceModel(rel)
+            countRemoval += reCnt
+            rel, exCnt, mCnt = expandModel(reducedModel)
+            countExpansion += exCnt
+            mulCnt += mCnt
             saveModel('output' + PATHSEP + basename(filename),os,rel,ign,grs)
             print('Done!')
         except WordNetError as e:
@@ -243,3 +268,6 @@ for path in sys.stdin:
         max_len = max(map(len,failed_files))
         print('\n-----\n\nFAILED TO PROCESS THE FOLLOWING FILES (likely due to an error in the model):\n' + '\n'.join([failed_files[i].ljust(max_len+1) + ': ' + failed_errors[i] for i in range(len(failed_files))]))
         print('\n\nFile- or directory name: ')
+    print("expansions {}".format(countExpansion))
+    print("removals {}".format(countRemoval))
+    print("multi {}".format(mulCnt))
