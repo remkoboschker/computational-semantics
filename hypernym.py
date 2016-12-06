@@ -257,17 +257,16 @@ for path in sys.stdin:
             countExpansion += exCnt
             mulCnt += mCnt
             saveModel('output' + PATHSEP + basename(filename),os,rel,ign,grs)
-            print('Done!')
+            print('Done!\n')
         except WordNetError as e:
             print('ERROR OPENING MODEL!')
             print(e)
             failed_files.append(filename)
             failed_errors.append(str(e))
-        print('\nFile- or directory name: ')
     if failed_files != []:
         max_len = max(map(len,failed_files))
-        print('\n-----\n\nFAILED TO PROCESS THE FOLLOWING FILES (likely due to an error in the model):\n' + '\n'.join([failed_files[i].ljust(max_len+1) + ': ' + failed_errors[i] for i in range(len(failed_files))]))
-        print('\n\nFile- or directory name: ')
+        print('-----\n\nFAILED TO PROCESS THE FOLLOWING FILES (likely due to an error in the model):\n' + '\n'.join([failed_files[i].ljust(max_len+1) + ': ' + failed_errors[i] for i in range(len(failed_files))]))
     print("expansions {}".format(countExpansion))
     print("removals {}".format(countRemoval))
     print("multi {}".format(mulCnt))
+    print('\n\nFile- or directory name: ')
