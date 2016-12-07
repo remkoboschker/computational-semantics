@@ -59,6 +59,9 @@ def strToList(string):
 def listToStr(list):
     #variation on the normal str(list) function
     return '[' + ','.join(list) + ']'
+    
+def natural_sort(l):
+    return sorted(l, key = lambda key: [int(c) if c.isdigit() else c.lower() for c in re.split('([0-9]+)', key) ])
 
 def modelToWordnet(sense):
     #turn sense names from the model syntax (pos_name_num) into the wordnet syntax (name.pos.num)
@@ -123,12 +126,12 @@ def saveModel(path,objects,reldict,ignoredRels,grounds):
     keys = list(reldict.keys())
     if len(keys) != 0:
         r = keys[0]
-        s.append("f(1," + wordnetToModel(r) + ',' + listToStr(sorted(reldict[r])) + ")")
+        s.append("f(1," + wordnetToModel(r) + ',' + listToStr(natural_sort(reldict[r])) + ")")
     elif len(ignoredRels) != 0:
         s.append("f(" + ','.join(r) + ")")
         ignoredRels = ignoredRels[1:]
     for r in keys[1:]:
-        s.append(",\n\t f(1," + wordnetToModel(r) + ',' + listToStr(sorted(reldict[r])) + ")")
+        s.append(",\n\t f(1," + wordnetToModel(r) + ',' + listToStr(natural_sort(sorted(reldict[r]))) + ")")
     for r in ignoredRels:
         s.append(",\n\t f(" + ','.join(r) + ")")
     if grounds != None:
