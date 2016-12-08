@@ -146,11 +146,13 @@ def findAllHypernyms(synset):
     hypernyms = synset.hypernyms()
     if len(hypernyms) > 1:
         multi += 1
+        print("{} {}".format(synset, hypernyms))
     for h in hypernyms:
         debug(h)
         hyp = h.hypernyms()
         if len(hyp) > 1:
             multi += 1
+            print("{} {}".format(h, hyp))
         hypernyms.extend(hyp)#Fascinating: Python can do editing of the list during iteration over the list!
     return(hypernyms, multi)
 
