@@ -12,6 +12,7 @@ from nltk.corpus.reader.wordnet import WordNetError
 ###########
 
 DEBUG = False
+
 def debug(msg):
     if DEBUG: print(msg,file=sys.stderr)
 
@@ -59,7 +60,7 @@ def strToList(string):
 def listToStr(list):
     #variation on the normal str(list) function
     return '[' + ','.join(list) + ']'
-    
+
 def natural_sort(l):
     return sorted(l, key = lambda key: [int(c) if c.isdigit() else c.lower() for c in re.split('([0-9]+)', key) ])
 
@@ -144,17 +145,19 @@ def saveModel(path,objects,reldict,ignoredRels,grounds):
 ## Model Manipulation ##
 ########################
 
-def findAllHypernyms(synset):
+def findAllHypernyms(synset, multiDict):
     multi = 0
     hypernyms = synset.hypernyms()
     if len(hypernyms) > 1:
         multi += 1
+        multiDict[synset] = [str(hypernyms), multiDict[synset][1] + 1 if synset in multiDict else 1]
         print("{} {}".format(synset, hypernyms))
     for h in hypernyms:
         debug(h)
         hyp = h.hypernyms()
         if len(hyp) > 1:
             multi += 1
+            multiDict[h] = [str(hyp), multiDict[h][1] + 1 if h in multiDict else 1]
             print("{} {}".format(h, hyp))
         hypernyms.extend(hyp)#Fascinating: Python can do editing of the list during iteration over the list!
     return(hypernyms, multi)
@@ -181,7 +184,7 @@ def removeFromRelation(relations,objects,sense):
         return 1
     return 0
 
-def expandModel(relations):
+def expandModel(relations, multiDict):
     #add all hypernyms to all relations
     expandCnt = 0
     multiCnt = 0
@@ -190,7 +193,7 @@ def expandModel(relations):
         debug("----PROCESSING " + sense + "----")
         objects = relations[sense]
         addToRelations(newRelations,objects,sense)
-        hypernyms, mCnt = findAllHypernyms(wn.synset(sense))#returns all hypernyms, as synsets
+        hypernyms, mCnt = findAllHypernyms(wn.synset(sense), multiDict)#returns all hypernyms, as synsets
         multiCnt += mCnt
         for h in hypernyms:
             expandCnt += addToRelations(newRelations,objects,h.name())
@@ -218,7 +221,7 @@ def reduceModel(relations):
         senses = objects[o]
         if len(senses) > 1:
             for sense in senses:
-                alll, cnt = findAllHypernyms(wn.synset(sense))
+                alll, cnt = findAllHypernyms(wn.synset(sense), {})
                 hypernyms = [synset.name() for synset in alll]
                 for h in hypernyms:
                     if h in newRelations.keys():#senses:
@@ -244,6 +247,7 @@ for path in sys.stdin:
     countRemoval = 0
     countExpansion = 0
     mulCnt = 0
+    multiDict = {}
     #construct list of files to process
     if isdir(path):
         if not path.endswith(PATHSEP): path = path + PATHSEP
@@ -258,7 +262,7 @@ for path in sys.stdin:
             (os,rel,ign,grs) = loadModel(filename)
             reducedModel, reCnt = reduceModel(rel)
             countRemoval += reCnt
-            rel, exCnt, mCnt = expandModel(reducedModel)
+            rel, exCnt, mCnt = expandModel(reducedModel, multiDict)
             countExpansion += exCnt
             mulCnt += mCnt
             saveModel('output' + PATHSEP + basename(filename),os,rel,ign,grs)
@@ -274,4 +278,7 @@ for path in sys.stdin:
     print("expansions {}".format(countExpansion))
     print("removals {}".format(countRemoval))
     print("multi {}".format(mulCnt))
+    for key, value in multiDict.items():
+        print("{} {}".format(key, value).replace("Synset('", "").replace("')", "").replace('["', '').replace('",', '')[:-1]);
+    print("aantal multiple {}".format(len(multiDict)))
     print('\n\nFile- or directory name: ')
