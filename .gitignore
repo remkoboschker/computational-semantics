@@ -1,0 +1,6 @@
+/report
+/venv
+/build
+/papers
+*.pdf
+.DS_Store

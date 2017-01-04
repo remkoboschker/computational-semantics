@@ -1,0 +1,1 @@
+some(X,and(and(a_white_1(X),n_dog_1(X)),some(Y,and(n_mouth_1(Y),and(s_part_of(Y,X),a_open_1(Y))))))

@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage[a3paper,landscape, margin=1cm] {geometry}
+\usepackage{qtree}
+\usepackage{enumitem}
+\begin{document}
+\footnotesize
+\Tree
+[.{A white dog smiles.\\s($\exists x(a\_white\_1(x) \wedge n\_dog\_1(x) \wedge \exists y(n\_mouth\_1(y) \wedge s\_part\_of(x,y) \wedge a\_open\_1(y)))$)_1}
+  [.{A white dog\\np1(sg, $\lambda s.\exists z(a\_white\_1(z) \wedge n\_dog\_1(z) \wedge s@z)$)_2}
+    [ {A\\det(sg, a, $\lambda p.\lambda q.\exists x(p@x \wedge q@x)$) }
+      [.{white dog\\n2(sg, a, $\lambda y.(a\_white\_1(y) \wedge n\_dog\_1(y))$)}
+        [.{white dog\\n1(sg, a, $\lambda y.(a\_white\_1(y) \wedge n\_dog\_1(y))$)_3}
+          [.{white\\a(a, $\lambda p.\lambda x.(a\_white\_1(x) \wedge p@x)$)}
+            [.{white\\a1(a, $\lambda p.\lambda x.(a\_white\_1(x) \wedge p@x)$)}
+              {white\\a0(a, $\lambda p.\lambda x.(a\_white\_1(x) \wedge p@x)$)}
+            ]
+          ]
+          [.{dog\\n2(sg, a, $\lambda x.n\_dog\_1(x)$)}
+            [.{dog\\n1(sg, a, $\lambda x.n\_dog\_1(x)$)}
+              {dog\\n0(sg, a, $\lambda x.n\_dog\_1(x)$)}
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+  [.{smiles\\vp(dcl, sg, $\lambda x. \exists y(n\_mouth\_1(y) \wedge s\_part\_of(x,y) \wedge a\_open\_1(y))$)}
+    [.{smiles\\vp1(dcl, sg, $\lambda x. \exists y(n\_mouth\_1(y) \wedge s\_part\_of(x,y) \wedge a\_open\_1(y))$)}
+      {smiles\\iv(dcl, sg, $\lambda x. \exists y(n\_mouth\_1(y) \wedge s\_part\_of(x,y) \wedge a\_open\_1(y))$)}
+    ]
+  ]
+  {.\\ punct($\lambda x.x$)}
+]
+\\
+\\
+\begin{description}[align=right, noitemsep]
+\item [ad 1.] A white dog smiles (S)
+\begin{description}[align=right, noitemsep]
+\item [apply] $\lambda s.\exists z(a\_white\_1(z) \wedge n\_dog\_1(z) \wedge s@z)@\lambda x. \exists y(n\_mouth\_1(y) \wedge s\_part\_of(x,y) \wedge a\_open\_1(y))$
+\item [alpha] $\lambda t.\exists u(a\_white\_1(u) \wedge n\_dog\_1(u) \wedge t@u)@\lambda x. \exists y(n\_mouth\_1(y) \wedge s\_part\_of(x,y) \wedge a\_open\_1(y))$
+\item [beta] $\exists u(a\_white\_1(u) \wedge n\_dog\_1(u) \wedge \lambda x. \exists y(n\_mouth\_1(y) \wedge s\_part\_of(x,y) \wedge a\_open\_1(y))@u)$
+\item [alpha] $\exists u(a\_white\_1(u) \wedge n\_dog\_1(u) \wedge \lambda v. \exists w(n\_mouth\_1(w) \wedge s\_part\_of(v,w) \wedge a\_open\_1(w))@u)$
+\item [beta] $\exists u(a\_white\_1(u) \wedge n\_dog\_1(u) \wedge \exists w(n\_mouth\_1(w) \wedge s\_part\_of(u,w) \wedge a\_open\_1(w)))$
+\item [apply] $\lambda x.x@\exists u(a\_white\_1(u) \wedge n\_dog\_1(u) \wedge \exists w(n\_mouth\_1(w) \wedge s\_part\_of(u,w) \wedge a\_open\_1(w)))$
+\item [alpha] $\lambda d.d@\exists u(a\_white\_1(u) \wedge n\_dog\_1(u) \wedge \exists w(n\_mouth\_1(w) \wedge s\_part\_of(u,w) \wedge a\_open\_1(w)))$
+\item [beta] $\exists u(a\_white\_1(u) \wedge n\_dog\_1(u) \wedge \exists w(n\_mouth\_1(w) \wedge s\_part\_of(u,w) \wedge a\_open\_1(w)))$
+\end{description}
+\item [ad 2.] A white dog (np1)
+\begin{description}[align=right, noitemsep]
+\item [apply] $\lambda p.\lambda q.\exists x(p@x \wedge q@x)@\lambda y(a\_white\_1(y) \wedge n\_dog\_1(y))$
+\item [alpha] $\lambda r.\lambda s.\exists z(r@z \wedge s@z)@\lambda y(a\_white\_1(y) \wedge n\_dog\_1(y))$
+\item [beta] $\lambda s.\exists z(\lambda y.(a\_white\_1(y) \wedge n\_dog\_1(y))@z \wedge s@z)$
+\item [alpha] $\lambda s.\exists z(\lambda t.(a\_white\_1(t) \wedge n\_dog\_1(t))@z \wedge s@z)$
+\item [beta] $\lambda s.\exists z(a\_white\_1(z) \wedge n\_dog\_1(z) \wedge s@z)$
+\end{description}
+\item [ad 3.] white dog (n1)
+\begin{description}[align=right, noitemsep]
+\item [apply] $\lambda p.\lambda x.(a\_white\_1(x) \wedge p@x)@\lambda x.n\_dog\_1(x)$
+\item [alpha] $\lambda q.\lambda y.(a\_white\_1(y) \wedge q@y)@\lambda x.n\_dog\_1(x)$
+\item [beta] $\lambda y.(a\_white\_1(y) \wedge \lambda x.n\_dog\_1(x)@y)$
+\item [alpha] $\lambda y.(a\_white\_1(y) \wedge \lambda z.n\_dog\_1(z)@y)$
+\item [beta] $\lambda y.(a\_white\_1(y) \wedge n\_dog\_1(y))$
+\end{description}
+\end{description}
+\end{document}

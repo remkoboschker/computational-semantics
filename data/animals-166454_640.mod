@@ -1,6 +1,6 @@
 model([d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12],
       [f(1,n_boy_1,[d1]),
-       f(1,n_shorts_1,[d2]),
+       f(1,n_short_pants_1,[d2]),
        f(1,n_shirt_1,[d3]),
        f(1,a_blue_1,[d2]),
        f(1,a_striped_1,[d3]),
