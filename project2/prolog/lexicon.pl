@@ -11,6 +11,20 @@ n0(sg,a,  lam(X,n_bicycle_1(X)))   --> [bicycle].
 n0(sg,a,  lam(X,n_dog_1(X)))   --> [dog].
 n0(sg,a,  lam(X,n_bird_1(X)))   --> [bird].
 n0(pl,_,  lam(X,n_dog_1(X)))   --> [dogs].
+n0(sg,a, lam(X,n_child_1(X))) --> [baby].
+n0(sg,a, lam(X,n_melon_2(X))) --> [melon].
+n0(sg,a, lam(X,n_bald_eagle_1(X))) --> ['bald eagle'].
+n0(sg,a, lam(X,n_claw_1(X))) --> [claw].
+n0(sg,an, lam(X,n_accordion_1(X))) --> [accordion].
+n0(sg,a, lam(X,n_suitcase_1(X))) --> [suitcase].
+n0(sg,a, lam(X,n_picture_1(X))) --> [picture].
+n0(sg,a, lam(X,n_dress_1(X))) --> [dress].
+n0(sg,a, lam(X,n_parasol_1(X))) --> [parasol].
+n0(sg,a, lam(X,n_rock_1(X))) --> [rock].
+n0(sg,a, lam(X,n_lawn_1(X))) --> [lawn].
+n0(sg,a, lam(X,n_head_1(X))) --> [head].
+
+
 
 % adjectives
 %
@@ -42,7 +56,10 @@ tv(dcl,sg, lam(P,lam(X,app(P,lam(Y,s_near(X,Y)))))) --> [chases].
 tv(dcl,pl, lam(P,lam(X,app(P,lam(Y,s_near(X,Y)))))) --> [chase].
 tv(bse,_,  lam(P,lam(X,app(P,lam(Y,s_near(X,Y)))))) --> [chased].
 tv(psp,_,  lam(P,lam(X,app(P,lam(Y,s_near(X,Y)))))) --> [chased].
- 
+
+% X is eating Y -> there is a mouth, the mouth is part of X, the mouth touches Y
+tv(prp,_, lam(P, lam(X,app(P,lam(Y,some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))) --> [eating].
+
 % ditransitive verbs
 %
 dv(prp,_,  lam(P,lam(Q,lam(X,app(P,lam(Y,app(Q,lam(Z,'X'(X,Y,Z))))))))) --> [sending].
@@ -50,5 +67,3 @@ dv(dcl,sg, lam(P,lam(Q,lam(X,app(P,lam(Y,app(Q,lam(Z,'X'(X,Y,Z))))))))) --> [sen
 dv(dcl,pl, lam(P,lam(Q,lam(X,app(P,lam(Y,app(Q,lam(Z,'X'(X,Y,Z))))))))) --> [send].
 dv(bse,_,  lam(P,lam(Q,lam(X,app(P,lam(Y,app(Q,lam(Z,'X'(X,Y,Z))))))))) --> [send].
 dv(psp,_,  lam(P,lam(Q,lam(X,app(P,lam(Y,app(Q,lam(Z,'X'(X,Y,Z))))))))) --> [sent].
- 
-
