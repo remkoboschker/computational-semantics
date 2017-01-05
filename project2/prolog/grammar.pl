@@ -1,7 +1,7 @@
 % sentences
 %
-s(app(PT,app(NP,lam(X,some(Y,eq(Y,X)))))) --> np(_,NP), punct(PT).      
-s(app(PT,app(NP,VP))) --> np(Num,NP), vp(dcl,Num,VP), punct(PT).      
+s(app(PT,app(NP,lam(X,some(Y,eq(Y,X)))))) --> np(_,NP), punct(PT).
+s(app(PT,app(NP,VP))) --> np(Num,NP), vp(dcl,Num,VP), punct(PT).
 s(app(PT,app(NP,app(AV,VP)))) --> [there], av(dcl,Num,prp,AV), np(Num,NP), vp(prp,Num,VP), punct(PT).
 
 % punctuation
@@ -16,10 +16,10 @@ vp(Mood,Num,app(AV,VP)) --> av(Mood,Num,Tense,AV), vp1(Tense,Num,VP).
 vp(Mood,Num,lam(X,and(app(VP,X),app(PP,X)))) --> vp1(Mood,Num,VP), pp(PP).
 vp(Mood,Num,lam(X,app(app(Sem,app(VP1,X)),app(VP2,X)))) --> vp1(Mood,Num,VP1), conj(Sem), vp(Mood,Num,VP2).
 
-vp1(Tense,Num,Sem) --> iv(Tense,Num,Sem).                            
-vp1(Tense,Num,app(TV,NP)) --> tv(Tense,Num,TV), np(_,NP).            
+vp1(Tense,Num,Sem) --> iv(Tense,Num,Sem).
+vp1(Tense,Num,app(TV,NP)) --> tv(Tense,Num,TV), np(_,NP).
 vp1(Tense,Num,app(app(DV,NP1),NP2)) --> dv(Tense,Num,DV), np(_,NP1), np(_,NP2).
-vp1(Tense,Num,app(AV,app(A,lam(X,n_thing_12(X))))) --> av(Tense,Num,prp,AV), a(_,A).                  
+vp1(Tense,Num,app(AV,app(A,lam(X,n_thing_12(X))))) --> av(Tense,Num,prp,AV), a(_,A).
 
 % passives
 %
@@ -103,9 +103,10 @@ det(pl,_,  lam(P,lam(Q, all(X,imp(app(P,X),app(Q,X)))))) --> [all].
 
 % prepositions
 %
-prep0(lam(P,lam(Y,app(P,lam(X,s_supports(X,Y)))))) --> [on].
-prep0(lam(P,lam(Y,app(P,lam(X,s_near(Y,X)))))) --> [with].
+prep0(lam(P,lam(Y,app(P,lam(X,s_supports(X,Y)))))) --> [on];[in].
+prep0(lam(P,lam(Y,app(P,lam(X,s_near(Y,X)))))) --> [with];[at].
 prep0(lam(P,lam(Y,app(P,lam(X,s_part_of(Y,X)))))) --> [of].
+
 
 % auxiliary verbs
 %
@@ -119,4 +120,3 @@ av0(dcl,pl,prp) --> [are].
 av0(dcl,pl,pss) --> [are].
 av0(dcl,sg,psp) --> [has].
 av0(dcl,pl,psp) --> [have].
-

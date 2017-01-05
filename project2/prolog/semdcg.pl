@@ -8,7 +8,7 @@
 % swipl -g "[semdcg],parse_from_file('in.txt','out.txt'),halt."
 % swipl -g "[semdcg],Exp=[_,_,_,_],s(_,Exp,[]),write(Exp),nl,fail;halt."
 
- 
+
 /* --------------------------------------------------
    Load other modules
 -------------------------------------------------- */
@@ -17,13 +17,15 @@
 :- use_module(betaConversion,[betaConvert/2]).
 
 :- [grammar].  % grammar and closed lexical classes
-:- [lexicon].  % open lexical classes
+:- [nouns, verbs, adjectives].  % open lexical classes
+
+
 
 /* -------------------------------------------------
    Main predicates
 ------------------------------------------------- */
 
-parse:- 
+parse:-
    parse1(user_input,user_output).
 
 parse(Atom,FileOut):-
@@ -48,7 +50,7 @@ parse_from_file(FileIn,FileOut):-
 
 parse1(StreamIn,StreamOut):-
    read_line_to_codes(StreamIn,Input),
-   atom_codes(Atom,Input), 
+   atom_codes(Atom,Input),
    downcase_atom(Atom,Down),
    tokenize_atom(Down,Tokens),
    interpret(Tokens,StreamOut).
@@ -65,7 +67,7 @@ parseN(StreamIn,StreamOut):-
 parseN(_,end_of_file,_):- !.
 
 parseN(StreamIn,Input,StreamOut):-
-   atom_codes(Atom,Input), 
+   atom_codes(Atom,Input),
    downcase_atom(Atom,Down),
    tokenize_atom(Down,Tokens),
    interpret(Tokens,StreamOut),
@@ -77,7 +79,7 @@ parseN(StreamIn,Input,StreamOut):-
 ------------------------------------------------ */
 
 interpret(Tokens,Stream):-
-   s(Sem,Tokens,[]), !, 
+   s(Sem,Tokens,[]), !,
    betaConvert(Sem,Red),
    numbervars(Red,23,_),
    format(Stream,'~p~n',[Red]).
