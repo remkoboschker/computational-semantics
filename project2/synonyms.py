@@ -8,6 +8,7 @@ from os import sep as PATHSEP
 from nltk.corpus import wordnet as wn
 from collections import OrderedDict
 from nltk.corpus.reader.wordnet import WordNetError
+#import pattern.en # this probably works for plurals, but can't download it on the LWP computers
 
 from nltk.corpus import wordnet as wn
 
@@ -16,6 +17,41 @@ from nltk.corpus import wordnet as wn
 ###########
 
 DEBUG = False
+vowels = ['a', 'e', 'i', 'o', 'u']
+ABERRANT_PLURAL_MAP = {
+    'appendix': 'appendices',
+    'barracks': 'barracks',
+    'cactus': 'cactuses',
+    'child': 'children',
+    'criterion': 'criteria',
+    'deer': 'deer',
+    'echo': 'echoes',
+    'elf': 'elves',
+    'embargo': 'embargoes',
+    'focus': 'foci',
+    'foot':'feet',
+    'fungus': 'fungi',
+    'goose': 'geese',
+    'hero': 'heroes',
+    'hoof': 'hooves',
+    'index': 'indices',
+    'knife': 'knives',
+    'leaf': 'leaves',
+    'life': 'lives',
+    'man': 'men',
+    'mouse': 'mice',
+    'nucleus': 'nuclei',
+    'person': 'people',
+    'phenomenon': 'phenomena',
+    'potato': 'potatoes',
+    'self': 'selves',
+    'syllabus': 'syllabi',
+    'tomato': 'tomatoes',
+    'torpedo': 'torpedoes',
+    'veto': 'vetoes',
+    'woman': 'women',
+    }
+
 
 def debug(msg):
     if DEBUG: print(msg,file=sys.stderr)
@@ -104,6 +140,38 @@ def loadModel(path):
         grounds = splitAsList(stripped[2],'(',')')
     debug(grounds)
     return(objects,reldict,ignoredRels,grounds)
+    
+def pluralize(singular):
+    """Return plural form of given lowercase singular word (English only). Based on
+    ActiveState recipe http://code.activestate.com/recipes/577781-pluralize-word-convert-singular-word-to-its-plural/  """
+    if not singular:
+        return ''
+    plural = ABERRANT_PLURAL_MAP.get(singular)
+    if plural:
+        return plural
+    root = singular
+    try:
+        if singular[-1] == 'y' and singular[-2] not in vowels:
+            root = singular[:-1]
+            suffix = 'ies'
+        elif singular[-1] == 's':
+            if singular[-2] in vowels:
+                if singular[-3:] == 'ius':
+                    root = singular[:-2]
+                    suffix = 'i'
+                else:
+                    root = singular[:-1]
+                    suffix = 'ses'
+            else:
+                suffix = 'es'
+        elif singular[-2:] in ('ch', 'sh'):
+            suffix = 'es'
+        else:
+            suffix = 's'
+    except IndexError:
+        suffix = 's'
+    plural = root + suffix
+    return plural
 
 print('File- or directory name: ')
 if not isdir('output'):
@@ -125,8 +193,8 @@ for path in sys.stdin:
     
     # Object list to prevent repetition of objects in lexicon
     checkObj = []
-    nnLst = []
-    adjLst = []
+    nnDict = {}
+    adjDict = {}
     for filename in files:
         try:
             if printnames or not sys.stdin.isatty(): print(filename)
@@ -136,36 +204,52 @@ for path in sys.stdin:
             # Adds nouns and synonyms to lexicon
             objects = [obj for obj in rel.keys()]
             for obj in objects:
+                nnLst = []
+                plLst = []
+                adjLst = []
                 if obj in checkObj:
                     pass
                 else:
                     # arm.n.01 --> n_arm_1
+                    
                     objTk = obj.split('.')
                     objLex = ('_').join([objTk[1],objTk[0].lower(),str(int(objTk[2]))])
                     checkObj.append(obj)
                     
                     ss = wn.synset(obj)
                     synonyms = ss.lemma_names()
-                    vowels = ['a', 'e', 'i', 'o', 'u']
                     aLst = ('; ').join(['['+a+']' for a in synonyms if a[0].lower() not in vowels])+'.'
                     anLst = ('; ').join(['['+an+']' for an in synonyms if an[0].lower() in vowels])+'.'
-                    
                     if objTk[1] == 'n':
                         lexSgAString = 'n0(sg,a,  lam(X,'+ objLex + '(X)))   --> ' + aLst +'\n'
                         lexSgAnString = 'n0(sg,an,  lam(X,'+ objLex + '(X)))   --> ' + anLst +'\n'
                         if len(aLst) > 1:
                             nnLst.append(lexSgAString)
                         if len(anLst) > 1:
-                            print(len(anLst))
                             nnLst.append(lexSgAnString)
+                        if len(rel[obj]) > 1:
+                            synPlLst = []
+                            for s in synonyms:
+                                plural = '[' + pluralize(s) + ']'
+                                synPlLst.append(plural)
+                            plurals = ('; ').join(synPlLst)+'.' 
+                            pluralLex = 'n0(pl,_,  lam(X,' + objLex + '(X)))   --> ' + plurals + '\n'
+                            plLst.append(pluralLex)
+                        if obj not in nnDict:
+                            if len(plLst) > 0:
+                                nnDict[obj.lower()] = [nnLst, plLst]
+                            else:
+                                nnDict[obj.lower()] = [nnLst]
+                        
                     elif objTk[1] == 'a':
                         lexSgAString = 'a0(a,  lam(P,lam(X,and(' + objLex + '(X),app(P,X))))) --> ' + aLst +'\n'
                         lexSgAnString = 'a0(an,  lam(P,lam(X,and(' + objLex + '(X),app(P,X))))) --> ' + anLst +'\n'
                         if len(aLst) > 1:
                             adjLst.append(lexSgAString)
                         if len(anLst) > 1:
-                            adjLst.append(lexSgAnString)
-                    #print(lexSgString) 
+                            adjLst.append(lexSgAnString)  
+                        if obj not in adjDict:
+                            adjDict[obj.lower()] = adjLst        
         except WordNetError as e:
             print('ERROR OPENING MODEL!')
             print(e)
@@ -174,9 +258,13 @@ for path in sys.stdin:
 
     f = open('output/nouns.txt', 'w')
     f.write('% nouns \n%\n')
-    for n in sorted(nnLst):
-        f.write(n)
+    for ss in sorted(nnDict):
+        for lst in nnDict[ss]:
+            for n in lst:
+                f.write(n)
     f.write('\n% adjectives \n%\n')
-    for a in sorted(adjLst):
-        f.write(a)
+    for ss in sorted(adjDict):
+        for a in adjDict[ss]:
+            f.write(a)
+
     f.close() 
