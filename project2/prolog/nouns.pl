@@ -13,17 +13,17 @@ n0(sg,a,  lam(X,n_adult_1(X)))   --> [grownup].
 n0(sg,an,  lam(X,n_adult_1(X)))   --> [adult].
 n0(pl,_,  lam(X,n_adult_1(X)))   --> [adults]; [grownups].
 n0(sg,an,  lam(X,n_aerosol_1(X)))   --> [aerosol].
-n0(sg,a,  lam(X,n_alsatian_2(X)))   --> [German, shepherd]; [German, shepherd, dog]; [German,police, dog].
+n0(sg,a,  lam(X,n_alsatian_2(X)))   --> ['German', shepherd]; ['German', shepherd, dog]; ['German',police, dog].
 n0(sg,an,  lam(X,n_alsatian_2(X)))   --> [alsatian].
-n0(sg,a,  lam(X,n_american_flag_1(X)))   --> [Stars,and, Stripes]; [Star-Spangled,Banner].
-n0(sg,an,  lam(X,n_american_flag_1(X)))   --> [American, flag]; [Old, Glory].
+n0(sg,a,  lam(X,n_american_flag_1(X)))   --> ['Stars',and, 'Stripes']; ['Star-Spangled','Banner'].
+n0(sg,an,  lam(X,n_american_flag_1(X)))   --> ['American', flag]; ['Old', 'Glory'].
 n0(sg,an,  lam(X,n_amorphous_shape_1(X)))   --> [amorphous, shape].
 n0(sg,an,  lam(X,n_amphibian_3(X)))   --> [amphibian].
 n0(sg,an,  lam(X,n_amplifier_1(X)))   --> [amplifier].
 n0(sg,a,  lam(X,n_angiosperm_1(X)))   --> [flowering, plant].
 n0(sg,an,  lam(X,n_angiosperm_1(X)))   --> [angiosperm].
-n0(sg,a,  lam(X,n_angora_1(X)))   --> [Turkish, capital]; [capital,of, Turkey].
-n0(sg,an,  lam(X,n_angora_1(X)))   --> [Ankara]; [Angora].
+n0(sg,a,  lam(X,n_angora_1(X)))   --> ['Turkish', capital]; [capital,of, 'Turkey'].
+n0(sg,an,  lam(X,n_angora_1(X)))   --> ['Ankara']; ['Angora'].
 n0(sg,a,  lam(X,n_animal_1(X)))   --> [beast]; [brute]; [creature]; [fauna].
 n0(sg,an,  lam(X,n_animal_1(X)))   --> [animal]; [animate, being].
 n0(sg,an,  lam(X,n_animal_group_1(X)))   --> [animal, group].
@@ -71,14 +71,16 @@ n0(sg,an,  lam(X,n_athletic_game_1(X)))   --> [athletic, game].
 n0(sg,an,  lam(X,n_atmosphere_5(X)))   --> [atmosphere].
 n0(sg,an,  lam(X,n_atmospheric_phenomenon_1(X)))   --> [atmospheric, phenomenon].
 n0(sg,an,  lam(X,n_attribute_2(X)))   --> [attribute].
+n0(sg,a,  lam(X,n_baby_1(X)))   --> [baby].
+n0(pl,_,  lam(X,n_baby_1(X)))   --> [babies].
 n0(sg,a,  lam(X,n_backpack_1(X)))   --> [backpack]; [back, pack]; [knapsack]; [packsack]; [rucksack]; [haversack].
 n0(sg,a,  lam(X,n_bag_1(X)))   --> [bag].
 n0(sg,a,  lam(X,n_baggage_1(X)))   --> [baggage]; [luggage].
 n0(sg,a,  lam(X,n_baked_goods_1(X)))   --> [baked, goods].
 n0(pl,_,  lam(X,n_baked_goods_1(X)))   --> [baked, goodses].
-n0(sg,a,  lam(X,n_bald_eagle_1(X)))   --> [bald, eagle]; [Haliaeetus, leucocephalus].
-n0(sg,an,  lam(X,n_bald_eagle_1(X)))   --> [American, eagle].
-n0(pl,_,  lam(X,n_bald_eagle_1(X)))   --> [bald, eagles]; [American, eagles]; [Haliaeetus, leucocephaluses].
+n0(sg,a,  lam(X,n_bald_eagle_1(X)))   --> [bald, eagle]; ['Haliaeetus', leucocephalus].
+n0(sg,an,  lam(X,n_bald_eagle_1(X)))   --> ['American', eagle].
+n0(pl,_,  lam(X,n_bald_eagle_1(X)))   --> [bald, eagles]; ['American', eagles]; ['Haliaeetus', leucocephaluses].
 n0(sg,a,  lam(X,n_ball_1(X)))   --> [ball].
 n0(sg,a,  lam(X,n_ball_3(X)))   --> [ball]; [globe].
 n0(sg,an,  lam(X,n_ball_3(X)))   --> [orb].
@@ -111,7 +113,7 @@ n0(sg,a,  lam(X,n_bed_1(X)))   --> [bed].
 n0(sg,a,  lam(X,n_bed_2(X)))   --> [bed].
 n0(sg,a,  lam(X,n_bedclothes_1(X)))   --> [bedclothes]; [bed, clothing]; [bedding].
 n0(sg,a,  lam(X,n_bedroom_furniture_1(X)))   --> [bedroom, furniture].
-n0(sg,a,  lam(X,n_belted_kingfisher_1(X)))   --> [belted, kingfisher]; [Ceryle, alcyon].
+n0(sg,a,  lam(X,n_belted_kingfisher_1(X)))   --> [belted, kingfisher]; ['Ceryle', alcyon].
 n0(sg,a,  lam(X,n_bench_1(X)))   --> [bench].
 n0(sg,a,  lam(X,n_berry_1(X)))   --> [berry].
 n0(sg,a,  lam(X,n_beverage_1(X)))   --> [beverage]; [drink]; [drinkable]; [potable].
@@ -124,12 +126,12 @@ n0(sg,a,  lam(X,n_bird_1(X)))   --> [bird].
 n0(pl,_,  lam(X,n_bird_1(X)))   --> [birds].
 n0(sg,a,  lam(X,n_bird_of_prey_1(X)))   --> [bird,of, prey]; [raptor]; [raptorial, bird].
 n0(pl,_,  lam(X,n_bird_of_prey_1(X)))   --> [bird,of, preys]; [raptors]; [raptorial, birds].
-n0(sg,a,  lam(X,n_black-crowned_night_heron_1(X)))   --> [black-crowned,night,heron]; [Nycticorax, nycticorax].
+n0(sg,a,  lam(X,n_black-crowned_night_heron_1(X)))   --> [black-crowned,night,heron]; ['Nycticorax', nycticorax].
 n0(sg,a,  lam(X,n_black_1(X)))   --> [black]; [blackness].
 n0(sg,an,  lam(X,n_black_1(X)))   --> [inkiness].
 n0(pl,_,  lam(X,n_black_1(X)))   --> [blacks]; [blacknesses]; [inkinesses].
-n0(sg,a,  lam(X,n_black_swan_1(X)))   --> [black, swan]; [Cygnus, atratus].
-n0(pl,_,  lam(X,n_black_swan_1(X)))   --> [black, swans]; [Cygnus, atratuses].
+n0(sg,a,  lam(X,n_black_swan_1(X)))   --> [black, swan]; ['Cygnus', atratus].
+n0(pl,_,  lam(X,n_black_swan_1(X)))   --> [black, swans]; ['Cygnus', atratuses].
 n0(sg,a,  lam(X,n_blind_3(X)))   --> [blind]; [screen].
 n0(sg,a,  lam(X,n_blossom_2(X)))   --> [flower]; [prime]; [peak]; [heyday]; [bloom]; [blossom]; [flush].
 n0(sg,an,  lam(X,n_blossom_2(X)))   --> [efflorescence].
@@ -175,8 +177,8 @@ n0(sg,a,  lam(X,n_brown_1(X)))   --> [brown]; [brownness].
 n0(pl,_,  lam(X,n_brown_1(X)))   --> [browns]; [brownnesses].
 n0(sg,a,  lam(X,n_bubble_1(X)))   --> [bubble].
 n0(sg,a,  lam(X,n_bucket_1(X)))   --> [bucket]; [pail].
-n0(sg,a,  lam(X,n_budgerigar_1(X)))   --> [budgerigar]; [budgereegah]; [budgerygah]; [budgie]; [grass, parakeet]; [lovebird]; [shell, parakeet]; [Melopsittacus, undulatus].
-n0(pl,_,  lam(X,n_budgerigar_1(X)))   --> [budgerigars]; [budgereegahs]; [budgerygahs]; [budgies]; [grass, parakeets]; [lovebirds]; [shell, parakeets]; [Melopsittacus, undulatuses].
+n0(sg,a,  lam(X,n_budgerigar_1(X)))   --> [budgerigar]; [budgereegah]; [budgerygah]; [budgie]; [grass, parakeet]; [lovebird]; [shell, parakeet]; ['Melopsittacus', undulatus].
+n0(pl,_,  lam(X,n_budgerigar_1(X)))   --> [budgerigars]; [budgereegahs]; [budgerygahs]; [budgies]; [grass, parakeets]; [lovebirds]; [shell, parakeets]; ['Melopsittacus', undulatuses].
 n0(sg,a,  lam(X,n_bugle_call_1(X)))   --> [bugle, call].
 n0(pl,_,  lam(X,n_bugle_call_1(X)))   --> [bugle, calls].
 n0(sg,a,  lam(X,n_building_1(X)))   --> [building].
@@ -197,7 +199,7 @@ n0(sg,a,  lam(X,n_cactus_1(X)))   --> [cactus].
 n0(pl,_,  lam(X,n_cactus_1(X)))   --> [cactuses].
 n0(sg,a,  lam(X,n_camera_1(X)))   --> [camera]; [photographic, camera].
 n0(sg,a,  lam(X,n_can_1(X)))   --> [can]; [tin]; [tin, can].
-n0(sg,a,  lam(X,n_canada_goose_1(X)))   --> [honker]; [Canada, goose]; [Canadian, goose]; [Branta, canadensis].
+n0(sg,a,  lam(X,n_canada_goose_1(X)))   --> [honker]; ['Canada', goose]; ['Canadian', goose]; ['Branta', canadensis].
 n0(sg,a,  lam(X,n_candle_1(X)))   --> [candle]; [taper]; [wax, light].
 n0(sg,a,  lam(X,n_candlestick_1(X)))   --> [candlestick]; [candle, holder].
 n0(sg,a,  lam(X,n_canine_2(X)))   --> [canine]; [canid].
@@ -229,9 +231,9 @@ n0(pl,_,  lam(X,n_ceramic_ware_1(X)))   --> [ceramic, wares].
 n0(sg,a,  lam(X,n_cereal_bowl_1(X)))   --> [cereal, bowl].
 n0(sg,a,  lam(X,n_chair_1(X)))   --> [chair].
 n0(sg,a,  lam(X,n_cheetah_1(X)))   --> [cheetah]; [chetah].
-n0(sg,an,  lam(X,n_cheetah_1(X)))   --> [Acinonyx, jubatus].
+n0(sg,an,  lam(X,n_cheetah_1(X)))   --> ['Acinonyx', jubatus].
 n0(sg,a,  lam(X,n_chemical_1(X)))   --> [chemical]; [chemical, substance].
-n0(sg,a,  lam(X,n_chihuahua_1(X)))   --> [Chihuahua].
+n0(sg,a,  lam(X,n_chihuahua_1(X)))   --> ['Chihuahua'].
 n0(sg,a,  lam(X,n_child_1(X)))   --> [child]; [kid]; [youngster]; [minor]; [shaver]; [nipper]; [small, fry]; [tiddler]; [tike]; [tyke]; [fry]; [nestling].
 n0(sg,a,  lam(X,n_child_2(X)))   --> [child]; [kid].
 n0(sg,a,  lam(X,n_chimney_1(X)))   --> [chimney].
@@ -257,7 +259,7 @@ n0(sg,a,  lam(X,n_coat_1(X)))   --> [coat].
 n0(sg,a,  lam(X,n_coat_3(X)))   --> [coat]; [pelage].
 n0(pl,_,  lam(X,n_coat_3(X)))   --> [coats]; [pelages].
 n0(sg,a,  lam(X,n_cocker_1(X)))   --> [cocker, spaniel]; [cocker].
-n0(sg,an,  lam(X,n_cocker_1(X)))   --> [English,cocker, spaniel].
+n0(sg,an,  lam(X,n_cocker_1(X)))   --> ['English',cocker, spaniel].
 n0(sg,a,  lam(X,n_coffee_1(X)))   --> [coffee]; [java].
 n0(sg,a,  lam(X,n_coffee_cup_1(X)))   --> [coffee, cup].
 n0(sg,a,  lam(X,n_cognition_1(X)))   --> [cognition]; [knowledge]; [noesis].
@@ -352,14 +354,14 @@ n0(sg,a,  lam(X,n_dish_2(X)))   --> [dish].
 n0(sg,a,  lam(X,n_dispenser_1(X)))   --> [dispenser].
 n0(sg,a,  lam(X,n_ditch_1(X)))   --> [ditch].
 n0(sg,a,  lam(X,n_diversion_1(X)))   --> [diversion]; [recreation].
-n0(sg,a,  lam(X,n_dog_1(X)))   --> [dog]; [domestic, dog]; [Canis, familiaris].
-n0(pl,_,  lam(X,n_dog_1(X)))   --> [dogs]; [domestic, dogs]; [Canis, familiarises].
+n0(sg,a,  lam(X,n_dog_1(X)))   --> [dog]; [domestic, dog]; ['Canis', familiaris].
+n0(pl,_,  lam(X,n_dog_1(X)))   --> [dogs]; [domestic, dogs]; ['Canis', familiarises].
 n0(sg,a,  lam(X,n_dog_collar_1(X)))   --> [dog, collar].
 n0(sg,a,  lam(X,n_dolphin_1(X)))   --> [dolphinfish]; [dolphin]; [mahimahi].
 n0(sg,a,  lam(X,n_domestic_animal_1(X)))   --> [domestic, animal]; [domesticated, animal].
 n0(pl,_,  lam(X,n_domestic_animal_1(X)))   --> [domestic, animals]; [domesticated, animals].
-n0(sg,a,  lam(X,n_domestic_cat_1(X)))   --> [domestic, cat]; [house, cat]; [Felis, domesticus]; [Felis, catus].
-n0(pl,_,  lam(X,n_domestic_cat_1(X)))   --> [domestic, cats]; [house, cats]; [Felis, domesticuses]; [Felis, catuses].
+n0(sg,a,  lam(X,n_domestic_cat_1(X)))   --> [domestic, cat]; [house, cat]; ['Felis', domesticus]; ['Felis', catus].
+n0(pl,_,  lam(X,n_domestic_cat_1(X)))   --> [domestic, cats]; [house, cats]; ['Felis', domesticuses]; ['Felis', catuses].
 n0(sg,a,  lam(X,n_door_1(X)))   --> [door].
 n0(sg,a,  lam(X,n_dress_1(X)))   --> [dress]; [frock].
 n0(sg,a,  lam(X,n_drum_1(X)))   --> [drum]; [membranophone]; [tympan].
@@ -368,9 +370,9 @@ n0(pl,_,  lam(X,n_drumbeat_2(X)))   --> [drumbeats].
 n0(sg,a,  lam(X,n_drygoods_1(X)))   --> [drygoods]; [soft, goods].
 n0(sg,a,  lam(X,n_duck_1(X)))   --> [duck].
 n0(pl,_,  lam(X,n_duck_1(X)))   --> [ducks].
-n0(sg,a,  lam(X,n_eagle_1(X)))   --> [bird,of, Jove].
+n0(sg,a,  lam(X,n_eagle_1(X)))   --> [bird,of, 'Jove'].
 n0(sg,an,  lam(X,n_eagle_1(X)))   --> [eagle].
-n0(pl,_,  lam(X,n_eagle_1(X)))   --> [eagles]; [bird,of, Joves].
+n0(pl,_,  lam(X,n_eagle_1(X)))   --> [eagles]; [bird,of, 'Joves'].
 n0(sg,a,  lam(X,n_ear_3(X)))   --> [pinna].
 n0(sg,an,  lam(X,n_ear_3(X)))   --> [auricle]; [ear].
 n0(sg,a,  lam(X,n_earpiece_1(X)))   --> [headphone]; [phone].
@@ -511,13 +513,13 @@ n0(sg,a,  lam(X,n_graphic_art_1(X)))   --> [graphic, art].
 n0(pl,_,  lam(X,n_graphic_art_1(X)))   --> [graphic, arts].
 n0(sg,a,  lam(X,n_grass_1(X)))   --> [grass].
 n0(sg,a,  lam(X,n_grassland_1(X)))   --> [grassland].
-n0(sg,a,  lam(X,n_great_dane_1(X)))   --> [Great, Dane].
+n0(sg,a,  lam(X,n_great_dane_1(X)))   --> ['Great', 'Dane'].
 n0(sg,a,  lam(X,n_green_1(X)))   --> [green]; [greenness]; [viridity].
-n0(sg,a,  lam(X,n_grey_1(X)))   --> [Grey]; [Zane, Grey].
-n0(pl,_,  lam(X,n_grey_1(X)))   --> [Greys]; [Zane, Greys].
+n0(sg,a,  lam(X,n_grey_1(X)))   --> ['Grey']; ['Zane', 'Grey'].
+n0(pl,_,  lam(X,n_grey_1(X)))   --> ['Greys']; ['Zane', 'Greys'].
 n0(sg,a,  lam(X,n_greylag_1(X)))   --> [greylag]; [graylag]; [greylag, goose]; [graylag, goose].
-n0(sg,an,  lam(X,n_greylag_1(X)))   --> [Anser, anser].
-n0(pl,_,  lam(X,n_greylag_1(X)))   --> [greylags]; [graylags]; [greylag, gooses]; [graylag, gooses]; [Anser, ansers].
+n0(sg,an,  lam(X,n_greylag_1(X)))   --> ['Anser', anser].
+n0(pl,_,  lam(X,n_greylag_1(X)))   --> [greylags]; [graylags]; [greylag, gooses]; [graylag, gooses]; ['Anser', ansers].
 n0(sg,a,  lam(X,n_group_1(X)))   --> [group]; [grouping].
 n0(sg,a,  lam(X,n_guenon_1(X)))   --> [guenon]; [guenon, monkey].
 n0(sg,a,  lam(X,n_gueridon_1(X)))   --> [gueridon].
@@ -556,8 +558,8 @@ n0(sg,an,  lam(X,n_hockey_player_1(X)))   --> [ice-hockey,player].
 n0(sg,a,  lam(X,n_holder_1(X)))   --> [holder].
 n0(sg,a,  lam(X,n_holding_device_1(X)))   --> [holding, device].
 n0(sg,a,  lam(X,n_hollow_1(X)))   --> [hollow].
-n0(sg,a,  lam(X,n_honker_3(X)))   --> [honker]; [Canada, goose]; [Canadian, goose]; [Branta, canadensis].
-n0(pl,_,  lam(X,n_honker_3(X)))   --> [honkers]; [Canada, gooses]; [Canadian, gooses]; [Branta, canadensises].
+n0(sg,a,  lam(X,n_honker_3(X)))   --> [honker]; ['Canada', goose]; ['Canadian', goose]; ['Branta', canadensis].
+n0(pl,_,  lam(X,n_honker_3(X)))   --> [honkers]; ['Canada', gooses]; ['Canadian', gooses]; ['Branta', canadensises].
 n0(sg,a,  lam(X,n_horizon_1(X)))   --> [horizon]; [visible, horizon]; [sensible, horizon]; [skyline].
 n0(sg,an,  lam(X,n_horizon_1(X)))   --> [apparent, horizon].
 n0(sg,a,  lam(X,n_horizontal_surface_1(X)))   --> [horizontal, surface]; [level].
@@ -565,8 +567,8 @@ n0(sg,a,  lam(X,n_horny_structure_1(X)))   --> [horny, structure].
 n0(sg,an,  lam(X,n_horny_structure_1(X)))   --> [unguis].
 n0(pl,_,  lam(X,n_horny_structure_1(X)))   --> [horny, structures]; [unguises].
 n0(sg,a,  lam(X,n_horse_1(X)))   --> [horse].
-n0(sg,an,  lam(X,n_horse_1(X)))   --> [Equus, caballus].
-n0(pl,_,  lam(X,n_horse_1(X)))   --> [horses]; [Equus, caballuses].
+n0(sg,an,  lam(X,n_horse_1(X)))   --> ['Equus', caballus].
+n0(pl,_,  lam(X,n_horse_1(X)))   --> [horses]; ['Equus', caballuses].
 n0(sg,a,  lam(X,n_horseman_1(X)))   --> [horseman]; [horseback, rider].
 n0(sg,an,  lam(X,n_horseman_1(X)))   --> [equestrian].
 n0(sg,a,  lam(X,n_hosiery_1(X)))   --> [hosiery]; [hose].
@@ -575,9 +577,9 @@ n0(sg,a,  lam(X,n_hound_1(X)))   --> [hound]; [hound, dog].
 n0(sg,a,  lam(X,n_human_face_1(X)))   --> [face]; [human, face].
 n0(sg,a,  lam(X,n_hunting_dog_1(X)))   --> [hunting, dog].
 n0(sg,a,  lam(X,n_hurdy-gurdy_1(X)))   --> [barrel, organ]; [grind, organ]; [hand, organ]; [hurdy, gurdy]; [hurdy-gurdy]; [street, organ].
-n0(sg,a,  lam(X,n_ice_bear_1(X)))   --> [polar, bear]; [Thalarctos, maritimus].
-n0(sg,an,  lam(X,n_ice_bear_1(X)))   --> [ice, bear]; [Ursus, Maritimus].
-n0(pl,_,  lam(X,n_ice_bear_1(X)))   --> [ice, bears]; [polar, bears]; [Ursus, Maritimuses]; [Thalarctos, maritimuses].
+n0(sg,a,  lam(X,n_ice_bear_1(X)))   --> [polar, bear]; ['Thalarctos', maritimus].
+n0(sg,an,  lam(X,n_ice_bear_1(X)))   --> [ice, bear]; ['Ursus', 'Maritimus'].
+n0(pl,_,  lam(X,n_ice_bear_1(X)))   --> [ice, bears]; [polar, bears]; ['Ursus', 'Maritimuses']; ['Thalarctos', maritimuses].
 n0(sg,an,  lam(X,n_ice_cream_1(X)))   --> [ice, cream]; [icecream].
 n0(sg,an,  lam(X,n_implement_1(X)))   --> [implement].
 n0(sg,an,  lam(X,n_inclined_plane_1(X)))   --> [inclined, plane].
@@ -587,15 +589,15 @@ n0(sg,an,  lam(X,n_insect_1(X)))   --> [insect].
 n0(sg,an,  lam(X,n_instrument_1(X)))   --> [instrument].
 n0(sg,an,  lam(X,n_instrumentality_3(X)))   --> [instrumentality]; [instrumentation].
 n0(pl,_,  lam(X,n_instrumentality_3(X)))   --> [instrumentalities]; [instrumentations].
-n0(sg,an,  lam(X,n_internal-combustion_engine_1(X)))   --> [internal-combustion,engine]; [ICE].
+n0(sg,an,  lam(X,n_internal-combustion_engine_1(X)))   --> [internal-combustion,engine]; ['ICE'].
 n0(sg,an,  lam(X,n_invertebrate_1(X)))   --> [invertebrate].
 n0(sg,a,  lam(X,n_jacket_1(X)))   --> [jacket].
 n0(sg,a,  lam(X,n_jar_1(X)))   --> [jar].
 n0(sg,a,  lam(X,n_jean_1(X)))   --> [jean]; [blue, jean]; [denim].
 n0(sg,a,  lam(X,n_jean_2(X)))   --> [denim]; [dungaree]; [jean].
-n0(sg,a,  lam(X,n_jersey_1(X)))   --> [New, Jersey]; [Jersey]; [Garden, State]; [NJ].
-n0(pl,_,  lam(X,n_jersey_1(X)))   --> [New, Jerseys]; [Jerseys]; [Garden, States]; [NJs].
-n0(sg,a,  lam(X,n_jersey_3(X)))   --> [jersey]; [T-shirt]; [tee, shirt].
+n0(sg,a,  lam(X,n_jersey_1(X)))   --> ['New', 'Jersey']; ['Jersey']; ['Garden', 'State']; ['NJ'].
+n0(pl,_,  lam(X,n_jersey_1(X)))   --> ['New', 'Jerseys']; ['Jerseys']; ['Garden', 'States']; ['NJs'].
+n0(sg,a,  lam(X,n_jersey_3(X)))   --> [jersey]; ['T-shirt']; [tee, shirt].
 n0(sg,a,  lam(X,n_jewelry_1(X)))   --> [jewelry]; [jewellery].
 n0(pl,_,  lam(X,n_jewelry_1(X)))   --> [jewelries]; [jewelleries].
 n0(sg,a,  lam(X,n_juice_1(X)))   --> [juice].
@@ -609,7 +611,7 @@ n0(sg,a,  lam(X,n_knife_1(X)))   --> [knife].
 n0(sg,a,  lam(X,n_knife_3(X)))   --> [tongue]; [knife].
 n0(pl,_,  lam(X,n_knife_3(X)))   --> [tongues]; [knives].
 n0(sg,a,  lam(X,n_knot_2(X)))   --> [knot].
-n0(sg,a,  lam(X,n_kookaburra_1(X)))   --> [kookaburra]; [laughing, jackass]; [Dacelo, gigas].
+n0(sg,a,  lam(X,n_kookaburra_1(X)))   --> [kookaburra]; [laughing, jackass]; ['Dacelo', gigas].
 n0(sg,a,  lam(X,n_labor_2(X)))   --> [labor]; [labour]; [toil].
 n0(sg,a,  lam(X,n_laborer_1(X)))   --> [laborer]; [manual, laborer]; [labourer]; [jack].
 n0(sg,a,  lam(X,n_ladder_1(X)))   --> [ladder].
@@ -623,7 +625,7 @@ n0(sg,a,  lam(X,n_landing_net_1(X)))   --> [landing, net].
 n0(sg,a,  lam(X,n_lane_1(X)))   --> [lane].
 n0(sg,a,  lam(X,n_laptop_1(X)))   --> [laptop]; [laptop, computer].
 n0(sg,a,  lam(X,n_larid_1(X)))   --> [larid].
-n0(sg,a,  lam(X,n_laughing_gull_1(X)))   --> [laughing, gull]; [blackcap]; [pewit]; [pewit, gull]; [Larus, ridibundus].
+n0(sg,a,  lam(X,n_laughing_gull_1(X)))   --> [laughing, gull]; [blackcap]; [pewit]; [pewit, gull]; ['Larus', ridibundus].
 n0(sg,a,  lam(X,n_laundry_1(X)))   --> [laundry]; [wash]; [washing]; [washables].
 n0(sg,a,  lam(X,n_lawn_1(X)))   --> [lawn].
 n0(sg,a,  lam(X,n_layer_2(X)))   --> [layer].
@@ -652,7 +654,7 @@ n0(sg,a,  lam(X,n_lipstick_1(X)))   --> [lipstick]; [lip, rouge].
 n0(sg,a,  lam(X,n_liquid_1(X)))   --> [liquid].
 n0(sg,a,  lam(X,n_liquid_3(X)))   --> [liquid].
 n0(sg,a,  lam(X,n_little_owl_1(X)))   --> [little, owl].
-n0(sg,an,  lam(X,n_little_owl_1(X)))   --> [Athene, noctua].
+n0(sg,an,  lam(X,n_little_owl_1(X)))   --> ['Athene', noctua].
 n0(sg,a,  lam(X,n_living_thing_1(X)))   --> [living, thing].
 n0(sg,an,  lam(X,n_living_thing_1(X)))   --> [animate, thing].
 n0(pl,_,  lam(X,n_living_thing_1(X)))   --> [living, things]; [animate, things].
@@ -667,8 +669,8 @@ n0(sg,a,  lam(X,n_makeup_1(X)))   --> [makeup]; [make-up]; [war, paint].
 n0(sg,a,  lam(X,n_male_2(X)))   --> [male]; [male, person].
 n0(sg,a,  lam(X,n_male_offspring_1(X)))   --> [male, offspring]; [man-child].
 n0(sg,a,  lam(X,n_mallard_1(X)))   --> [mallard].
-n0(sg,an,  lam(X,n_mallard_1(X)))   --> [Anas, platyrhynchos].
-n0(pl,_,  lam(X,n_mallard_1(X)))   --> [mallards]; [Anas, platyrhynchoses].
+n0(sg,an,  lam(X,n_mallard_1(X)))   --> ['Anas', platyrhynchos].
+n0(pl,_,  lam(X,n_mallard_1(X)))   --> [mallards]; ['Anas', platyrhynchoses].
 n0(sg,a,  lam(X,n_mammal_1(X)))   --> [mammal]; [mammalian].
 n0(sg,a,  lam(X,n_man_1(X)))   --> [man].
 n0(sg,an,  lam(X,n_man_1(X)))   --> [adult, male].
@@ -713,7 +715,7 @@ n0(sg,an,  lam(X,n_musical_instrument_1(X)))   --> [instrument].
 n0(sg,a,  lam(X,n_musician_1(X)))   --> [musician]; [player].
 n0(sg,an,  lam(X,n_musician_1(X)))   --> [instrumentalist].
 n0(sg,a,  lam(X,n_musteline_mammal_1(X)))   --> [musteline, mammal]; [mustelid]; [musteline].
-n0(sg,a,  lam(X,n_mute_swan_1(X)))   --> [mute, swan]; [Cygnus, olor].
+n0(sg,a,  lam(X,n_mute_swan_1(X)))   --> [mute, swan]; ['Cygnus', olor].
 n0(sg,a,  lam(X,n_napkin_1(X)))   --> [napkin]; [table, napkin]; [serviette].
 n0(pl,_,  lam(X,n_napkin_1(X)))   --> [napkins]; [table, napkins]; [serviettes].
 n0(sg,a,  lam(X,n_natural_elevation_1(X)))   --> [natural, elevation].
@@ -747,11 +749,11 @@ n0(sg,an,  lam(X,n_odd-toed_ungulate_1(X)))   --> [odd-toed,ungulate].
 n0(pl,_,  lam(X,n_odd-toed_ungulate_1(X)))   --> [odd-toed,ungulates]; [perissodactyls]; [perissodactyl, mammals].
 n0(sg,a,  lam(X,n_offspring_1(X)))   --> [progeny].
 n0(sg,an,  lam(X,n_offspring_1(X)))   --> [offspring]; [issue].
-n0(sg,a,  lam(X,n_old_man_1(X)))   --> [greybeard]; [graybeard]; [Methuselah].
+n0(sg,a,  lam(X,n_old_man_1(X)))   --> [greybeard]; [graybeard]; ['Methuselah'].
 n0(sg,an,  lam(X,n_old_man_1(X)))   --> [old, man].
 n0(sg,an,  lam(X,n_old_woman_1(X)))   --> [old, woman].
 n0(sg,a,  lam(X,n_old_world_monkey_1(X)))   --> [catarrhine].
-n0(sg,an,  lam(X,n_old_world_monkey_1(X)))   --> [Old,World, monkey].
+n0(sg,an,  lam(X,n_old_world_monkey_1(X)))   --> ['Old','World', monkey].
 n0(sg,a,  lam(X,n_oldster_1(X)))   --> [senior, citizen]; [golden, ager].
 n0(sg,an,  lam(X,n_oldster_1(X)))   --> [oldster]; [old, person].
 n0(pl,_,  lam(X,n_oldster_1(X)))   --> [oldsters]; [old, persons]; [senior, citizens]; [golden, agers].
@@ -766,7 +768,7 @@ n0(pl,_,  lam(X,n_organism_1(X)))   --> [organisms]; [beings].
 n0(sg,a,  lam(X,n_orifice_1(X)))   --> [porta].
 n0(sg,an,  lam(X,n_orifice_1(X)))   --> [orifice]; [opening].
 n0(sg,an,  lam(X,n_oscine_1(X)))   --> [oscine]; [oscine, bird].
-n0(sg,a,  lam(X,n_osprey_1(X)))   --> [fish, hawk]; [fish, eagle]; [sea, eagle]; [Pandion, haliaetus].
+n0(sg,a,  lam(X,n_osprey_1(X)))   --> [fish, hawk]; [fish, eagle]; [sea, eagle]; ['Pandion', haliaetus].
 n0(sg,an,  lam(X,n_osprey_1(X)))   --> [osprey].
 n0(sg,an,  lam(X,n_otter_2(X)))   --> [otter].
 n0(sg,an,  lam(X,n_outboard_2(X)))   --> [outboard, motor]; [outboard].
@@ -777,7 +779,7 @@ n0(sg,an,  lam(X,n_outside_1(X)))   --> [outside]; [exterior].
 n0(sg,an,  lam(X,n_overgarment_1(X)))   --> [overgarment]; [outer, garment].
 n0(sg,an,  lam(X,n_ovum_1(X)))   --> [ovum]; [egg, cell].
 n0(pl,_,  lam(X,n_ovum_1(X)))   --> [ovums]; [egg, cells].
-n0(sg,a,  lam(X,n_owl_1(X)))   --> [bird,of, Minerva]; [bird,of, night]; [hooter].
+n0(sg,a,  lam(X,n_owl_1(X)))   --> [bird,of, 'Minerva']; [bird,of, night]; [hooter].
 n0(sg,an,  lam(X,n_owl_1(X)))   --> [owl].
 n0(sg,a,  lam(X,n_pad_4(X)))   --> [pad].
 n0(sg,a,  lam(X,n_padding_1(X)))   --> [padding]; [cushioning].
@@ -795,8 +797,8 @@ n0(sg,a,  lam(X,n_parasol_1(X)))   --> [parasol]; [sunshade].
 n0(sg,a,  lam(X,n_parking_1(X)))   --> [parking].
 n0(sg,a,  lam(X,n_parrot_1(X)))   --> [parrot].
 n0(pl,_,  lam(X,n_parrot_1(X)))   --> [parrots].
-n0(sg,a,  lam(X,n_parsley_1(X)))   --> [parsley]; [Petroselinum, crispum].
-n0(pl,_,  lam(X,n_parsley_1(X)))   --> [parsleys]; [Petroselinum, crispums].
+n0(sg,a,  lam(X,n_parsley_1(X)))   --> [parsley]; ['Petroselinum', crispum].
+n0(pl,_,  lam(X,n_parsley_1(X)))   --> [parsleys]; ['Petroselinum', crispums].
 n0(sg,a,  lam(X,n_part_1(X)))   --> [part]; [portion]; [component, part]; [component]; [constituent].
 n0(pl,_,  lam(X,n_part_1(X)))   --> [parts]; [portions]; [component, parts]; [components]; [constituents].
 n0(sg,a,  lam(X,n_part_2(X)))   --> [part]; [portion].
@@ -830,7 +832,7 @@ n0(sg,a,  lam(X,n_performer_1(X)))   --> [performer]; [performing, artist].
 n0(sg,a,  lam(X,n_person_1(X)))   --> [person]; [someone]; [somebody]; [mortal]; [soul].
 n0(sg,an,  lam(X,n_person_1(X)))   --> [individual].
 n0(pl,_,  lam(X,n_person_1(X)))   --> [people]; [individuals]; [someones]; [somebodies]; [mortals]; [souls].
-n0(sg,a,  lam(X,n_personal_computer_1(X)))   --> [personal, computer]; [PC]; [microcomputer].
+n0(sg,a,  lam(X,n_personal_computer_1(X)))   --> [personal, computer]; ['PC']; [microcomputer].
 n0(sg,a,  lam(X,n_petfood_1(X)))   --> [petfood]; [pet-food]; [pet, food].
 n0(sg,a,  lam(X,n_phasianid_1(X)))   --> [phasianid].
 n0(pl,_,  lam(X,n_phasianid_1(X)))   --> [phasianids].
@@ -848,7 +850,7 @@ n0(sg,an,  lam(X,n_picture_1(X)))   --> [image]; [icon]; [ikon].
 n0(sg,a,  lam(X,n_piece_1(X)))   --> [piece].
 n0(sg,a,  lam(X,n_piece_of_cloth_1(X)))   --> [piece,of, cloth]; [piece,of, material].
 n0(sg,a,  lam(X,n_pier_1(X)))   --> [pier]; [wharf]; [wharfage]; [dock].
-n0(sg,a,  lam(X,n_pig_1(X)))   --> [hog]; [pig]; [grunter]; [squealer]; [Sus, scrofa].
+n0(sg,a,  lam(X,n_pig_1(X)))   --> [hog]; [pig]; [grunter]; [squealer]; ['Sus', scrofa].
 n0(sg,a,  lam(X,n_pigeon_1(X)))   --> [pigeon].
 n0(pl,_,  lam(X,n_pigeon_1(X)))   --> [pigeons].
 n0(sg,a,  lam(X,n_pitch_1(X)))   --> [pitch].
@@ -915,10 +917,10 @@ n0(sg,an,  lam(X,n_ramp_1(X)))   --> [incline].
 n0(pl,_,  lam(X,n_ramp_1(X)))   --> [ramps]; [inclines].
 n0(sg,a,  lam(X,n_ratite_1(X)))   --> [ratite]; [ratite, bird]; [flightless, bird].
 n0(sg,a,  lam(X,n_receptacle_1(X)))   --> [receptacle].
-n0(sg,a,  lam(X,n_recreational_vehicle_1(X)))   --> [recreational, vehicle]; [RV]; [R.V.].
+n0(sg,a,  lam(X,n_recreational_vehicle_1(X)))   --> [recreational, vehicle]; ['RV']; ['R.V.'].
 n0(sg,a,  lam(X,n_red_1(X)))   --> [red]; [redness].
-n0(sg,a,  lam(X,n_reddish_brown_1(X)))   --> [reddish, brown]; [sepia]; [burnt, sienna]; [Venetian, red]; [mahogany].
-n0(pl,_,  lam(X,n_reddish_brown_1(X)))   --> [reddish, browns]; [sepias]; [burnt, siennas]; [Venetian, reds]; [mahoganies].
+n0(sg,a,  lam(X,n_reddish_brown_1(X)))   --> [reddish, brown]; [sepia]; [burnt, sienna]; ['Venetian', red]; [mahogany].
+n0(pl,_,  lam(X,n_reddish_brown_1(X)))   --> [reddish, browns]; [sepias]; [burnt, siennas]; ['Venetian', reds]; [mahoganies].
 n0(sg,a,  lam(X,n_reference_point_1(X)))   --> [reference, point]; [point,of, reference]; [reference].
 n0(sg,a,  lam(X,n_reflection_1(X)))   --> [contemplation]; [reflection]; [reflexion]; [rumination]; [musing]; [thoughtfulness].
 n0(sg,a,  lam(X,n_reflector_1(X)))   --> [reflector].
@@ -939,8 +941,8 @@ n0(sg,a,  lam(X,n_ring_1(X)))   --> [ring].
 n0(sg,a,  lam(X,n_ripple_1(X)))   --> [ripple]; [rippling]; [riffle]; [wavelet].
 n0(pl,_,  lam(X,n_ripple_1(X)))   --> [ripples]; [ripplings]; [riffles]; [wavelets].
 n0(sg,a,  lam(X,n_road_1(X)))   --> [road]; [route].
-n0(sg,a,  lam(X,n_robin_2(X)))   --> [robin]; [Turdus, migratorius].
-n0(sg,an,  lam(X,n_robin_2(X)))   --> [American, robin].
+n0(sg,a,  lam(X,n_robin_2(X)))   --> [robin]; ['Turdus', migratorius].
+n0(sg,an,  lam(X,n_robin_2(X)))   --> ['American', robin].
 n0(sg,a,  lam(X,n_rock_1(X)))   --> [rock]; [stone].
 n0(pl,_,  lam(X,n_rock_1(X)))   --> [rocks]; [stones].
 n0(sg,a,  lam(X,n_rod_1(X)))   --> [rod].
@@ -957,7 +959,7 @@ n0(sg,a,  lam(X,n_round_shape_1(X)))   --> [round, shape].
 n0(sg,a,  lam(X,n_rubber_boot_1(X)))   --> [rubber, boot]; [gum, boot].
 n0(pl,_,  lam(X,n_rubber_boot_1(X)))   --> [rubber, boots]; [gum, boots].
 n0(sg,a,  lam(X,n_ruminant_1(X)))   --> [ruminant].
-n0(sg,a,  lam(X,n_samoyed_3(X)))   --> [Samoyed]; [Samoyede].
+n0(sg,a,  lam(X,n_samoyed_3(X)))   --> ['Samoyed']; ['Samoyede'].
 n0(sg,a,  lam(X,n_sand_1(X)))   --> [sand].
 n0(sg,a,  lam(X,n_sandal_1(X)))   --> [sandal].
 n0(sg,a,  lam(X,n_satellite_1(X)))   --> [satellite].
@@ -1075,7 +1077,7 @@ n0(sg,a,  lam(X,n_succulent_1(X)))   --> [succulent].
 n0(pl,_,  lam(X,n_succulent_1(X)))   --> [succulents].
 n0(sg,a,  lam(X,n_sugar_bowl_1(X)))   --> [sugar, bowl].
 n0(sg,a,  lam(X,n_suitcase_1(X)))   --> [bag]; [traveling, bag]; [travelling, bag]; [grip]; [suitcase].
-n0(sg,a,  lam(X,n_sun_1(X)))   --> [sun]; [Sun].
+n0(sg,a,  lam(X,n_sun_1(X)))   --> [sun]; ['Sun'].
 n0(sg,a,  lam(X,n_sunglasses_1(X)))   --> [sunglasses]; [dark, glasses]; [shades].
 n0(sg,a,  lam(X,n_support_10(X)))   --> [support].
 n0(pl,_,  lam(X,n_support_10(X)))   --> [supports].
@@ -1086,7 +1088,7 @@ n0(sg,a,  lam(X,n_suspension_1(X)))   --> [suspension].
 n0(sg,a,  lam(X,n_swan_1(X)))   --> [swan].
 n0(sg,a,  lam(X,n_sweatband_2(X)))   --> [sweatband].
 n0(sg,a,  lam(X,n_sweater_1(X)))   --> [sweater]; [jumper].
-n0(sg,a,  lam(X,n_sweet_pepper_1(X)))   --> [sweet, pepper]; [bell, pepper]; [pimento]; [pimiento]; [paprika]; [sweet,pepper, plant]; [Capsicum,annuum, grossum].
+n0(sg,a,  lam(X,n_sweet_pepper_1(X)))   --> [sweet, pepper]; [bell, pepper]; [pimento]; [pimiento]; [paprika]; [sweet,pepper, plant]; ['Capsicum',annuum, grossum].
 n0(sg,a,  lam(X,n_swine_1(X)))   --> [swine].
 n0(sg,a,  lam(X,n_swivel_chair_1(X)))   --> [swivel, chair].
 n0(sg,a,  lam(X,n_table_1(X)))   --> [table]; [tabular, array].
@@ -1103,14 +1105,14 @@ n0(sg,a,  lam(X,n_tank_top_1(X)))   --> [tank, top].
 n0(sg,a,  lam(X,n_tapestry_2(X)))   --> [tapestry]; [tapis].
 n0(sg,a,  lam(X,n_tattoo_1(X)))   --> [tattoo].
 n0(pl,_,  lam(X,n_tattoo_1(X)))   --> [tattoos].
-n0(sg,a,  lam(X,n_tawny_owl_1(X)))   --> [tawny, owl]; [Strix, aluco].
+n0(sg,a,  lam(X,n_tawny_owl_1(X)))   --> [tawny, owl]; ['Strix', aluco].
 n0(sg,a,  lam(X,n_tea_2(X)))   --> [tea]; [teatime].
 n0(sg,an,  lam(X,n_tea_2(X)))   --> [afternoon, tea].
 n0(pl,_,  lam(X,n_tea_2(X)))   --> [teas]; [afternoon, teas]; [teatimes].
 n0(sg,a,  lam(X,n_teapot_1(X)))   --> [teapot].
 n0(sg,a,  lam(X,n_teaspoon_2(X)))   --> [teaspoon].
 n0(sg,a,  lam(X,n_teddy_1(X)))   --> [teddy]; [teddy, bear].
-n0(sg,a,  lam(X,n_tee_shirt_1(X)))   --> [jersey]; [T-shirt]; [tee, shirt].
+n0(sg,a,  lam(X,n_tee_shirt_1(X)))   --> [jersey]; ['T-shirt']; [tee, shirt].
 n0(sg,a,  lam(X,n_teleost_fish_1(X)))   --> [teleost, fish]; [teleost]; [teleostan].
 n0(sg,a,  lam(X,n_telephone_1(X)))   --> [telephone]; [phone]; [telephone, set].
 n0(sg,a,  lam(X,n_tennis_ball_1(X)))   --> [tennis, ball].
@@ -1171,7 +1173,7 @@ n0(sg,a,  lam(X,n_vehicle_1(X)))   --> [vehicle].
 n0(sg,a,  lam(X,n_vertebrate_1(X)))   --> [vertebrate]; [craniate].
 n0(sg,a,  lam(X,n_vertebrate_foot_1(X)))   --> [vertebrate, foot]; [pedal, extremity].
 n0(pl,_,  lam(X,n_vertebrate_foot_1(X)))   --> [vertebrate, foots]; [pedal, extremities].
-n0(sg,a,  lam(X,n_vervet_1(X)))   --> [vervet]; [vervet, monkey]; [Cercopithecus,aethiops, pygerythrus].
+n0(sg,a,  lam(X,n_vervet_1(X)))   --> [vervet]; [vervet, monkey]; ['Cercopithecus',aethiops, pygerythrus].
 n0(sg,a,  lam(X,n_vessel_2(X)))   --> [vessel]; [watercraft].
 n0(sg,a,  lam(X,n_vessel_3(X)))   --> [vessel].
 n0(sg,a,  lam(X,n_vine_1(X)))   --> [vine].
@@ -1187,7 +1189,7 @@ n0(sg,a,  lam(X,n_wall_7(X)))   --> [wall].
 n0(sg,a,  lam(X,n_ware_1(X)))   --> [ware].
 n0(pl,_,  lam(X,n_ware_1(X)))   --> [wares].
 n0(sg,a,  lam(X,n_watch_1(X)))   --> [watch]; [ticker].
-n0(sg,a,  lam(X,n_water_1(X)))   --> [water]; [H2O].
+n0(sg,a,  lam(X,n_water_1(X)))   --> [water]; ['H2O'].
 n0(sg,a,  lam(X,n_water_2(X)))   --> [body,of, water]; [water].
 n0(sg,a,  lam(X,n_water_6(X)))   --> [water].
 n0(sg,a,  lam(X,n_water_lily_1(X)))   --> [water, lily].
@@ -1201,7 +1203,7 @@ n0(pl,_,  lam(X,n_wheel_1(X)))   --> [wheels].
 n0(sg,a,  lam(X,n_wheel_2(X)))   --> [steering, wheel]; [wheel].
 n0(sg,a,  lam(X,n_wheeled_vehicle_1(X)))   --> [wheeled, vehicle].
 n0(sg,a,  lam(X,n_white_goods_2(X)))   --> [white, goods]; [household, linen].
-n0(sg,a,  lam(X,n_white_stork_1(X)))   --> [white, stork]; [Ciconia, ciconia].
+n0(sg,a,  lam(X,n_white_stork_1(X)))   --> [white, stork]; ['Ciconia', ciconia].
 n0(sg,a,  lam(X,n_whole_2(X)))   --> [whole].
 n0(sg,an,  lam(X,n_whole_2(X)))   --> [unit].
 n0(pl,_,  lam(X,n_whole_2(X)))   --> [wholes]; [units].
