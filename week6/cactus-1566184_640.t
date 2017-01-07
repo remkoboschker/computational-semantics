@@ -1,2 +1,2 @@
-a white planter
-a cactus on a table
+There are some white planters.
+A cactus is on a table.

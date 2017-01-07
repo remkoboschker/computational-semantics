@@ -1,2 +1,2 @@
-a blue car in the desert
-two persons running in the desert
+A blue car is in the desert.
+Two persons are running in the desert

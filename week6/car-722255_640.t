@@ -1,2 +1,2 @@
-the sun is shining in the desert
-a car in the desert 
+The sun is shining in the desert.
+A car is in the desert.

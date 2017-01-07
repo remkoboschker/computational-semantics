@@ -1,2 +1,2 @@
-a bottle of water
-a cat is drinking water
+There is a bottle of water.
+A cat is drinking water.

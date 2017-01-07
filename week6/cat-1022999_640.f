@@ -1,2 +1,2 @@
-a black cat on a skateboard
-two cats on two skateboards
+A black cat is on a skateboard.
+Two cats are on two skateboards.

@@ -1,2 +1,2 @@
-a tumbler of water and a cat
-a cat is eating food 
+Some water is in a glass.
+A cat is eating food.

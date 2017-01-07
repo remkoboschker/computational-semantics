@@ -1,2 +1,2 @@
-a boy is kissing a dolphin
-a dolphin is in the water
+A boy is kissing a dolphin.
+A dolphin is in the water.

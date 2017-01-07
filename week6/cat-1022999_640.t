@@ -1,2 +1,2 @@
-two cats on a skateboard
-the skateboard has yellow wheels 
+Two cats on a skateboard.
+The skateboard has yellow wheels.
