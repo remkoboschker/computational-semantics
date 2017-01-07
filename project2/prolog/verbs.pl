@@ -6,7 +6,7 @@ iv(dcl,pl, lam(X,some(Y,and(n_mouth_1(Y),and(s_part_of(Y,X),a_open_1(Y)))))) -->
 iv(bse,_,  lam(X,some(Y,and(n_mouth_1(Y),and(s_part_of(Y,X),a_open_1(Y)))))) --> [smile].
 iv(psp,_,  lam(X,some(Y,and(n_mouth_1(Y),and(s_part_of(Y,X),a_open_1(Y)))))) --> [smiled].
 
-iv(prp,_,  lam(X,'shine'(X))) --> [shining].
+iv(prp,_,  lam(X,shine(X))) --> [shining].
 iv(dcl,sg, lam(X,X)) --> [shines].
 iv(dcl,pl, lam(X,X)) --> [shine].
 iv(bse,_,  lam(X,X)) --> [shine].
