@@ -1,15 +1,10 @@
 some(X,and(n_baby_1(X),some(Y,and(n_melon_2(Y),some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))
 some(X,and(n_baby_1(X),and(stare(X),some(Y,and(n_melon_2(Y),s_near(X,Y))))))
------
-no parse for [a,bald,eagle,has,a,yellow,claw,'.']
------
-no parse for [a,bald,eagle,is,flying,'.']
------
-no parse for [a,bald,eagle,is,standing,on,a,boulder,'.']
------
-no parse for [a,bald,eagle,is,standing,on,a,branch,'.']
------
-no parse for [a,banana,is,being,eaten,by,a,goat,'.']
+some(X,and(n_bald_eagle_1(X),some(Y,and(and(a_yellow_1(Y),n_claw_1(Y)),s_near(X,Y)))))
+some(X,and(n_bald_eagle_1(X),not(some(Y,s_supports(Y,X)))))
+some(X,and(n_bald_eagle_1(X),and(some(Y,s_supports(Y,X)),some(Z,and(n_boulder_1(Z),s_supports(Z,X))))))
+some(X,and(n_bald_eagle_1(X),and(some(Y,s_supports(Y,X)),some(Z,and(n_branch_2(Z),s_supports(Z,X))))))
+some(X,and(n_banana_2(X),some(Y,and(n_goat_1(Y),some(Z,and(n_mouth_1(Z),and(s_part_of(Z,Y),s_touches(Z,X))))))))
 -----
 no parse for [a,barking,dog,is,standing,next,to,a,cat,'.']
 -----
@@ -20,8 +15,7 @@ no parse for [a,bike,is,leaning,against,a,red,wall,'.']
 no parse for [a,bike,is,leaning,against,a,white,wall,'.']
 and(some(X,and(n_bird_1(X),some(Y,eq(Y,X)))),not(some(Z,and(n_sea_1(Z),some(A1,eq(A1,Z))))))
 some(X,and(n_bird_1(X),some(Y,and(n_mammal_1(Y),some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))
------
-no parse for [a,bird,is,flying,'.']
+some(X,and(n_bird_1(X),not(some(Y,s_supports(Y,X)))))
 -----
 no parse for [a,bird,is,in,the,tree,'.']
 -----
@@ -30,8 +24,7 @@ no parse for [a,bird,is,looking,at,the,sea,'.']
 no parse for [a,bird,sits,on,a,fence,'.']
 -----
 no parse for [a,bird,',',whilst,spreading,its,wings,',',rests,on,a,docked,boat,'.']
------
-no parse for [a,bird,with,red,feet,is,standing,on,a,fence,'.']
+some(X,and(and(n_bird_1(X),some(Y,and(and(a_red_1(Y),n_foot_1(Y)),s_near(X,Y)))),and(some(Z,s_supports(Z,X)),some(A1,and(n_fence_1(A1),s_supports(A1,X))))))
 -----
 no parse for [a,black,-,and,-,white,cat,is,sitting,on,on,a,chair,'.']
 -----
@@ -55,8 +48,7 @@ some(X,and(and(a_black_1(X),and(n_platform_1(X),and(a_black_1(X),n_girl_1(X)))),
 some(X,and(and(a_black_1(X),n_rabbit_1(X)),some(Y,and(and(a_orange_1(Y),n_carrot_1(Y)),some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))
 -----
 no parse for [a,blind,man,is,playing,accordion,'.']
------
-no parse for [a,blonde,girl,is,standing,'.']
+some(X,and(and(a_blonde_1(X),n_girl_1(X)),some(Y,s_supports(Y,X))))
 -----
 no parse for [a,blonde,woman,is,wearing,blue,pants,'.']
 some(X,and(and(a_blonde_1(X),and(n_girl_1(X),some(Y,and(and(a_white_1(Y),n_apparel_1(Y)),s_near(X,Y))))),some(Z,eq(Z,X))))
@@ -97,8 +89,7 @@ no parse for [a,boy,is,playing,the,drums,'.']
 no parse for [a,boy,is,playing,the,piano,'.']
 -----
 no parse for [a,boy,is,riding,on,the,grass,'.']
------
-no parse for [a,boy,is,standing,in,the,garden,'.']
+some(X,and(n_boy_1(X),and(some(Y,s_supports(Y,X)),some(Z,and(n_garden_1(Z),s_supports(Z,X))))))
 some(X,and(n_boy_1(X),some(Y,and(n_backpack_1(Y),s_supports(X,Y)))))
 some(X,and(n_boy_1(X),some(Y,and(and(a_black_1(Y),n_cap_1(Y)),s_supports(X,Y)))))
 some(X,and(n_boy_1(X),some(Y,and(and(a_blue_1(Y),n_cap_1(Y)),s_supports(X,Y)))))
@@ -131,12 +122,9 @@ no parse for [a,businesswoman,is,holding,the,cellphone,'.']
 -----
 no parse for [a,butterfly,is,on,top,of,a,frog,'.']
 and(some(X,and(n_carrot_1(X),some(Y,eq(Y,X)))),some(Z,and(n_hand_1(Z),some(A1,eq(A1,Z)))))
------
-no parse for [a,cassowary,has,a,blue,head,'.']
------
-no parse for [a,cassowary,has,a,blue,neck,'.']
------
-no parse for [a,cassowary,has,a,red,neck,'.']
+some(X,and(n_cassowary_1(X),some(Y,and(and(a_blue_1(Y),n_head_1(Y)),s_near(X,Y)))))
+some(X,and(n_cassowary_1(X),some(Y,and(and(a_blue_1(Y),n_neck_1(Y)),s_near(X,Y)))))
+some(X,and(n_cassowary_1(X),some(Y,and(and(a_red_1(Y),n_neck_1(Y)),s_near(X,Y)))))
 -----
 no parse for [a,cat,and,a,dog,are,just,chilling,about,'.']
 -----
@@ -148,8 +136,7 @@ no parse for [a,cat,and,a,rabbit,are,standing,near,each,other,'.']
 and(some(X,and(n_big_cat_1(X),some(Y,eq(Y,X)))),some(Z,and(and(a_white_1(Z),n_piano_1(Z)),some(A1,eq(A1,Z)))))
 -----
 no parse for [a,cat,has,a,ball,in,its,mouth,'.']
------
-no parse for [a,cat,is,being,chased,by,a,child,'.']
+some(X,and(n_big_cat_1(X),some(Y,and(n_child_1(Y),s_near(Y,X)))))
 -----
 no parse for [a,cat,is,being,chased,by,black,dog,'.']
 -----
@@ -199,8 +186,7 @@ no parse for [a,cat,is,sitting,on,the,sidewalk,'.']
 no parse for [a,cat,is,sitting,on,top,of,a,green,car,'.']
 -----
 no parse for [a,cat,is,sleeping,on,an,armchair,'.']
------
-no parse for [a,cat,is,standing,on,the,lawn,'.']
+some(X,and(n_big_cat_1(X),and(some(Y,s_supports(Y,X)),some(Z,and(n_lawn_1(Z),s_supports(Z,X))))))
 -----
 no parse for [a,cat,is,walking,on,a,fence,that,has,fallen,over,'.']
 -----
@@ -217,7 +203,7 @@ and(some(X,and(n_cocker_1(X),some(Y,eq(Y,X)))),some(Z,and(and(a_blue_1(Z),n_car_
 no parse for [a,dachshund,is,running,and,there,is,grass,'.']
 and(some(X,and(n_desk_1(X),some(Y,eq(Y,X)))),some(Z,and(n_keyboard_1(Z),some(A1,eq(A1,Z)))))
 -----
-no parse for [a,dog,and,a,a,guinea,pig,are,lying,on,a,couch,'.']
+no parse for [a,dog,and,a,guinea,pig,are,lying,on,a,couch,'.']
 -----
 no parse for [a,dog,and,a,blue,collar,and,a,sunflower,'.']
 -----
@@ -246,8 +232,7 @@ no parse for [a,dog,is,sitting,on,a,chair,'.']
 no parse for [a,dog,is,sitting,on,a,table,'.']
 -----
 no parse for [a,dog,is,sitting,on,a,wooden,chair,'.']
------
-no parse for [a,dog,is,standing,in,a,lake,'.']
+some(X,and(n_dog_1(X),and(some(Y,s_supports(Y,X)),some(Z,and(n_lake_1(Z),s_supports(Z,X))))))
 -----
 no parse for [a,dog,is,standing,near,a,table,'.']
 some(X,and(n_dog_1(X),and(X,some(Y,and(n_beach_1(Y),s_supports(Y,X))))))
@@ -394,18 +379,15 @@ no parse for [all,the,sheep,lay,against,the,wall,'.']
 no parse for [all,tourists,are,asian,'.']
 -----
 no parse for [all,tourists,are,women,'.']
------
-no parse for [all,tourists,have,a,dress,'.']
+all(X,imp(n_tourist_1(X),some(Y,and(n_apparel_1(Y),s_near(X,Y)))))
 -----
 no parse for [a,magpie,flying,past,a,tree,'.']
 -----
 no parse for [a,magpie,is,perced,on,top,of,a,tree,'.']
 and(some(X,and(n_man_1(X),some(Y,eq(Y,X)))),some(Z,and(n_beach_1(Z),some(A1,eq(A1,Z)))))
 and(some(X,and(n_man_1(X),some(Y,eq(Y,X)))),and(some(Z,and(n_guitar_1(Z),some(A1,eq(A1,Z)))),some(B1,and(n_lake_1(B1),some(C1,eq(C1,B1))))))
------
-no parse for [a,man,has,a,beard,'.']
------
-no parse for [a,man,has,a,beard,'.']
+some(X,and(n_man_1(X),some(Y,and(n_beard_1(Y),s_near(X,Y)))))
+some(X,and(n_man_1(X),some(Y,and(n_beard_1(Y),s_near(X,Y)))))
 -----
 no parse for [a,man,in,a,white,shirt,is,drinking,beer,'.']
 -----
@@ -445,8 +427,7 @@ no parse for [a,man,is,riding,his,bicycle,'.']
 no parse for [a,man,is,riding,his,bike,'.']
 -----
 no parse for [a,man,is,sitting,on,a,white,horse,'.']
------
-no parse for [a,man,is,standing,'.']
+some(X,and(n_man_1(X),some(Y,s_supports(Y,X))))
 -----
 no parse for [a,man,is,stroking,a,cat,'.']
 -----
@@ -476,10 +457,8 @@ no parse for [a,man,with,a,white,shirt,is,eating,from,a,platter,'.']
 -----
 no parse for [a,mountain,',',a,forest,and,horses,'.']
 and(some(X,and(n_mountain_1(X),some(Y,eq(Y,X)))),not(some(Z,and(n_grass_1(Z),some(A1,eq(A1,Z))))))
------
-no parse for [a,mouse,is,being,chased,by,a,cat,'.']
------
-no parse for [a,mouse,is,being,eaten,by,a,cat,'.']
+some(X,and(n_mouse_1(X),some(Y,and(n_big_cat_1(Y),s_near(Y,X)))))
+some(X,and(n_mouse_1(X),some(Y,and(n_big_cat_1(Y),some(Z,and(n_mouth_1(Z),and(s_part_of(Z,Y),s_touches(Z,X))))))))
 -----
 no parse for [a,mouse,is,sitting,in,the,grass,'.']
 -----
@@ -513,10 +492,8 @@ and(some(X,and(n_owl_1(X),some(Y,eq(Y,X)))),some(Z,and(n_eye_1(Z),some(A1,eq(A1,
 -----
 no parse for [an,owl,and,its,prey,'.']
 and(some(X,and(n_owl_1(X),some(Y,eq(Y,X)))),not(some(Z,and(n_tree_1(Z),some(A1,eq(A1,Z))))))
------
-no parse for [an,owl,has,pink,eyes,'.']
------
-no parse for [an,owl,has,yellow,eyes,'.']
+some(X,and(n_owl_1(X),some(Y,and(and(a_pink_1(Y),n_eye_1(Y)),s_near(X,Y)))))
+some(X,and(n_owl_1(X),some(Y,and(and(a_yellow_1(Y),n_eye_1(Y)),s_near(X,Y)))))
 some(X,and(and(n_owl_1(X),some(Y,and(n_snow_2(Y),s_supports(Y,X)))),some(Z,eq(Z,X))))
 -----
 no parse for [an,owl,is,sitting,in,front,of,a,green,leafage,'.']
@@ -539,16 +516,14 @@ no parse for [a,pen,is,next,to,the,phone,'.']
 no parse for [a,person,is,attacked,by,a,goose,'.']
 some(X,and(n_person_1(X),some(Y,and(n_bicycle_1(Y),s_supports(Y,X)))))
 some(X,and(n_person_1(X),some(Y,and(n_denim_2(Y),s_supports(X,Y)))))
------
-no parse for [a,pheasant,is,flying,'.']
+some(X,and(n_pheasant_1(X),not(some(Y,s_supports(Y,X)))))
 -----
 no parse for [a,phone,is,on,the,floor,'.']
 -----
 no parse for [a,phone,is,on,the,table,'.']
 -----
 no parse for [a,pigeon,is,eating,'.']
------
-no parse for [a,pigeon,is,flying,'.']
+some(X,and(n_pigeon_1(X),not(some(Y,s_supports(Y,X)))))
 -----
 no parse for [a,pigeon,is,standing,on,the,beggar,'\'',s,hand,'.']
 -----
@@ -574,10 +549,8 @@ no parse for [a,ship,is,on,the,sea,'.']
 no parse for [a,sparrow,in,front,of,an,american,flag,'.']
 -----
 no parse for [a,stork,is,on,the,chimney,'.']
------
-no parse for [a,student,has,a,red,shirt,'.']
------
-no parse for [a,student,has,a,yellow,shirt,'.']
+some(X,and(n_student_1(X),some(Y,and(and(a_red_1(Y),n_shirt_1(Y)),s_near(X,Y)))))
+some(X,and(n_student_1(X),some(Y,and(and(a_yellow_1(Y),n_shirt_1(Y)),s_near(X,Y)))))
 -----
 no parse for [a,swan,is,in,the,water,'.']
 -----
@@ -612,8 +585,7 @@ some(X,and(and(a_white_1(X),and(n_piano_1(X),n_smoke_1(X))),some(Y,eq(Y,X))))
 some(X,and(and(a_white_1(X),n_rabbit_1(X)),some(Y,and(and(a_orange_1(Y),n_carrot_1(Y)),some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))
 -----
 no parse for [a,woman,and,a,set,of,drums,'.']
------
-no parse for [a,woman,has,a,black,shirt,'.']
+some(X,and(n_woman_1(X),some(Y,and(and(a_black_1(Y),n_shirt_1(Y)),s_near(X,Y)))))
 -----
 no parse for [a,woman,in,a,green,dress,is,cycling,'.']
 some(X,and(and(n_woman_1(X),some(Y,and(and(a_green_1(Y),n_apparel_1(Y)),s_supports(Y,X)))),and(X,some(Z,and(n_street_1(Z),s_supports(Z,X))))))
@@ -669,8 +641,7 @@ no parse for [both,nests,are,on,the,roof,'.']
 no parse for [brown,owl,and,a,tree,'.']
 -----
 no parse for [each,person,is,sitting,cross,-,legged,'.']
------
-no parse for [each,student,has,a,mouse,'.']
+and(some(X,n_student_1(X)),all(Y,imp(n_student_1(Y),some(Z,and(n_mouse_1(Z),s_near(Y,Z))))))
 -----
 no parse for [each,student,is,watching,a,television,'.']
 -----
@@ -705,8 +676,7 @@ no parse for [kids,are,playing,on,the,beach,'.']
 no parse for [no,animal,is,running,'.']
 -----
 no parse for [no,bicycle,is,near,the,man,'.']
------
-no parse for [no,bird,is,being,chased,by,a,child,'.']
+not(some(X,and(n_bird_1(X),some(Y,and(n_child_1(Y),s_near(Y,X))))))
 -----
 no parse for [no,bird,is,eating,'.']
 -----
@@ -724,8 +694,7 @@ no parse for [nobody,is,sitting,on,the,chair,'.']
 no parse for [nobody,is,sitting,on,the,park,bench,'.']
 and(not(some(X,and(n_boy_1(X),some(Y,eq(Y,X))))),some(Z,and(n_platform_1(Z),some(A1,eq(A1,Z)))))
 and(not(some(X,and(n_boy_1(X),some(Y,eq(Y,X))))),not(some(Z,and(n_smoke_1(Z),some(A1,eq(A1,Z))))))
------
-no parse for [no,cat,has,green,eyes,'.']
+not(some(X,and(n_big_cat_1(X),some(Y,and(and(a_green_1(Y),n_eye_1(Y)),s_near(X,Y))))))
 -----
 no parse for [no,cat,is,biting,an,ear,'.']
 not(some(X,and(n_big_cat_1(X),some(Y,and(n_bird_1(Y),s_near(X,Y))))))
@@ -770,8 +739,7 @@ no parse for [no,owls,in,a,tree,'.']
 -----
 no parse for [no,person,is,playing,the,piano,'.']
 not(some(X,and(n_person_1(X),X)))
------
-no parse for [no,pheasant,is,flying,'.']
+not(some(X,and(n_pheasant_1(X),not(some(Y,s_supports(Y,X))))))
 -----
 no parse for [no,plates,are,on,the,table,'.']
 and(not(some(X,and(n_sheep_1(X),some(Y,eq(Y,X))))),some(Z,and(n_horse_1(Z),some(A1,eq(A1,Z)))))
@@ -829,8 +797,7 @@ no parse for [red,smoke,and,white,cap,'.']
 no parse for [sand,and,sea,'.']
 -----
 no parse for [seven,birds,are,sitting,on,a,roof,'.']
------
-no parse for [several,birds,are,flying,in,the,blue,sky,'.']
+some(X,and(n_bird_1(X),and(not(some(Y,s_supports(Y,X))),some(Z,and(and(a_blue_1(Z),n_sky_1(Z)),s_supports(Z,X))))))
 -----
 no parse for [several,birds,are,looking,at,each,other,'.']
 -----
@@ -899,14 +866,10 @@ some(X,and(n_apple_1(X),and(a_red_1(X),n_thing_12(X))))
 -----
 no parse for [the,are,boats,in,the,background,'.']
 some(X,and(n_astronaut_1(X),some(Y,and(n_flag_1(Y),s_supports(X,Y)))))
------
-no parse for [the,baby,has,blue,eyes,'.']
------
-no parse for [the,baby,has,brown,eyes,'.']
------
-no parse for [the,bald,eagle,has,a,white,head,'.']
------
-no parse for [the,bald,eagle,has,a,yellow,beak,'.']
+some(X,and(n_baby_1(X),some(Y,and(and(a_blue_1(Y),n_eye_1(Y)),s_near(X,Y)))))
+some(X,and(n_baby_1(X),some(Y,and(and(a_brown_1(Y),n_eye_1(Y)),s_near(X,Y)))))
+some(X,and(n_bald_eagle_1(X),some(Y,and(and(a_white_1(Y),n_head_1(Y)),s_near(X,Y)))))
+some(X,and(n_bald_eagle_1(X),some(Y,and(and(a_yellow_1(Y),n_beak_1(Y)),s_near(X,Y)))))
 some(X,and(n_ball_1(X),and(a_blue_1(X),n_thing_12(X))))
 -----
 no parse for [the,ball,is,green,and,the,dog,is,brown,'.']
@@ -928,51 +891,40 @@ no parse for [the,bicycle,is,being,used,'.']
 no parse for [the,bicycle,is,leaning,against,a,white,car,'.']
 -----
 no parse for [the,bicycle,is,placed,on,top,of,a,white,car,'.']
------
-no parse for [the,bike,has,no,wheels,'.']
+some(X,and(n_bicycle_1(X),not(some(Y,and(n_wheel_1(Y),s_near(X,Y))))))
 some(X,and(n_bicycle_1(X),and(a_blue_1(X),n_thing_12(X))))
------
-no parse for [the,bike,is,green,and,has,black,wheels,'.']
+some(X,and(n_bicycle_1(X),and(and(a_green_1(X),n_thing_12(X)),some(Y,and(and(a_black_1(Y),n_wheel_1(Y)),s_near(X,Y))))))
 -----
 no parse for [the,bike,is,near,a,red,window,'.']
 -----
 no parse for [the,bike,is,near,a,white,window,'.']
 some(X,and(n_bicycle_1(X),not(and(a_pink_1(X),n_thing_12(X)))))
------
-no parse for [the,bird,flies,'.']
------
-no parse for [the,bird,has,a,red,beak,'.']
+some(X,and(n_bird_1(X),not(some(Y,s_supports(Y,X)))))
+some(X,and(n_bird_1(X),some(Y,and(and(a_red_1(Y),n_beak_1(Y)),s_near(X,Y)))))
 some(X,and(n_bird_1(X),and(and(a_black_1(X),n_thing_12(X)),some(Y,and(and(a_red_1(Y),n_neck_1(Y)),s_near(X,Y))))))
 some(X,and(n_bird_1(X),some(Y,and(n_fish_1(Y),some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))
 some(X,and(n_bird_1(X),some(Y,and(n_mouse_1(Y),some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))
 some(X,and(n_bird_1(X),some(Y,and(n_entity_1(Y),some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))
 some(X,and(n_bird_1(X),some(Y,and(n_entity_1(Y),some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))
 some(X,and(n_bird_1(X),some(Y,and(n_entity_1(Y),some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))
------
-no parse for [the,bird,is,flying,'.']
------
-no parse for [the,bird,is,flying,'.']
+some(X,and(n_bird_1(X),not(some(Y,s_supports(Y,X)))))
+some(X,and(n_bird_1(X),not(some(Y,s_supports(Y,X)))))
 -----
 no parse for [the,bird,is,flying,over,the,sea,'.']
 -----
 no parse for [the,bird,is,near,the,water,'.']
 some(X,and(n_bird_1(X),not(some(Y,and(n_fish_1(Y),some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y)))))))))
------
-no parse for [the,bird,is,not,flying,'.']
------
-no parse for [the,bird,is,not,flying,'.']
------
-no parse for [the,bird,is,not,flying,'.']
+some(X,and(n_bird_1(X),not(not(some(Y,s_supports(Y,X))))))
+some(X,and(n_bird_1(X),not(not(some(Y,s_supports(Y,X))))))
+some(X,and(n_bird_1(X),not(not(some(Y,s_supports(Y,X))))))
 -----
 no parse for [the,bird,is,on,the,ground,'.']
 -----
 no parse for [the,bird,is,perched,on,a,tree,'.']
 -----
 no parse for [the,bird,is,spreading,its,wings,'.']
------
-no parse for [the,bird,is,standing,on,a,dolphin,'.']
------
-no parse for [the,bird,is,standing,on,the,pig,'.']
+some(X,and(n_bird_1(X),and(some(Y,s_supports(Y,X)),some(Z,and(n_dolphin_1(Z),s_supports(Z,X))))))
+some(X,and(n_bird_1(X),and(some(Y,s_supports(Y,X)),some(Z,and(n_pig_1(Z),s_supports(Z,X))))))
 some(X,and(n_bird_1(X),and(and(a_white_1(X),n_thing_12(X)),some(Y,and(and(a_black_1(Y),n_beak_2(Y)),s_near(X,Y))))))
 -----
 no parse for [the,birds,are,looking,at,each,other,'.']
@@ -984,10 +936,8 @@ no parse for [the,birds,are,swimming,in,a,lake,'.']
 no parse for [the,bird,sits,on,a,gate,'.']
 -----
 no parse for [the,black,-,and,-,white,bird,is,sitting,on,a,spruce,'.']
------
-no parse for [the,black,girl,has,a,white,dress,'.']
------
-no parse for [the,black,mouse,has,yellow,eyes,'.']
+some(X,and(and(a_black_1(X),n_girl_1(X)),some(Y,and(and(a_white_1(Y),n_apparel_1(Y)),s_near(X,Y)))))
+some(X,and(and(a_black_1(X),n_mouse_1(X)),some(Y,and(and(a_yellow_1(Y),n_eye_1(Y)),s_near(X,Y)))))
 -----
 no parse for [the,blonde,bride,is,playing,guitar,'.']
 -----
@@ -1012,8 +962,7 @@ no parse for [the,bowls,with,food,are,placed,on,an,orange,piece,of,paper,'.']
 no parse for [the,bowl,with,milk,is,standing,on,a,table,'.']
 -----
 no parse for [the,boy,caught,a,fish,'.']
------
-no parse for [the,boy,has,a,blue,cap,'.']
+some(X,and(n_boy_1(X),some(Y,and(and(a_blue_1(Y),n_cap_1(Y)),s_near(X,Y)))))
 -----
 no parse for [the,boy,has,blonde,hair,'.']
 -----
@@ -1116,8 +1065,7 @@ no parse for [the,budgerigars,are,feeding,a,girl,'.']
 -----
 no parse for [the,budgerigars,sit,on,a,roof,'.']
 some(X,and(n_businessman_1(X),some(Y,and(and(a_brown_1(Y),n_necktie_1(Y)),s_supports(X,Y)))))
------
-no parse for [the,butterfly,has,no,reflection,'.']
+some(X,and(n_butterfly_1(X),not(some(Y,and(n_reflection_1(Y),s_near(X,Y))))))
 some(X,and(n_butterfly_1(X),and(a_black_1(X),n_thing_12(X))))
 -----
 no parse for [the,candle,is,lit,'.']
@@ -1126,8 +1074,7 @@ no parse for [the,candle,is,not,burning,'.']
 some(X,and(n_candle_1(X),and(a_white_1(X),n_thing_12(X))))
 -----
 no parse for [the,car,has,a,black,antenna,'.']
------
-no parse for [the,car,has,a,black,roof,'.']
+some(X,and(n_car_1(X),some(Y,and(and(a_black_1(Y),n_roof_1(Y)),s_near(X,Y)))))
 -----
 no parse for [the,car,has,no,antenna,'.']
 -----
@@ -1143,16 +1090,13 @@ no parse for [the,cat,appears,to,be,reading,a,novel,'.']
 no parse for [the,cat,eyes,are,closed,'.']
 -----
 no parse for [the,cat,has,a,hat,on,his,head,'.']
------
-no parse for [the,cat,has,black,eyes,'.']
------
-no parse for [the,cat,has,blue,eyes,'.']
+some(X,and(n_big_cat_1(X),some(Y,and(and(a_black_1(Y),n_eye_1(Y)),s_near(X,Y)))))
+some(X,and(n_big_cat_1(X),some(Y,and(and(a_blue_1(Y),n_eye_1(Y)),s_near(X,Y)))))
 -----
 no parse for [the,cat,has,closed,eyes,'.']
 -----
 no parse for [the,cat,has,his,mouth,closed,'.']
------
-no parse for [the,cat,has,no,collar,'.']
+some(X,and(n_big_cat_1(X),not(some(Y,and(n_collar_1(Y),s_near(X,Y))))))
 -----
 no parse for [the,cat,is,asleep,on,the,mat,'.']
 -----
@@ -1419,8 +1363,7 @@ no parse for [the,ginger,cat,is,eating,a,small,mouse,'.']
 no parse for [the,ginger,cat,is,looking,at,the,mouse,'.']
 -----
 no parse for [the,girl,has,a,cat,on,her,lap,'.']
------
-no parse for [the,girl,has,a,green,jacket,'.']
+some(X,and(n_girl_1(X),some(Y,and(and(a_green_1(Y),n_jacket_1(Y)),s_near(X,Y)))))
 -----
 no parse for [the,girl,has,blond,hair,and,is,wearing,a,red,shirt,'.']
 -----
@@ -1463,8 +1406,7 @@ no parse for [the,glasses,are,green,and,the,napkins,are,green,'.']
 -----
 no parse for [the,goat,is,bleating,'.']
 some(X,and(n_gosling_1(X),and(a_brown_1(X),n_thing_12(X))))
------
-no parse for [the,goslings,are,flying,'.']
+some(X,and(n_gosling_1(X),not(some(Y,s_supports(Y,X)))))
 some(X,and(n_grass_1(X),and(a_blue_1(X),n_thing_12(X))))
 -----
 no parse for [the,grass,is,to,the,dog,'\'',s,and,the,cyclist,'\'',s,left,'.']
@@ -1472,8 +1414,7 @@ no parse for [the,grass,is,to,the,dog,'\'',s,and,the,cyclist,'\'',s,left,'.']
 no parse for [the,green,bike,has,flat,tires,'.']
 -----
 no parse for [the,grey,car,is,not,running,'.']
------
-no parse for [the,grey,cat,has,yellow,eyes,'.']
+some(X,and(and(a_gray_1(X),n_big_cat_1(X)),some(Y,and(and(a_yellow_1(Y),n_eye_1(Y)),s_near(X,Y)))))
 some(X,and(n_earth_2(X),and(a_black_1(X),n_thing_12(X))))
 some(X,and(n_earth_2(X),and(a_gray_1(X),n_thing_12(X))))
 -----
@@ -1520,10 +1461,8 @@ some(X,and(and(n_lipstick_1(X),some(Y,and(n_woman_1(Y),s_part_of(X,Y)))),and(a_r
 some(X,and(and(n_liquid_1(X),some(Y,and(n_glass_2(Y),s_supports(Y,X)))),and(a_white_1(X),n_thing_12(X))))
 -----
 no parse for [the,log,is,next,to,the,bench,'.']
------
-no parse for [the,man,has,a,bicycle,'.']
------
-no parse for [the,man,has,a,white,dog,'.']
+some(X,and(n_man_1(X),some(Y,and(n_bicycle_1(Y),s_near(X,Y)))))
+some(X,and(n_man_1(X),some(Y,and(and(a_white_1(Y),n_dog_1(Y)),s_near(X,Y)))))
 -----
 no parse for [the,man,has,grey,hair,'.']
 -----
@@ -1570,10 +1509,8 @@ no parse for [the,man,wears,a,pair,of,blue,pants,'.']
 no parse for [the,mat,is,on,the,grass,'.']
 -----
 no parse for [the,men,are,swimming,in,the,lake,'.']
------
-no parse for [the,monkey,has,brown,eyes,'.']
------
-no parse for [the,monkey,has,green,eyes,'.']
+some(X,and(n_monkey_1(X),some(Y,and(and(a_brown_1(Y),n_eye_1(Y)),s_near(X,Y)))))
+some(X,and(n_monkey_1(X),some(Y,and(and(a_green_1(Y),n_eye_1(Y)),s_near(X,Y)))))
 -----
 no parse for [the,monkey,is,not,staring,at,the,peanut,he,got,in,his,hand,'.']
 -----
@@ -1581,16 +1518,14 @@ no parse for [the,monkey,is,sitting,in,a,chair,'.']
 -----
 no parse for [the,monkey,is,sitting,in,a,tree,'.']
 some(X,and(n_monkey_1(X),and(stare(X),some(Y,and(n_peanut_4(Y),s_near(X,Y))))))
------
-no parse for [the,mouse,is,being,chased,by,a,cat,'.']
+some(X,and(n_mouse_1(X),some(Y,and(n_big_cat_1(Y),s_near(Y,X)))))
 -----
 no parse for [the,mouse,is,looking,at,the,black,cat,'.']
 -----
 no parse for [the,mouse,is,running,in,the,grass,'.']
 -----
 no parse for [the,mouse,is,standing,next,to,a,yellow,plate,'.']
------
-no parse for [the,mouse,is,standing,on,the,plate,'.']
+some(X,and(n_mouse_1(X),and(some(Y,s_supports(Y,X)),some(Z,and(n_plate_1(Z),s_supports(Z,X))))))
 some(X,and(n_mouse_1(X),some(Y,and(n_necktie_1(Y),s_supports(X,Y)))))
 -----
 no parse for [the,mute,swan,in,in,front,of,the,honkers,'.']
@@ -1602,8 +1537,7 @@ no parse for [the,mute,swan,is,on,the,water,'.']
 some(X,and(n_mute_swan_1(X),and(a_white_1(X),n_thing_12(X))))
 some(X,and(n_mute_swan_1(X),and(a_white_1(X),n_thing_12(X))))
 some(X,and(n_mute_swan_1(X),and(a_yellow_1(X),n_thing_12(X))))
------
-no parse for [the,mute,swan,stands,on,the,nest,'.']
+some(X,and(n_mute_swan_1(X),and(some(Y,s_supports(Y,X)),some(Z,and(n_nest_1(Z),s_supports(Z,X))))))
 some(X,and(n_necktie_1(X),and(a_blue_1(X),n_thing_12(X))))
 some(X,and(n_necktie_1(X),and(a_red_1(X),n_thing_12(X))))
 -----
@@ -1829,8 +1763,7 @@ no parse for [there,are,two,yellow,buckets,'.']
 no parse for [the,red,boat,is,floating,on,the,pond,'.']
 -----
 no parse for [there,is,a,bald,eagle,with,white,feather,'.']
------
-no parse for [there,is,a,bird,flying,'.']
+some(X,and(n_bird_1(X),not(some(Y,s_supports(Y,X)))))
 -----
 no parse for [there,is,a,bird,sitting,in,a,tree,'.']
 -----
@@ -1909,8 +1842,7 @@ no parse for [there,is,a,green,vase,with,pink,flowers,'.']
 no parse for [there,is,a,grey,cat,on,an,armchair,'.']
 -----
 no parse for [there,is,a,gull,sitting,on,a,tree,'.']
------
-no parse for [there,is,a,gull,standing,on,a,boat,'.']
+some(X,and(n_gull_2(X),and(some(Y,s_supports(Y,X)),some(Z,and(n_boat_1(Z),s_supports(Z,X))))))
 some(X,and(n_child_1(X),some(Y,and(and(a_green_1(Y),n_bicycle_1(Y)),s_supports(Y,X)))))
 -----
 no parse for [there,is,a,kid,with,black,hair,playing,with,a,cat,'.']
@@ -1960,8 +1892,7 @@ no parse for [there,is,a,red,backpack,in,the,car,'.']
 no parse for [there,is,a,red,fruit,on,the,table,'.']
 -----
 no parse for [there,is,a,rock,behind,the,bench,'.']
------
-no parse for [there,is,a,sheep,standing,on,the,wall,'.']
+some(X,and(n_sheep_1(X),and(some(Y,s_supports(Y,X)),some(Z,and(n_wall_1(Z),s_supports(Z,X))))))
 -----
 no parse for [there,is,a,square,table,'.']
 -----
@@ -2101,8 +2032,7 @@ some(X,and(n_tulip_1(X),and(a_red_1(X),n_thing_12(X))))
 no parse for [the,vervet,is,holding,a,peanut,in,his,left,hand,'.']
 -----
 no parse for [the,vervet,is,holding,a,peanut,in,his,right,hand,'.']
------
-no parse for [the,viola,has,no,bow,'.']
+some(X,and(n_viola_3(X),not(some(Y,and(n_bow_1(Y),s_near(X,Y))))))
 some(X,and(n_violinist_1(X),and(a_old_1(X),n_thing_12(X))))
 some(X,and(n_violinist_1(X),some(Y,and(and(a_blue_1(Y),n_hat_1(Y)),s_supports(X,Y)))))
 some(X,and(n_violinist_1(X),some(Y,and(and(a_red_1(Y),n_hat_1(Y)),s_supports(X,Y)))))
@@ -2125,16 +2055,14 @@ no parse for [the,woman,calls,'.']
 some(X,and(n_woman_1(X),some(Y,and(n_telephone_1(Y),some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))
 -----
 no parse for [the,woman,faces,to,the,man,'.']
------
-no parse for [the,woman,has,a,guitar,'.']
+some(X,and(n_woman_1(X),some(Y,and(n_guitar_1(Y),s_near(X,Y)))))
 -----
 no parse for [the,woman,has,black,hair,'.']
 -----
 no parse for [the,woman,has,brown,hair,'.']
 -----
 no parse for [the,woman,has,brown,hair,'.']
------
-no parse for [the,woman,has,no,hat,'.']
+some(X,and(n_woman_1(X),not(some(Y,and(n_hat_1(Y),s_near(X,Y))))))
 -----
 no parse for [the,woman,has,short,hair,'.']
 -----

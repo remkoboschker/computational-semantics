@@ -28,7 +28,7 @@ A black dig and a ginger kitten are standing near each other.
 A black frog is playing with a cat.
 A black hand.
 A black lake and black blouse.
-A black platform and black girl. 
+A black platform and black girl.
 A black rabbit is eating an orange carrot.
 A blind man is playing accordion.
 A blonde girl is standing.
@@ -43,9 +43,9 @@ A boy and a girl are jumping rope.
 A boy and a mouse.
 A boy and a red cap.
 A boy and a stuffed animal.
-A boy and girl. 
+A boy and girl.
 A boy and two dogs.
-A boy and two green chairs. 
+A boy and two green chairs.
 A boy is eating from his breadbox.
 A boy is eating ice cream.
 A boy is feeding pigeons.
@@ -127,12 +127,12 @@ A child is wearing a white hat.
 A cocker spaniel and a blue car.
 A dachshund is running and there is grass.
 A desk and a keyboard.
-A dog and a a guinea pig are lying on a couch.
+A dog and a guinea pig are lying on a couch.
 A dog and a blue collar and a sunflower.
 A dog and a cat are playing with each other.
 A dog and a horse and a sheep.
 A dog and a kitten are on a lawn.
-A dog and a man. 
+A dog and a man.
 A dog and brown sheep.
 A dog and water.
 A dog is in the sea.
@@ -191,7 +191,7 @@ A gosling is swimming in a lake.
 A gray cat is touching flowers.
 A green ball and green grass.
 A green bird and no puddle.
-A green girl and a yellow boot. 
+A green girl and a yellow boot.
 A green jacket and a green sea.
 A green swivel chair.
 A grey cat is chasing the dog.
@@ -230,7 +230,7 @@ All swans that are not swanlings are black.
 All the cats are black.
 All the cats are eating from a bowl.
 All the goslings are yellow.
-All the pigeons stand on the street. 
+All the pigeons stand on the street.
 All the sheep are black.
 All the sheep lay against the wall.
 All tourists are Asian.
@@ -238,7 +238,7 @@ All tourists are women.
 All tourists have a dress.
 A magpie flying past a tree.
 A magpie is perced on top of a tree.
-A man and a beach. 
+A man and a beach.
 A man and a guitar and a lake.
 A man has a beard.
 A man has a beard.
@@ -273,7 +273,7 @@ A man is walking in a field.
 A man is wearing a cap.
 A man is wearing a hat.
 A man is wearing a helmet and a red top.
-A man is wearing a red coat. 
+A man is wearing a red coat.
 A man kicks a goose.
 A man sits on a couch.
 A man wearing blue overalls is ploughing the field.
@@ -320,19 +320,19 @@ A pen is next to the phone.
 A person is attacked by a goose.
 A person is riding a bicycle.
 A person is wearing jeans.
-A pheasant is flying. 
+A pheasant is flying.
 A phone is on the floor.
 A phone is on the table.
-A pigeon is eating. 
+A pigeon is eating.
 A pigeon is flying.
 A pigeon is standing on the beggar's hand.
 A pig is swimming.
 A rabbit is eating cat food from a bowl.
-A red car with a white roof. 
-A red piano and a white mic. 
+A red car with a white roof.
+A red piano and a white mic.
 A rock and grass.
 A rock is standing on another rock.
-A russian flag is standing in the ground. 
+A russian flag is standing in the ground.
 A seagull eats a fish.
 A seagull is on the sand.
 A ship is on the grass.
@@ -352,7 +352,7 @@ A vervet monkey is holding two peanuts.
 A white bird is sitting in a tree.
 A white car is parked near a building.
 A white car is passing by.
-A white cat and a black piano. 
+A white cat and a black piano.
 A white cat has two eyes.
 A white cat is eating something.
 A white cat is touching a dog.
@@ -376,7 +376,7 @@ A woman is eating an orange.
 A woman is holding a camera.
 A woman is holding a green apple.
 A woman is photographing a cheetah.
-A woman is reading a book. 
+A woman is reading a book.
 A woman is riding a bicycle.
 A woman is riding a brown horse.
 A woman is stroking a cat.
@@ -421,10 +421,10 @@ Nobody is cycling.
 Nobody is cycling.
 Nobody is cycling.
 Nobody is holding the melon.
-Nobody is sitting on the chair. 
+Nobody is sitting on the chair.
 Nobody is sitting on the park bench.
 No boy and a platform.
-No boy and no smoke. 
+No boy and no smoke.
 No cat has green eyes.
 No cat is biting an ear.
 No cat is chasing a bird.
@@ -453,10 +453,10 @@ No-one is stroking a cat.
 No owls in a tree.
 No person is playing the piano.
 No person is walking.
-No pheasant is flying. 
+No pheasant is flying.
 No plates are on the table.
 No sheep and a horse.
-Not a dog and a stone. 
+Not a dog and a stone.
 Not a horse and no hand and a carrot.
 Not orange sky and sheep.
 No tourist has spotted clothes.
@@ -465,13 +465,13 @@ No white cat is eating.
 No woman is riding a bicycle.
 One boot is on the mat.
 One cat eye is blue.
-One cat eye is white. 
+One cat eye is white.
 One cat eye is yellow.
 One child has two buckets.
-One dog is black and one dog is brown. 
+One dog is black and one dog is brown.
 One dog is white and one dog is brown.
 One of the bike's wheels is smaller than the other.
-One of the sheep has a black head. 
+One of the sheep has a black head.
 One of the sheep is black.
 One of the sheep is white.
 One owl is blue and one owl is brown.
@@ -503,7 +503,7 @@ Someone is cycling in the field.
 Someone is holding the melon.
 Someone is riding a blue bike.
 Someone is sitting on a mat in a field.
-Someone is sitting on the chair. 
+Someone is sitting on the chair.
 Someone is swimming in a lake.
 Someone is walking outside.
 Someone is wearing brown shoes.
@@ -519,9 +519,9 @@ The animals is swimming in a body of water.
 The Apple is blue.
 The apple is in a bowl.
 The apple is peeled.
-The apple is red. 
 The apple is red.
-The are boats in the background. 
+The apple is red.
+The are boats in the background.
 The astronaut is holding the flag.
 The baby has blue eyes.
 The baby has brown eyes.
@@ -532,7 +532,7 @@ The ball is green and the dog is brown.
 The banana is brown.
 The beggar is wearing a hat.
 The bench has two arms.
-The bench is covered by leather. 
+The bench is covered by leather.
 The bench is grey.
 The bench is near the tree.
 The bicycle is being held by a man.
@@ -554,7 +554,7 @@ The bird is eating something.
 The bird is eating something.
 The bird is eating something.
 The bird is flying.
-The bird is flying. 
+The bird is flying.
 The bird is flying over the sea.
 The bird is near the water.
 The bird is not eating a fish.
@@ -564,8 +564,8 @@ The bird is not flying.
 The bird is on the ground.
 The bird is perched on a tree.
 The bird is spreading its wings.
-The bird is standing on a dolphin. 
-The bird is standing on the pig. 
+The bird is standing on a dolphin.
+The bird is standing on the pig.
 The bird is white with a black bill.
 The birds are looking at each other.
 The birds are not touching each other.
@@ -575,7 +575,7 @@ The black-and-white bird is sitting on a spruce.
 The black girl has a white dress.
 The black mouse has yellow eyes.
 The blonde bride is playing guitar.
-The boat floats on the pond.	
+The boat floats on the pond.
 The body of cassowary is green.
 The bold eagle has a black head.
 The book is closed.
@@ -587,7 +587,7 @@ The bowls with food are placed on an orange piece of paper.
 The bowl with milk is standing on a table.
 The boy caught a fish.
 The boy has a blue cap.
-The boy has blonde hair. 
+The boy has blonde hair.
 The boy holds a cat.
 The boy is covered in dirt.
 The boy is driving a car.
@@ -612,10 +612,10 @@ The boy is standing next to his bicycle.
 The boy is standing next to his bike.
 The boy is sunbathing at the beach.
 The boy is touching a fence.
-The boy is touching the log. 
+The boy is touching the log.
 The boy is walking on the highway.
 The boy is washing the car with a hose.
-The boy is wearing a blue coat. 
+The boy is wearing a blue coat.
 The boy is wearing a blue jacket.
 The boy is wearing a green jumper.
 The boy is wearing a red cap.
@@ -628,9 +628,9 @@ The boy washes a green car.
 The boy washes the blue car.
 The boy wears a green helmet.
 The boy wears an orange helmet.
-The boy wears a pair of long pants. 
+The boy wears a pair of long pants.
 The boy wears a red coat.
-The boy wears a striped shirt. 
+The boy wears a striped shirt.
 The boy wears blue shorts.
 The boy wears brown pants.
 the boy wears white pants.
@@ -651,7 +651,7 @@ The candle is lit.
 The candle is not burning.
 The candle is white.
 The car has a black antenna.
-The car has a black roof. 
+The car has a black roof.
 The car has no antenna.
 The car is completely white.
 The car is purple.
@@ -798,7 +798,7 @@ The dove is flying.
 The dove is sitting on a bench.
 The drums are blue and there is a microphone.
 The drums are red and a guitar is blue.
-The eggs are next to the mute swan. 
+The eggs are next to the mute swan.
 The eyes of the cat are closed.
 The eyes of the cat are open.
 The feather of the bald eagle is dark and grey.
@@ -851,30 +851,30 @@ The ground is black.
 The ground is grey.
 The guinea pig is on top of a red couch.
 The guinea pig is yellow.
-The guitar is far from the log. 
-The guitar lean on a log. 
+The guitar is far from the log.
+The guitar lean on a log.
 The guy has black hair.
 The guy has blond hair.
 The hat is on the cat.
 The head of a bald eagle black.
 The head of the bald eagle is white.
 The hedgehog stands next to a pheasant.
-The heron is flying over the pond.	
+The heron is flying over the pond.
 The heron is on the nest.
 The honkers are grey.
 The honkers are under the water.
 The kid is cycling on the wall.
 The kid is wearing a blue shirt.
-The knife is cutting the bread. 
+The knife is cutting the bread.
 The knife is laying on the table.
 The lamp is off and there is no chair.
 The lamp is on and the napkins are red.
 The laptop is on the table.
 The lawn is blue.
 The lawn is green.
-The lipstick of the woman is red. 
+The lipstick of the woman is red.
 The liquid in the glass is white.
-The log is next to the bench. 
+The log is next to the bench.
 The man has a bicycle.
 The man has a white dog.
 The man has grey hair.
@@ -890,15 +890,15 @@ The man is near a lake.
 The man is not bold.
 The man is not wearing a hat.
 The man is petting a cow.
-The man is playing a accordion. 
+The man is playing a accordion.
 The man is standing next to his bicycle.
 The man is touching a white bird.
 The man is walking in a park.
 The man is wearing a pair of shades.
 The man is wearing glasses and the woman is wearing a red shirt.
 The man is wearing no shirt.
-The man sits in front of the suitcase. 
-The man wears a pair of blue pants. 
+The man sits in front of the suitcase.
+The man wears a pair of blue pants.
 The mat is on the grass.
 The men are swimming in the lake.
 The monkey has brown eyes.
@@ -915,12 +915,12 @@ The mouse is standing on the plate.
 The mouse is wearing a tie.
 The mute swan in in front of the honkers.
 The mute swan is in front of the ditch.
-The mute swan is not white. 
-The mute swan is on the water. 
+The mute swan is not white.
+The mute swan is on the water.
 The mute swan is white.
-The mute swan is white. 
+The mute swan is white.
 The mute swan is yellow.
-The mute swan stands on the nest. 
+The mute swan stands on the nest.
 The necktie is blue.
 The necktie is red.
 The nest is in the tree.
@@ -948,14 +948,14 @@ The piano is blue.
 The plates are empty.
 The rabbit is holding a carrot in its mouth.
 The rabbit is holding a carrot in its paws.
-There are five pigeons flying. 
+There are five pigeons flying.
 There are five young geese.
 There are flowers and there is a dog.
 There are flowers in the field.
 There are four bicycles.
 There are four cats and four bowls.
 There are four chairs and green plants.
-There are four eggs on the nest. 
+There are four eggs on the nest.
 There are four goslings.
 There are four sheep laying against a wall.
 There are knives on the table.
@@ -995,7 +995,7 @@ There are three ducks.
 There are three goats.
 There are three herons.
 There are three people in the water.
-There are three pheasants on the grass. 
+There are three pheasants on the grass.
 There are three storks.
 There are three swanlings.
 There are three yellow boots.
@@ -1003,7 +1003,7 @@ There are trees.
 There are trees and bushes.
 There are trees on the grass.
 There are two animals with green eyes.
-There are two apples hold by the woman. 
+There are two apples hold by the woman.
 There are two birds sitting on a green fence.
 There are two black cats sitting on a chair.
 There are two blue shirts and one red shirt.
@@ -1077,7 +1077,7 @@ There is a forest behind the bald eagle.
 There is a glass on the table.
 There is a gravel path.
 There is a green candle.
-There is a green parasol. 
+There is a green parasol.
 There is a green vase with pink flowers.
 There is a grey cat on an armchair.
 There is a gull sitting on a tree.
@@ -1092,7 +1092,7 @@ There is a lot of snow.
 There is a man standing on the street with black pants.
 There is a man with a hat in a field.
 There is a mouse with brown eyes eating sliced cucumbers.
-There is an american flag standing in the ground. 
+There is an american flag standing in the ground.
 There is a necklace.
 There is an empty glass on the table.
 There is an open guitar case.
@@ -1101,18 +1101,18 @@ There is an orange cat walking outside near a purple car.
 There is an osprey sitting in a tree.
 There is a painting with a cat on the wall.
 There is a pair of sandals near the chair.
-There is a picture in the suitcase. 
+There is a picture in the suitcase.
 There is a pigeon sitting in a tree.
 There is a red apple.
 There is a red backpack in the car.
-There is a red fruit on the table. 
+There is a red fruit on the table.
 There is a rock behind the bench.
 There is a sheep standing on the wall.
 There is a square table.
 There is a squirrel sitting in a tree.
 There is a street.
 There is a tern flying over the water.
-There is at least one bird flying. 
+There is at least one bird flying.
 There is a tree.
 There is a tree behind the violinist.
 There is a turtle on the back of the pig.
@@ -1140,8 +1140,8 @@ There is no grass.
 There is no picture on the wall.
 There is no snow.
 There is no wall.
-There is one astronaut in the picture. 
-There is one hedgehog. 
+There is one astronaut in the picture.
+There is one hedgehog.
 There is one stork.
 There is one swanling.
 There is one white duckling.
@@ -1159,7 +1159,7 @@ The roof is green.
 The sea and a bird.
 The shed is empty.
 The sheep are white and the dog is white.
-The shepherd is holding a staff. 
+The shepherd is holding a staff.
 The shepherd is holding a whip.
 The shirt of the boy is red.
 The sky is blue.
@@ -1198,16 +1198,16 @@ The white dog lays in the grass.
 The white dog sits in the grass.
 The woman calls.
 The woman eats a telephone.
-The woman faces to the man. 
+The woman faces to the man.
 The woman has a guitar.
-The woman has black hair. 
+The woman has black hair.
 The woman has brown hair.
 The woman has brown hair.
 The woman has no hat.
 The woman has short hair.
 The woman has two white dogs.
 The woman has white pants.
-The woman holds an apple and a pear. 
+The woman holds an apple and a pear.
 The woman is carrying a backpack.
 The woman is carrying no backpack.
 The woman is crying.
@@ -1236,7 +1236,7 @@ The woman is wearing sunglasses.
 The woman is writing a book.
 The woman reads the book.
 The woman's clothes are white.
-The woman wears a blue shirt. 
+The woman wears a blue shirt.
 Three boys are playing an accordion.
 Three boys are sitting in a car.
 Three cats are sitting on a newspaper.
@@ -1260,12 +1260,12 @@ Two black birds are sitting on a wire.
 Two black cats are walking in the grass.
 Two black horses are pull a red plough.
 Two boats float on a pond.
-Two boys and a dog. 
+Two boys and a dog.
 Two boys are playing a accordion.
 Two boys are playing outside.
 Two boys are running outside.
 Two boys are wearing a hat.
-Two boys are wearing a red hat. 
+Two boys are wearing a red hat.
 Two cats and a bouqet.
 Two cats and a guitar.
 Two cats, a piano and a bouqet.
@@ -1273,7 +1273,7 @@ Two cats are fighting.
 Two cats are looking at each other.
 Two cats are looking at each other.
 Two cats are lying on a couch.
-Two cats are lying on an armchair. 
+Two cats are lying on an armchair.
 Two cats are playing in the grass.
 Two cats are sitting next to each other.
 Two cats are sitting on a red chair in a blanket.
@@ -1287,14 +1287,14 @@ Two girls do a handstand on the beach.
 Two girls near a lake.
 Two girls with straight hair.
 Two gooses and a basin.
-Two green boots and a yellow jacket. 
+Two green boots and a yellow jacket.
 Two happy owls.
 Two horses are pulling a plough.
 Two horses are standing near a building.
 Two horses in the grass.
 Two kids are playing in the field.
 Two kids are walking in the nature.
-Two men and a green garden. 
+Two men and a green garden.
 Two men are playing music in the street.
 Two men are playing piano.
 Two men are playing soccer.
@@ -1304,7 +1304,7 @@ Two owls are standing in the desert.
 Two owls are standing on the grass.
 Two people are biking.
 Two people are walking in the snow.
-Two pheasant stands on the grass. 
+Two pheasant stands on the grass.
 Two pidgeons are next to each other.
 Two white cats and a window.
 Two white girls walk on a bridge.

@@ -24,6 +24,17 @@ iv(dcl,pl, lam(X,X)) --> [stare].
 iv(bse,_,  lam(X,X)) --> [stare].
 iv(psp,_,  lam(X,X)) --> [stared].
 
+iv(prp,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flying].
+iv(dcl,sg, lam(X,not(some(Y,s_supports(Y,X))))) --> [flies].
+iv(dcl,pl, lam(X,not(some(Y,s_supports(Y,X))))) --> [flying].
+iv(bse,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flew].
+iv(psp,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flown].
+
+iv(prp,_,  lam(X,some(Y,s_supports(Y,X)))) --> [standing].
+iv(dcl,sg, lam(X,some(Y,s_supports(Y,X)))) --> [stands].
+iv(dcl,pl, lam(X,some(Y,s_supports(Y,X)))) --> [stand].
+iv(bse,_,  lam(X,some(Y,s_supports(Y,X)))) --> [stood].
+iv(psp,_,  lam(X,some(Y,s_supports(Y,X)))) --> [stood].
 
 % transitive verbs
 %
@@ -51,7 +62,13 @@ tv(prp,_,  lam(P, lam(X,app(P,lam(Y,some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s
 tv(dcl,sg, lam(P, lam(X,app(P,lam(Y,some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))) --> [eats].
 tv(dcl,pl, lam(P, lam(X,app(P,lam(Y,some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))) --> [eat].
 tv(bse,_,  lam(P, lam(X,app(P,lam(Y,some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))) --> [ate].
-tv(psp,_,  llam(P, lam(X,app(P,lam(Y,some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))) --> [eaten].
+tv(psp,_,  lam(P, lam(X,app(P,lam(Y,some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))) --> [eaten].
+
+tv(prp,_,  lam(P,lam(X,app(P,lam(Y,s_near(X,Y)))))) --> [having].
+tv(dcl,sg, lam(P,lam(X,app(P,lam(Y,s_near(X,Y)))))) --> [has].
+tv(dcl,pl, lam(P,lam(X,app(P,lam(Y,s_near(X,Y)))))) --> [have].
+tv(bse,_,  lam(P,lam(X,app(P,lam(Y,s_near(X,Y)))))) --> [had].
+tv(psp,_,  lam(P,lam(X,app(P,lam(Y,s_near(X,Y)))))) --> [had].
 
 % ditransitive verbs
 %

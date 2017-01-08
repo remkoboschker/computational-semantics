@@ -32,6 +32,8 @@ vp1(pss,Num,lam(X,app(NP,app(TV,lam(Q,app(Q,X)))))) --> tv(psp,Num,TV), [by], np
 %
 av(Mood,Number,Tense,lam(F,F)) --> av0(Mood,Number,Tense).
 av(Mood,Number,Tense,lam(P,lam(X,not(app(P,X))))) --> av0(Mood,Number,Tense), [not].
+% is being; present progressive
+av(Mood,Number,Tense,lam(F,F)) --> av0(Mood, Number, Tense), av0(Tense,_,_).
 
 % noun phrases
 %
@@ -117,6 +119,7 @@ av0(dcl,pl,bse) --> [do].
 av0(dcl,sg,prp) --> [is].
 av0(dcl,sg,pss) --> [is].
 av0(prp,_, prp) --> [being].
+av0(pss,_, prp) --> [being].
 av0(psp,_, prp) --> [been].
 av0(dcl,pl,prp) --> [are].
 av0(dcl,pl,pss) --> [are].
