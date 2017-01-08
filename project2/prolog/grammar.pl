@@ -108,8 +108,10 @@ det(pl,_,  lam(P,lam(Q, all(X,imp(app(P,X),app(Q,X)))))) --> [all].
 % prepositions
 %
 prep0(lam(P,lam(Y,app(P,lam(X,s_supports(X,Y)))))) --> [on];[in].
-prep0(lam(P,lam(Y,app(P,lam(X,s_near(Y,X)))))) --> [with];[at].
+prep0(lam(P,lam(Y,app(P,lam(X,s_near(Y,X)))))) --> [with];[at];[next,to].
 prep0(lam(P,lam(Y,app(P,lam(X,s_part_of(Y,X)))))) --> [of].
+prep0(lam(P,lam(Y,app(P,lam(X,s_occludes(X,Y)))))) --> [behind].
+prep0(lam(P,lam(Y,app(P,lam(X,s_touches(X,Y)))))) --> [against].
 
 
 % auxiliary verbs

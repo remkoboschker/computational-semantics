@@ -6,23 +6,53 @@ iv(dcl,pl, lam(X,some(Y,and(n_mouth_1(Y),and(s_part_of(Y,X),a_open_1(Y)))))) -->
 iv(bse,_,  lam(X,some(Y,and(n_mouth_1(Y),and(s_part_of(Y,X),a_open_1(Y)))))) --> [smile].
 iv(psp,_,  lam(X,some(Y,and(n_mouth_1(Y),and(s_part_of(Y,X),a_open_1(Y)))))) --> [smiled].
 
-iv(prp,_,  lam(X,shine(X))) --> [shining].
-iv(dcl,sg, lam(X,X)) --> [shines].
-iv(dcl,pl, lam(X,X)) --> [shine].
-iv(bse,_,  lam(X,X)) --> [shine].
-iv(psp,_,  lam(X,X)) --> [shined].
+iv(prp,_,  lam(X,v_shine_1(X))) --> [shining].
+iv(dcl,sg, lam(X,v_shine_1(X))) --> [shines].
+iv(dcl,pl, lam(X,v_shine_1(X))) --> [shine].
+iv(bse,_,  lam(X,v_shine_1(X))) --> [shined].
+iv(psp,_,  lam(X,v_shine_1(X))) --> [shined].
 
-iv(prp,_,  lam(X,X)) --> [walking].
-iv(dcl,sg, lam(X,X)) --> [walks].
-iv(dcl,pl, lam(X,X)) --> [walk].
-iv(bse,_,  lam(X,X)) --> [walk].
-iv(psp,_,  lam(X,X)) --> [walked].
+iv(prp,_,  lam(X,v_walk_1(X))) --> [walking].
+iv(dcl,sg, lam(X,v_walk_1(X))) --> [walks].
+iv(dcl,pl, lam(X,v_walk_1(X))) --> [walk].
+iv(bse,_,  lam(X,v_walk_1(X))) --> [walked].
+iv(psp,_,  lam(X,v_walk_1(X))) --> [walked].
 
-iv(prp,_,  lam(X,stare(X))) --> [staring].
-iv(dcl,sg, lam(X,X)) --> [stares].
-iv(dcl,pl, lam(X,X)) --> [stare].
-iv(bse,_,  lam(X,X)) --> [stare].
-iv(psp,_,  lam(X,X)) --> [stared].
+iv(prp,_,  lam(X,v_stare_1(X))) --> [staring].
+iv(dcl,sg, lam(X,v_stare_1(X))) --> [stares].
+iv(dcl,pl, lam(X,v_stare_1(X))) --> [stare].
+iv(bse,_,  lam(X,v_stare_1(X))) --> [stared].
+iv(psp,_,  lam(X,v_stare_1(X))) --> [stared].
+
+iv(prp,_,  lam(X,v_look_1(X))) --> [looking].
+iv(dcl,sg, lam(X,v_look_1(X))) --> [looks].
+iv(dcl,pl, lam(X,v_look_1(X))) --> [look].
+iv(bse,_,  lam(X,v_look_1(X))) --> [looked].
+iv(psp,_,  lam(X,v_look_1(X))) --> [looked].
+
+iv(prp,_,  lam(X,v_be_3(X))) --> [being].
+iv(dcl,sg, lam(X,v_be_3(X))) --> [is].
+iv(dcl,pl, lam(X,v_be_3(X))) --> [are].
+iv(bse,_,  lam(X,v_be_3(X))) --> [were].
+iv(psp,_,  llam(X,v_be_3(X))) --> [been].
+
+iv(prp,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flying].
+iv(dcl,sg, lam(X,not(some(Y,s_supports(Y,X))))) --> [flies].
+iv(dcl,pl, lam(X,not(some(Y,s_supports(Y,X))))) --> [fly].
+iv(bse,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flew].
+iv(psp,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flown].
+
+iv(prp,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [leaning].
+iv(dcl,sg, lam(X,not(some(Y,s_supports(Y,X))))) --> [leans].
+iv(dcl,pl, lam(X,not(some(Y,s_supports(Y,X))))) --> [lean].
+iv(bse,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [leaned].
+iv(psp,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [leaned].
+
+iv(prp,_,  lam(X,some(Y,s_supports(Y,X)))) --> [standing].
+iv(dcl,sg, lam(X,some(Y,s_supports(Y,X)))) --> [stands].
+iv(dcl,pl, lam(X,some(Y,s_supports(Y,X)))) --> [stand].
+iv(bse,_,  lam(X,some(Y,s_supports(Y,X)))) --> [stood].
+iv(psp,_,  lam(X,some(Y,s_supports(Y,X)))) --> [stood].
 
 iv(prp,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flying].
 iv(dcl,sg, lam(X,not(some(Y,s_supports(Y,X))))) --> [flies].
@@ -30,11 +60,7 @@ iv(dcl,pl, lam(X,not(some(Y,s_supports(Y,X))))) --> [flying].
 iv(bse,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flew].
 iv(psp,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flown].
 
-iv(prp,_,  lam(X,some(Y,s_supports(Y,X)))) --> [standing].
-iv(dcl,sg, lam(X,some(Y,s_supports(Y,X)))) --> [stands].
-iv(dcl,pl, lam(X,some(Y,s_supports(Y,X)))) --> [stand].
-iv(bse,_,  lam(X,some(Y,s_supports(Y,X)))) --> [stood].
-iv(psp,_,  lam(X,some(Y,s_supports(Y,X)))) --> [stood].
+
 
 % transitive verbs
 %

@@ -1,4 +1,5 @@
 a0(a,  lam(P,lam(X,and(not(some(Y,s_supports(Y,X))),app(P,X))))) --> [flying].
+a0(a, lam(P,lam(X,and(v_bark_4(X),app(P,X))))) --> [barking].
 
 a0(a,  lam(P,lam(X,and(a_beige_1(X),app(P,X))))) --> [beige].
 a0(a,  lam(P,lam(X,and(a_black_1(X),app(P,X))))) --> [black].

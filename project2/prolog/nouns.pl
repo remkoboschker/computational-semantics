@@ -113,12 +113,13 @@ n0(sg,a,  lam(X,n_bed_1(X)))   --> [bed].
 n0(sg,a,  lam(X,n_bed_2(X)))   --> [bed].
 n0(sg,a,  lam(X,n_bedclothes_1(X)))   --> [bedclothes]; [bed, clothing]; [bedding].
 n0(sg,a,  lam(X,n_bedroom_furniture_1(X)))   --> [bedroom, furniture].
+n0(sg,a,  lam(X,n_beggar_1(X))) --> [beggar].
 n0(sg,a,  lam(X,n_belted_kingfisher_1(X)))   --> [belted, kingfisher]; ['Ceryle', alcyon].
 n0(sg,a,  lam(X,n_bench_1(X)))   --> [bench].
 n0(sg,a,  lam(X,n_berry_1(X)))   --> [berry].
 n0(sg,a,  lam(X,n_beverage_1(X)))   --> [beverage]; [drink]; [drinkable]; [potable].
 n0(sg,a,  lam(X,n_bicycle_1(X)))   --> [bicycle]; [bike]; [wheel]; [cycle].
-n0(sg,a,  lam(X,n_big_cat_1(X)))   --> [big, cat]; [cat].
+% n0(sg,a,  lam(X,n_big_cat_1(X)))   --> [big, cat]; [cat].
 n0(sg,a,  lam(X,n_binary_compound_1(X)))   --> [binary, compound].
 n0(sg,a,  lam(X,n_biological_group_1(X)))   --> [biological, group].
 n0(sg,a,  lam(X,n_biome_1(X)))   --> [biome].
