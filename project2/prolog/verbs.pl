@@ -1,5 +1,17 @@
 % intransitive verbs
 %
+iv(prp,_,  lam(X,and(v_sit_1(X)))) --> [sitting].
+iv(dcl,sg, lam(X,and(v_sit_1(X)))) --> [sits].
+iv(dcl,pl, lam(X,and(v_sit_1(X)))) --> [sit].
+iv(bse,_,  lam(X,and(v_sit_1(X)))) --> [sat].
+iv(psp,_,  lam(X,and(v_sit_1(X)))) --> [sat].
+
+iv(prp,_,  lam(X,and(v_fly_1(X)))) --> [flying].
+iv(dcl,sg, lam(X,and(v_fly_1(X)))) --> [flies].
+iv(dcl,pl, lam(X,and(v_fly_1(X)))) --> [fly].
+iv(bse,_,  lam(X,and(v_fly_1(X)))) --> [flew].
+iv(psp,_,  lam(X,and(v_fly_1(X)))) --> [flown].
+
 iv(prp,_,  lam(X,some(Y,and(n_mouth_1(Y),and(s_part_of(Y,X),a_open_1(Y)))))) --> [smiling].
 iv(dcl,sg, lam(X,some(Y,and(n_mouth_1(Y),and(s_part_of(Y,X),a_open_1(Y)))))) --> [smiles].
 iv(dcl,pl, lam(X,some(Y,and(n_mouth_1(Y),and(s_part_of(Y,X),a_open_1(Y)))))) --> [smile].

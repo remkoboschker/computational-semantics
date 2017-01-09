@@ -215,7 +215,7 @@ n0(sg,a,  lam(X,n_car_mirror_1(X)))   --> [car, mirror].
 n0(sg,a,  lam(X,n_carnivore_1(X)))   --> [carnivore].
 n0(sg,a,  lam(X,n_carrot_1(X)))   --> [carrot].
 n0(sg,a,  lam(X,n_cartilaginous_structure_1(X)))   --> [cartilaginous, structure].
-n0(sg,a,  lam(X,n_case_5(X)))   --> [case].
+n0(sg,a,  lam(X,n_case_5(X)))   --> [case];[guitar, case].
 n0(sg,a,  lam(X,n_cassowary_1(X)))   --> [cassowary].
 n0(sg,a,  lam(X,n_cat_1(X)))   --> [cat]; [true, cat].
 n0(sg,a,  lam(X,n_cat_food_1(X)))   --> [cat, food].
@@ -369,7 +369,7 @@ n0(sg,a,  lam(X,n_drum_1(X)))   --> [drum]; [membranophone]; [tympan].
 n0(sg,a,  lam(X,n_drumbeat_2(X)))   --> [drumbeat].
 n0(pl,_,  lam(X,n_drumbeat_2(X)))   --> [drumbeats].
 n0(sg,a,  lam(X,n_drygoods_1(X)))   --> [drygoods]; [soft, goods].
-n0(sg,a,  lam(X,n_duck_1(X)))   --> [duck].
+n0(sg,a,  lam(X,n_duck_1(X)))   --> [duck];[duckling].
 n0(pl,_,  lam(X,n_duck_1(X)))   --> [ducks].
 n0(sg,a,  lam(X,n_eagle_1(X)))   --> [bird,of, 'Jove'].
 n0(sg,an,  lam(X,n_eagle_1(X)))   --> [eagle].
@@ -493,6 +493,7 @@ n0(sg,a,  lam(X,n_geological_formation_1(X)))   --> [geological, formation]; [fo
 n0(sg,a,  lam(X,n_girl_1(X)))   --> [girl]; [miss]; [missy]; [young, lady]; [young, woman]; [fille].
 n0(sg,a,  lam(X,n_girl_2(X)))   --> [female, child]; [girl]; [little, girl].
 n0(sg,a,  lam(X,n_glass_2(X)))   --> [glass]; [drinking, glass].
+n0(sg,a,  lam(X,n_glass_1(X)))   --> [glass].
 n0(sg,a,  lam(X,n_glasses_1(X)))   --> [spectacles]; [specs]; [glasses].
 n0(sg,an,  lam(X,n_glasses_1(X)))   --> [eyeglasses].
 n0(sg,a,  lam(X,n_glassware_1(X)))   --> [glassware]; [glasswork].
@@ -1086,7 +1087,7 @@ n0(sg,a,  lam(X,n_supporting_structure_1(X)))   --> [supporting, structure].
 n0(sg,a,  lam(X,n_surf_1(X)))   --> [surf]; [breaker]; [breakers].
 n0(sg,a,  lam(X,n_surface_1(X)))   --> [surface].
 n0(sg,a,  lam(X,n_suspension_1(X)))   --> [suspension].
-n0(sg,a,  lam(X,n_swan_1(X)))   --> [swan].
+n0(sg,a,  lam(X,n_swan_1(X)))   --> [swan];[swanling].
 n0(sg,a,  lam(X,n_sweatband_2(X)))   --> [sweatband].
 n0(sg,a,  lam(X,n_sweater_1(X)))   --> [sweater]; [jumper].
 n0(sg,a,  lam(X,n_sweet_pepper_1(X)))   --> [sweet, pepper]; [bell, pepper]; [pimento]; [pimiento]; [paprika]; [sweet,pepper, plant]; ['Capsicum',annuum, grossum].
