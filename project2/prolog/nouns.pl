@@ -1037,7 +1037,7 @@ n0(sg,an, lam(X,n_ramp_1(X))) --> [incline].
 n0(pl,_,  lam(X,n_ramp_1(X)))   --> [ramps]; [inclines].
 n0(sg,a,  lam(X,n_ratite_1(X))) --> [ratite]; [ratite, bird]; [flightless, bird].
 n0(sg,a,  lam(X,n_receptacle_1(X))) --> [receptacle].
-n0(sg,a,  lam(X,n_recreational_vehicle_1(X))) --> [recreational, vehicle]; [rv]; [r.v.].
+n0(sg,a,  lam(X,n_recreational_vehicle_1(X))) --> [recreational, vehicle]; [rv]; ['r.v.'].
 n0(pl,_,  lam(X,a_red_1(X)))   --> [reds]; [reddishes]; [ruddies]; [blood-reds]; [carmines]; [cerises]; [cherries]; [cherry-reds]; [crimsons]; [rubies]; [ruby-reds]; [scarlets].
 n0(sg,a,  lam(X,n_red_1(X))) --> [red]; [redness].
 n0(sg,a,  lam(X,n_reddish_brown_1(X))) --> [reddish, brown]; [sepia]; [burnt, sienna]; [venetian, red]; [mahogany].
@@ -1391,8 +1391,8 @@ n0(sg,a,  lam(X,n_wing_1(X))) --> [wing].
 n0(pl,_,  lam(X,n_wing_1(X)))   --> [wings].
 n0(sg,a,  lam(X,n_wire_2(X))) --> [wire]; [conducting, wire].
 n0(pl,_,  lam(X,n_wire_2(X)))   --> [wires]; [conducting, wires].
-n0(sg,a,  lam(X,n_woman's_clothing_1(X))) --> [woman's, clothing].
-n0(pl,_,  lam(X,n_woman's_clothing_1(X)))   --> [woman's, clothings].
+n0(sg,a,  lam(X,'n_woman\'s_clothing_1'(X))) --> ['woman\'s', clothing].
+n0(pl,_,  lam(X,'n_woman\'s_clothing_1'(X)))   --> ['woman\'s', clothings].
 n0(sg,a,  lam(X,n_woman_1(X))) --> [woman].
 n0(sg,an, lam(X,n_woman_1(X))) --> [adult, female].
 n0(pl,_,  lam(X,n_woman_1(X)))   --> [women]; [adult, females].
