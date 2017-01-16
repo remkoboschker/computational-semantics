@@ -1,5 +1,17 @@
 % intransitive verbs
 %
+iv(prp,_,  lam(X,and(v_lie_2(X)))) --> [lying].
+iv(dcl,sg, lam(X,and(v_lie_2(X)))) --> [lies].
+iv(dcl,pl, lam(X,and(v_lie_2(X)))) --> [lie].
+iv(bse,_,  lam(X,and(v_lie_2(X)))) --> [lay].
+iv(psp,_,  lam(X,and(v_lie_2(X)))) --> [laid].
+
+iv(prp,_,  lam(X,and(v_swim_1(X)))) --> [swimming].
+iv(dcl,sg, lam(X,and(v_swim_1(X)))) --> [swims].
+iv(dcl,pl, lam(X,and(v_swim_1(X)))) --> [swim].
+iv(bse,_,  lam(X,and(v_swim_1(X)))) --> [swam].
+iv(psp,_,  lam(X,and(v_swim_1(X)))) --> [swum].
+
 iv(prp,_,  lam(X,and(v_sit_1(X)))) --> [sitting].
 iv(dcl,sg, lam(X,and(v_sit_1(X)))) --> [sits].
 iv(dcl,pl, lam(X,and(v_sit_1(X)))) --> [sit].
@@ -89,12 +101,11 @@ tv(dcl,pl, lam(P,lam(X,app(P,lam(Y,s_near(X,Y)))))) --> [chase].
 tv(bse,_,  lam(P,lam(X,app(P,lam(Y,s_near(X,Y)))))) --> [chased].
 tv(psp,_,  lam(P,lam(X,app(P,lam(Y,s_near(X,Y)))))) --> [chased].
 
-
-tv(prp,_,  lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kissing].
-tv(dcl,sg, lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kisses].
-tv(dcl,pl, lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kiss].
-tv(bse,_,  lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kissed].
-tv(psp,_,  lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kissed].
+tv(prp,_,  lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kissing];[touching];[tying].
+tv(dcl,sg, lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kisses];[touches];[ties].
+tv(dcl,pl, lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kiss];[touch];[tie].
+tv(bse,_,  lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kissed];[touched];[tied].
+tv(psp,_,  lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kissed];[touched];[tied].
 
 tv(prp,_,  lam(P, lam(X,app(P,lam(Y,some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))) --> [eating].
 tv(dcl,sg, lam(P, lam(X,app(P,lam(Y,some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))) --> [eats].

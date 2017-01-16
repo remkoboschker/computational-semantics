@@ -1225,6 +1225,8 @@ n0(pl,_,  lam(X,n_succulent_1(X)))   --> [succulents].
 n0(sg,a,  lam(X,n_sugar_bowl_1(X))) --> [sugar, bowl].
 n0(sg,a,  lam(X,n_suitcase_1(X))) --> [bag]; [traveling, bag]; [travelling, bag]; [grip]; [suitcase].
 n0(sg,a,  lam(X,n_sun_1(X))) --> [sun]; [sun].
+n0(sg,a,  lam(X,n_sunflower_1(X))) --> [sunflower].
+n0(pl,_,  lam(X,n_sunflower_1(X))) --> [sunflowers].
 n0(sg,a,  lam(X,n_sunglasses_1(X))) --> [sunglasses]; [dark, glasses]; [shades].
 n0(sg,a,  lam(X,n_support_10(X))) --> [support].
 n0(pl,_,  lam(X,n_support_10(X)))   --> [supports].
@@ -1417,3 +1419,5 @@ n0(sg,an, lam(X,n_young_1(X))) --> [offspring].
 n0(pl,_,  lam(X,n_young_1(X)))   --> [youngs]; [offsprings].
 n0(sg,a,  lam(X,n_young_bird_1(X))) --> [young, bird].
 n0(pl,_,  lam(X,n_young_bird_1(X)))   --> [young, birds].
+
+n0(_,_,lam(X,n_entity_1(X))) --> [_].

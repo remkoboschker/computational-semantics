@@ -40,7 +40,7 @@ av(Mood,Number,Tense,lam(F,F)) --> av0(Mood, Number, Tense), av0(Tense,_,_).
 % noun phrases
 %
 np(Num,Sem) --> np1(Num,Sem).
-np(Num,lam(P,app(app(Sem,app(NP1,P)),app(NP2,P)))) --> np1(Num,NP1), conj(Sem), np(Num,NP2).
+np(pl,lam(P,app(app(Sem,app(NP1,P)),app(NP2,P)))) --> np1(_,NP1), conj(Sem), np(_,NP2). %a conjuction must always be plural
 
 np1(Num,app(Det,N)) --> det(Num,Vowel,Det), n2(Num,Vowel,N).
 np1(Num,app(app(Sem,app(Det,N1)),N2)) --> det(Num,Vowel,Det), n2(Num,Vowel,N1), poss(Sem), n2(Num,Vowel,N2).
@@ -107,11 +107,13 @@ det(_   ,_,  lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [].
 det(pl,_,  lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [several].
 det(pl,_,  lam(P,lam(Q, all(X,imp(app(P,X),app(Q,X)))))) --> [all].
 det(sg,_,  lam(P,lam(Q,some(X,and(and(app(P,X),app(Q,X)),all(Y,eq(X,Y))))))) --> [one].
+det(pl,_,  lam(P,lam(Q,some(X,some(Y,and(and(and(and(and(app(P,X),app(Q,X)),app(P,Y)),app(Q,Y)),not(eq,X,Y)),all(Z,imp(and(app(P,Z),app(Q,Z)),not(or(eq(Z,X),eq(Z,Y))))))))))) --> [two].
 
 % prepositions
 %
 prep0(lam(P,lam(Y,app(P,lam(X,s_supports(X,Y)))))) --> [on];[in].
-prep0(lam(P,lam(Y,app(P,lam(X,s_near(Y,X)))))) --> [with];[at];[next,to].
+prep0(lam(P,lam(Y,app(P,lam(X,s_near(Y,X)))))) --> [with];[at];[next,to];[near].
+prep0(lam(P,lam(Y,not(app(P,lam(X,s_near(Y,X))))))) --> [without].
 prep0(lam(P,lam(Y,app(P,lam(X,s_part_of(Y,X)))))) --> [of].
 prep0(lam(P,lam(Y,app(P,lam(X,s_occludes(X,Y)))))) --> [behind].
 prep0(lam(P,lam(Y,app(P,lam(X,s_touches(X,Y)))))) --> [against].

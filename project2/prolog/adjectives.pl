@@ -1,6 +1,5 @@
 a0(a,  lam(P,lam(X,and(not(some(Y,s_supports(Y,X))),app(P,X))))) --> [flying].
 a0(a, lam(P,lam(X,and(v_bark_4(X),app(P,X))))) --> [barking].
-
 a0(a,  lam(P,lam(X,and(a_beige_1(X),app(P,X))))) --> [beige].
 a0(a,  lam(P,lam(X,and(a_black_1(X),app(P,X))))) --> [black].
 a0(a,  lam(P,lam(X,and(a_black_2(X),app(P,X))))) --> [black].
@@ -40,6 +39,7 @@ a0(a,  lam(P,lam(X,and(a_shaven_1(X),app(P,X))))) --> [shaven]; [shaved].
 a0(a,  lam(P,lam(X,and(a_short_2(X),app(P,X))))) --> [short].
 a0(a,  lam(P,lam(X,and(a_silver_3(X),app(P,X))))) --> [silver]; [silvery]; [silverish].
 a0(a,  lam(P,lam(X,and(a_square_1(X),app(P,X))))) --> [square].
+a0(a,  lam(P,lam(X,and(a_stuffed_1(X),app(P,X))))) --> [stuffed].
 a0(an, lam(P,lam(X,and(a_silver_3(X),app(P,X))))) --> [argent].
 a0(a,  lam(P,lam(X,and(a_spotted_1(X),app(P,X))))) --> [patched]; [spotty]; [spotted].
 a0(a,  lam(P,lam(X,and(a_stone_1(X),app(P,X))))) --> [stone].
