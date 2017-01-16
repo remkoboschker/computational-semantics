@@ -3,8 +3,8 @@
 s(app(PT,app(NP,lam(X,some(Y,eq(Y,X)))))) --> np(_,NP), punct(PT).
 s(app(PT,app(NP,VP))) --> np(Num,NP), vp(dcl,Num,VP), punct(PT).
 s(app(PT,app(NP,app(AV,VP)))) --> [there], av(dcl,Num,prp,AV), np(Num,NP), vp(prp,Num,VP), punct(PT).%I don't like this, because in "there is a necklace", "is" isn't an av
-s(app(PT,app(NP,lam(X,some(Y,eq(Y,X)))))) --> [there], [is],  np(sg,NP), punct(PT).%there is a single thing
-s(app(PT,app(NP,lam(X,some(Y,not(eq(X,Y))))))) --> [there], [are],  np(pl,NP), punct(PT).%there are a multiple things
+s(app(PT,app(NP,lam(X,some(Y,eq(Y,X)))))) --> [there, is],  np(sg,NP), punct(PT).%there is a single thing
+s(app(PT,app(NP,lam(X,some(Y,not(eq(X,Y))))))) --> [there, are],  np(pl,NP), punct(PT).%there are a multiple things
 
 % punctuation
 %
@@ -74,7 +74,6 @@ pp(Sem) --> pp1(Sem).
 pp(lam(X,app(app(Sem,app(P1,X)),app(P2,X)))) --> pp1(P1), conj(Sem), pp(P2).
 
 pp1(app(P,NP)) --> prep(P), np(_,NP).
-pp1(app(P,N)) --> prep(P), n2(_,_,N).%in a pp nouns may not have a determniner ("with red glass")
 
 % relative pronouns
 %
@@ -104,7 +103,7 @@ det(sg,a,  lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [a].
 det(sg,an, lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [an].
 det(sg,_,  lam(P,lam(Q, and(some(Y,app(P,Y)),all(X,imp(app(P,X),app(Q,X))))))) --> [every];[each].
 det(_ ,_,  lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [the];[some].
-det(pl,_,  lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [].
+det(_   ,_,  lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [].
 det(pl,_,  lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [several].
 det(pl,_,  lam(P,lam(Q, all(X,imp(app(P,X),app(Q,X)))))) --> [all].
 det(sg,_,  lam(P,lam(Q,some(X,and(and(app(P,X),app(Q,X)),all(Y,eq(X,Y))))))) --> [one].
