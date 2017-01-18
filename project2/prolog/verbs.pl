@@ -91,7 +91,6 @@ iv(bse,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flew].
 iv(psp,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flown].
 
 
-
 % transitive verbs
 %
 tv(prp,_,  lam(P,lam(X,app(P,lam(Y,s_supports(Y,X)))))) --> [riding].

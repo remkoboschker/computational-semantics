@@ -3,7 +3,7 @@ import os
 import sys
 from nltk import word_tokenize
 from nltk.corpus import wordnet as wn
-from nltk.tag import StandfordPOSTagger
+from nltk.tag import StanfordPOSTagger
 _path_to_model = './stanford-postagger-2014-08-27/models/english-bidirectional-distsim.tagger'
 _path_to_jar ='./stanford-postagger-2014-08-27/stanford-postagger.jar'
 
@@ -63,7 +63,7 @@ for line in sys.stdin:
 	if line == '\n': break
 	tokenized = word_tokenize(line)
 	# Stanford POSTagger
-	postagger = POSTagger(path_to_model, _path_to_jar)
+	postagger = StanfordPOSTagger(_path_to_model, _path_to_jar)
 	POS = postagger.tag(tokenized)
 
 	# Tuples = (index, ngram)
