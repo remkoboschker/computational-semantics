@@ -126,8 +126,6 @@ av0(dcl,sg,bse) --> [does].
 av0(dcl,pl,bse) --> [do].
 av0(dcl,sg,prp) --> [is].
 av0(dcl,sg,pss) --> [is].
-% is parked
-av0(dcl,sg,psp) --> [is].
 av0(prp,_, prp) --> [being].
 av0(pss,_, prp) --> [being].
 av0(psp,_, prp) --> [been].

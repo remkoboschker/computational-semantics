@@ -1,3 +1,5 @@
+% nouns
+%
 n0(sg,an, lam(X,n_abstraction_6(X))) --> [abstraction]; [abstract, entity].
 n0(pl,_,  lam(X,n_abstraction_6(X)))   --> [abstractions]; [abstract, entities].
 n0(sg,a,  lam(X,n_accordion_1(X))) --> [piano, accordion]; [squeeze, box].
@@ -240,7 +242,7 @@ n0(sg,a,  lam(X,n_carnivore_1(X))) --> [carnivore].
 n0(pl,_,  lam(X,n_carnivore_1(X)))   --> [carnivores].
 n0(sg,a,  lam(X,n_carrot_1(X))) --> [carrot].
 n0(sg,a,  lam(X,n_cartilaginous_structure_1(X))) --> [cartilaginous, structure].
-n0(sg,a,  lam(X,n_case_5(X))) --> [case]; [guitar, case].
+n0(sg,a,  lam(X,n_case_5(X))) --> [case].
 n0(sg,a,  lam(X,n_cassowary_1(X))) --> [cassowary].
 n0(sg,a,  lam(X,n_cat_1(X))) --> [cat]; [true, cat].
 n0(pl,_,  lam(X,n_cat_1(X)))   --> [cats]; [true, cats].
@@ -411,7 +413,7 @@ n0(sg,a,  lam(X,n_drumbeat_2(X))) --> [drumbeat].
 n0(pl,_,  lam(X,n_drumbeat_2(X)))   --> [drumbeats].
 n0(sg,a,  lam(X,n_drygoods_1(X))) --> [drygoods]; [soft, goods].
 n0(pl,_,  lam(X,n_drygoods_1(X)))   --> [drygoodses]; [soft, goodses].
-n0(sg,a,  lam(X,n_duck_1(X))) --> [duck]; [duckling].
+n0(sg,a,  lam(X,n_duck_1(X))) --> [duck].
 n0(pl,_,  lam(X,n_duck_1(X)))   --> [ducks].
 n0(sg,a,  lam(X,n_eagle_1(X))) --> [bird, of, jove].
 n0(sg,an, lam(X,n_eagle_1(X))) --> [eagle].
@@ -1225,8 +1227,6 @@ n0(pl,_,  lam(X,n_succulent_1(X)))   --> [succulents].
 n0(sg,a,  lam(X,n_sugar_bowl_1(X))) --> [sugar, bowl].
 n0(sg,a,  lam(X,n_suitcase_1(X))) --> [bag]; [traveling, bag]; [travelling, bag]; [grip]; [suitcase].
 n0(sg,a,  lam(X,n_sun_1(X))) --> [sun]; [sun].
-n0(sg,a,  lam(X,n_sunflower_1(X))) --> [sunflower].
-n0(pl,_,  lam(X,n_sunflower_1(X))) --> [sunflowers].
 n0(sg,a,  lam(X,n_sunglasses_1(X))) --> [sunglasses]; [dark, glasses]; [shades].
 n0(sg,a,  lam(X,n_support_10(X))) --> [support].
 n0(pl,_,  lam(X,n_support_10(X)))   --> [supports].
@@ -1235,7 +1235,7 @@ n0(pl,_,  lam(X,n_supporting_structure_1(X)))   --> [supporting, structures].
 n0(sg,a,  lam(X,n_surf_1(X))) --> [surf]; [breaker]; [breakers].
 n0(sg,a,  lam(X,n_surface_1(X))) --> [surface].
 n0(sg,a,  lam(X,n_suspension_1(X))) --> [suspension].
-n0(sg,a,  lam(X,n_swan_1(X))) --> [swan]; [swanling].
+n0(sg,a,  lam(X,n_swan_1(X))) --> [swan].
 n0(pl,_,  lam(X,n_swan_1(X)))   --> [swans].
 n0(sg,a,  lam(X,n_sweatband_2(X))) --> [sweatband].
 n0(sg,a,  lam(X,n_sweater_1(X))) --> [sweater]; [jumper].

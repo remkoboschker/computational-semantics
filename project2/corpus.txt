@@ -1,3 +1,71 @@
+A beagle is drinking.
+The bowl is holding water.
+The bowl is empty.
+The dog is a chihuahua.
+All chairs are striped.
+A seagull is flying.
+Two chairs are on the beach.
+The beach is white.
+A teaspoon is on the saucer.
+Steam is coming from the coffee.
+The cup is holding tea.
+The table is made of metal.
+The girl is eating noodles.
+The girl is using chopsticks.
+The girl is looking at food.
+The bowl is green.
+The boy is wearing a yellow undershirt.
+The boy is holding a ball.
+The child is holding two balls.
+The boy is wearing a red shirt.
+A chihuahua is drinking water.
+The water is in a bowl.
+The chihuahua is in the water.
+The bowl is made of wood.
+A chair is red.
+Two chairs are on the lawn.
+Two chairs are red.
+A chair is on the stairs.
+Some water is in a glass.
+A cat is eating food.
+There is a bottle of water.
+A cat is drinking water.
+Two cats on a skateboard.
+The skateboard has yellow wheels.
+A black cat is on a skateboard.
+Two cats are on two skateboards.
+The sun is shining in the desert.
+A car is in the desert.
+A blue car is in the desert.
+Two persons are running in the desert.
+There are some white planters.
+A cactus is on a table.
+A cactus is in a black planter.
+There are five cactuses on a table.
+A boy is kissing a dolphin.
+A dolphin is in the water.
+A boy is kissing a horse.
+There are two dolphins and a boy.
+Not all bottles are brown.
+A hand is on the table.
+The pigeon is drinking beer.
+All glasses are empty.
+The glass is not empty.
+A woman is wearing a ring.
+A woman is holding two drinks.
+A ring is on the table.
+The woman in the pink dress is smiling.
+A glass contains an orange drink.
+All women have a blue dress.
+A woman has blond hair.
+Some dogs are playing in the surf.
+All dogs are on the beach.
+Five dogs are in the surf.
+The sea is green.
+A red barn is standing on a green field.
+A black car is parked next to a fence.
+A green field is covered with flowers.
+A car is parked in a red barn.
 A baby is eating a melon.
 A baby is staring at a melon.
 A bald eagle has a yellow claw.
