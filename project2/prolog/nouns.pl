@@ -1484,8 +1484,8 @@ n0(sg,a,  lam(X,n_ratite_1(X))) --> [ratite]; [ratite, bird]; [flightless, bird]
 n0(pl,_,  lam(X,n_ratite_1(X)))   --> [ratites]; [ratite, birds]; [flightless, birds].
 n0(sg,a,  lam(X,n_receptacle_1(X))) --> [receptacle].
 n0(pl,_,  lam(X,n_receptacle_1(X)))   --> [receptacles].
-n0(sg,a,  lam(X,n_recreational_vehicle_1(X))) --> [recreational, vehicle]; [rv]; [r.v.].
-n0(pl,_,  lam(X,n_recreational_vehicle_1(X)))   --> [recreational, vehicles]; [rvs]; [r.v.s].
+n0(sg,a,  lam(X,n_recreational_vehicle_1(X))) --> [recreational, vehicle]; [rv]; ['r.v.'].
+n0(pl,_,  lam(X,n_recreational_vehicle_1(X)))   --> [recreational, vehicles]; [rvs]; ['r.v.\'s'].
 n0(pl,_,  lam(X,a_red-grey_1(X)))   --> [red-greys]; [red-grays]; [reddish-greys]; [reddish-grays].
 n0(pl,_,  lam(X,a_red_1(X)))   --> [reds]; [reddishes]; [ruddies]; [blood-reds]; [carmines]; [cerises]; [cherries]; [cherry-reds]; [crimsons]; [rubies]; [ruby-reds]; [scarlets].
 n0(sg,a,  lam(X,n_red_1(X))) --> [red]; [redness].
@@ -1988,8 +1988,8 @@ n0(sg,a,  lam(X,n_wing_1(X))) --> [wing].
 n0(pl,_,  lam(X,n_wing_1(X)))   --> [wings].
 n0(sg,a,  lam(X,n_wire_2(X))) --> [wire]; [conducting, wire].
 n0(pl,_,  lam(X,n_wire_2(X)))   --> [wires]; [conducting, wires].
-n0(sg,a,  lam(X,n_woman's_clothing_1(X))) --> [woman's, clothing].
-n0(pl,_,  lam(X,n_woman's_clothing_1(X)))   --> [woman's, clothings].
+n0(sg,a,  lam(X,'n_woman\'s_clothing_1'(X))) --> ['woman\'s', clothing].
+n0(pl,_,  lam(X,'n_woman\'s_clothing_1'(X)))   --> ['woman\'s', clothings].
 n0(sg,a,  lam(X,n_woman_1(X))) --> [woman].
 n0(sg,an, lam(X,n_woman_1(X))) --> [adult, female].
 n0(pl,_,  lam(X,n_woman_1(X)))   --> [women]; [adult, females].
@@ -2024,5 +2024,3 @@ n0(sg,an, lam(X,n_young_1(X))) --> [offspring].
 n0(pl,_,  lam(X,n_young_1(X)))   --> [youngs]; [offsprings].
 n0(sg,a,  lam(X,n_young_bird_1(X))) --> [young, bird].
 n0(pl,_,  lam(X,n_young_bird_1(X)))   --> [young, birds].
-
-n0(_,_,lam(X,n_entity_1(X))) --> [_].
