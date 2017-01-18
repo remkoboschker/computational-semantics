@@ -21,6 +21,7 @@ vp(Mood,Num,lam(X,app(app(Sem,app(VP1,X)),app(VP2,X)))) --> vp1(Mood,Num,VP1), c
 vp1(Tense,Num,Sem) --> iv(Tense,Num,Sem).
 vp1(Tense,Num,app(TV,NP)) --> tv(Tense,Num,TV), np(_,NP).
 vp1(Tense,Num,app(AV,IV)) --> av(Tense,Num,prp,AV), iv(prp,Num,IV).
+vp1(Tense,Num,app(AV,IV)) --> av(Tense,Num,psp,AV), iv(psp,Num,IV).
 vp1(Tense,Num,app(app(DV,NP1),NP2)) --> dv(Tense,Num,DV), np(_,NP1), np(_,NP2).
 vp1(Tense,Num,app(AV,app(A,lam(X,n_thing_12(X))))) --> av(Tense,Num,prp,AV), a(_,A).
 
@@ -125,6 +126,8 @@ av0(dcl,sg,bse) --> [does].
 av0(dcl,pl,bse) --> [do].
 av0(dcl,sg,prp) --> [is].
 av0(dcl,sg,pss) --> [is].
+% is parked
+av0(dcl,sg,psp) --> [is].
 av0(prp,_, prp) --> [being].
 av0(pss,_, prp) --> [being].
 av0(psp,_, prp) --> [been].

@@ -3,6 +3,7 @@ a0(a, lam(P,lam(X,and(v_bark_4(X),app(P,X))))) --> [barking].
 a0(a,  lam(P,lam(X,and(a_beige_1(X),app(P,X))))) --> [beige].
 a0(a,  lam(P,lam(X,and(a_black_1(X),app(P,X))))) --> [black].
 a0(a,  lam(P,lam(X,and(a_black_2(X),app(P,X))))) --> [black].
+a0(a,  lam(P,lam(X,and('a_black-and-white_1(X)',app(P,X))))) --> [black,-,and,-,white].
 a0(a,  lam(P,lam(X,and(a_blonde_1(X),app(P,X))))) --> [blond]; [blonde]; [light-haired].
 a0(a,  lam(P,lam(X,and(a_blue_1(X),app(P,X))))) --> [blue]; [bluish]; [blueish].
 a0(a,  lam(P,lam(X,and(a_blurry_1(X),app(P,X))))) --> [bleary]; [blurred]; [blurry]; [foggy]; [fuzzy]; [hazy]; [muzzy].
