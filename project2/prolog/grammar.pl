@@ -107,8 +107,34 @@ det(_ ,_,  lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [the];[some].
 det(_   ,_,  lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [].
 det(pl,_,  lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [several].
 det(pl,_,  lam(P,lam(Q, all(X,imp(app(P,X),app(Q,X)))))) --> [all].
-det(sg,_,  lam(P,lam(Q,some(X,and(and(app(P,X),app(Q,X)),all(Y,eq(X,Y))))))) --> [one].
-det(pl,_,  lam(P,lam(Q,some(X,some(Y,and(and(and(and(and(app(P,X),app(Q,X)),app(P,Y)),app(Q,Y)),not(eq,X,Y)),all(Z,imp(and(app(P,Z),app(Q,Z)),not(or(eq(Z,X),eq(Z,Y))))))))))) --> [two].
+
+det(pl,_,  lam(P,lam(Q,some(X,some(Y,and(and(and(and(app(P,X),app(Q,X)),app(P,Y)),app(Q,Y)),not(eq,X,Y))))))) --> [two].
+
+det(sg,_,  lam(P,lam(Q,some(X,and(and(app(P,X),app(Q,X)),all(Y,eq(X,Y))))))) --> [exactly,one].
+det(pl,_,  lam(P,lam(Q,some(X,some(Y,and(and(and(and(and(app(P,X),app(Q,X)),app(P,Y)),app(Q,Y)),not(eq,X,Y)),all(Z,imp(and(app(P,Z),app(Q,Z)),not(or(eq(Z,X),eq(Z,Y))))))))))) --> [exactly,two].
+
+% numericals
+%
+det(sg,_,S) --> [one],   {num(1,S)}.
+det(pl,_,S) --> [two],   {num(2,S)}.
+det(pl,_,S) --> [three], {num(3,S)}.
+det(pl,_,S) --> [four],  {num(4,S)}.
+det(pl,_,S) --> [five],  {num(5,S)}.
+det(pl,_,S) --> [six],   {num(6,S)}.
+det(pl,_,S) --> [seven], {num(7,S)}.
+det(pl,_,S) --> [eight], {num(8,S)}.
+det(pl,_,S) --> [nine],  {num(9,S)}.
+det(pl,_,S) --> [ten],   {num(10,S)}.
+
+num2([X],Prev,P,Q,   lam(P,lam(Q,some(X,and(and(app(P,X),app(Q,X)),not(eq(X,Prev))))))). %one
+num2([X|T],Prev,P,Q, lam(P,lam(Q,some(X,and(and(and(and(app(P,X),app(Q,X))),app(app(Rest,P),Q)),not(eq(X,Prev))))))) :- num2(T,X,P,Q,Rest).%two
+num1([X|T], lam(P,lam(Q,some(X,and(and(and(app(P,X),app(Q,X))),app(app(Rest,P),Q)))))) :- num2(T,X,_,_,Rest).
+
+ll(0,[]) :- !.%create a List with a set Length (and anonymous elements)
+ll(Num,[_|L]) :- N1 is Num-1, ll(N1,L).
+
+num(1,lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))).
+num(Num,S) :- ll(Num,L), num1(L,S).
 
 % prepositions
 %
