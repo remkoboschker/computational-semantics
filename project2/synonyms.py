@@ -140,7 +140,7 @@ def loadModel(path):
 		grounds = splitAsList(stripped[2],'(',')')
 	debug(grounds)
 	return(objects,reldict,ignoredRels,grounds)
-	
+
 def pluralize(singular):
 	"""Return plural form of given lowercase singular word (English only). Based on
 	ActiveState recipe http://code.activestate.com/recipes/577781-pluralize-word-convert-singular-word-to-its-plural/  """
@@ -164,6 +164,9 @@ def pluralize(singular):
 					suffix = 'ses'
 			else:
 				suffix = 'es'
+		elif singular[-1] == 'x':
+			root = singular
+			suffix = 'es'
 		elif singular[-2:] in ('ch', 'sh'):
 			suffix = 'es'
 		else:
@@ -190,7 +193,7 @@ for path in sys.stdin:
 		printnames = True
 	else:
 		files = [path]
-	
+
 	# Object list to prevent repetition of objects in lexicon
 	checkObj = []
 	checkPlurals = []
@@ -201,26 +204,26 @@ for path in sys.stdin:
 			if printnames or not sys.stdin.isatty(): print(filename)
 			print('Working...')
 			(os,rel,ign,grs) = loadModel(filename)
-			
+
 			# Adds nouns and synonyms to lexicon
 			objects = [obj for obj in rel.keys()]
 			for obj in objects:
 				nnLst = []
 				plLst = []
-				adjLst = []			
+				adjLst = []
 				if obj not in checkObj:
 					# arm.n.01 --> n_arm_1
 					objTk = obj.split('.')
 					objLex = ('_').join([objTk[1],objTk[0].lower(),str(int(objTk[2]))])
 					checkObj.append(obj)
-					
+
 					ss = wn.synset(obj)
 					synonyms = [s.lower() for s in ss.lemma_names()]
 					for i, s in enumerate(synonyms):
 						multiple_words = s.split('_')
 						if len(multiple_words) > 1:
 							synonyms[i] = ', '.join(multiple_words)
-							
+
 					aLst = ('; ').join(['['+a+']' for a in synonyms if a[0].lower() not in vowels])+'.'
 					anLst = ('; ').join(['['+an+']' for an in synonyms if an[0].lower() in vowels])+'.'
 					if objTk[1] == 'n':
@@ -228,8 +231,8 @@ for path in sys.stdin:
 						lexSgAnString = 'n0(sg,an, lam(X,'+ objLex + '(X))) --> ' + anLst +'\n'
 						if len(aLst) > 1:
 							nnLst.append(lexSgAString)
-						if len(anLst) > 1:	
-							nnLst.append(lexSgAnString)	
+						if len(anLst) > 1:
+							nnLst.append(lexSgAnString)
 						nnDict[obj.lower()] = [nnLst]
 					elif objTk[1] == 'a':
 						lexSgAString = 'a0(a,  lam(P,lam(X,and(' + objLex + '(X),app(P,X))))) --> ' + aLst +'\n'
@@ -237,33 +240,32 @@ for path in sys.stdin:
 						if len(aLst) > 1:
 							adjLst.append(lexSgAString)
 						if len(anLst) > 1:
-							adjLst.append(lexSgAnString)  
+							adjLst.append(lexSgAnString)
 						if obj not in adjDict:
 							adjDict[obj.lower()] = adjLst
 				if obj not in checkPlurals:
-					if len(rel[obj]) > 1:
-						objTk = obj.split('.')
-						objLex = ('_').join([objTk[1],objTk[0].lower(),str(int(objTk[2]))])
-						checkPlurals.append(obj)
-						ss = wn.synset(obj)
-						synonyms = [s.lower() for s in ss.lemma_names()]
-						synPlLst = []
-						for i, s in enumerate(synonyms):
-							plural = pluralize(s)
-							multiple_words = plural.split('_')
-							if len(multiple_words) > 1:
-								plural = '[' + ', '.join(multiple_words) + ']'
-							else:
-								plural = '[' + pluralize(s) + ']'
-							synPlLst.append(plural)
-						plurals = ('; ').join(synPlLst)+'.' 
-						pluralLex = 'n0(pl,_,  lam(X,' + objLex + '(X)))   --> ' + plurals + '\n'
-						plLst.append(pluralLex)
-						if obj not in nnDict:
-							nnDict[obj.lower()] = [nnLst, plLst]
+					objTk = obj.split('.')
+					objLex = ('_').join([objTk[1],objTk[0].lower(),str(int(objTk[2]))])
+					checkPlurals.append(obj)
+					ss = wn.synset(obj)
+					synonyms = [s.lower() for s in ss.lemma_names()]
+					synPlLst = []
+					for i, s in enumerate(synonyms):
+						plural = pluralize(s)
+						multiple_words = plural.split('_')
+						if len(multiple_words) > 1:
+							plural = '[' + ', '.join(multiple_words) + ']'
 						else:
-							nnDict[obj.lower()].extend(plLst)
-					 
+							plural = '[' + pluralize(s) + ']'
+						synPlLst.append(plural)
+					plurals = ('; ').join(synPlLst)+'.'
+					pluralLex = 'n0(pl,_,  lam(X,' + objLex + '(X)))   --> ' + plurals + '\n'
+					plLst.append(pluralLex)
+					if obj not in nnDict:
+						nnDict[obj.lower()] = [nnLst, plLst]
+					else:
+						nnDict[obj.lower()].extend(plLst)
+
 		except WordNetError as e:
 			print('ERROR OPENING MODEL!')
 			print(e)

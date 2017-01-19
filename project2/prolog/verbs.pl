@@ -64,7 +64,7 @@ iv(prp,_,  lam(X,v_be_3(X))) --> [being].
 iv(dcl,sg, lam(X,v_be_3(X))) --> [is].
 iv(dcl,pl, lam(X,v_be_3(X))) --> [are].
 iv(bse,_,  lam(X,v_be_3(X))) --> [were].
-iv(psp,_,  llam(X,v_be_3(X))) --> [been].
+iv(psp,_,  lam(X,v_be_3(X))) --> [been].
 
 iv(prp,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flying].
 iv(dcl,sg, lam(X,not(some(Y,s_supports(Y,X))))) --> [flies].
@@ -86,11 +86,17 @@ iv(psp,_,  lam(X,some(Y,s_supports(Y,X)))) --> [stood].
 
 iv(prp,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flying].
 iv(dcl,sg, lam(X,not(some(Y,s_supports(Y,X))))) --> [flies].
-iv(dcl,pl, lam(X,not(some(Y,s_supports(Y,X))))) --> [flying].
+iv(dcl,pl, lam(X,not(some(Y,s_supports(Y,X))))) --> [fly].
 iv(bse,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flew].
 iv(psp,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flown].
 
+iv(prp,_,  lam(X,X)) --> [drinking].
+iv(dcl,sg, lam(X,X)) --> [drinks].
+iv(dcl,pl, lam(X,X)) --> [drink].
+iv(bse,_,  lam(X,X)) --> [drank].
+iv(psp,_,  lam(X,X)) --> [drunk].
 
+iv(_,_,  lam(X,X)) --> [_].
 
 % transitive verbs
 %

@@ -3,9 +3,9 @@ import os
 import sys
 from nltk import word_tokenize
 from nltk.corpus import wordnet as wn
-from nltk.tag.stanford import POSTagger
-_path_to_model = 'stanford-postagger-2014-08-27/models/english-bidirectional-distsim.tagger'
-_path_to_jar ='stanford-postagger-2014-08-27/stanford-postagger.jar'
+from nltk.tag import StanfordPOSTagger
+_path_to_model = './stanford-postagger-2014-08-27/models/english-bidirectional-distsim.tagger'
+_path_to_jar ='./stanford-postagger-2014-08-27/stanford-postagger.jar'
 
 def getTrigram(tokens):
 	trigramLst = []
@@ -28,7 +28,7 @@ with open('prolog/nouns.pl', encoding='utf-8') as f:
 		nnDict = {}
 		for line in f:
 			synset = line.partition('X,')[2].partition('(X)')[0]
-			
+
 			nnLex = []
 			partTuple = line.partition('[')[2].partition(']')
 			nnLex.append(' '.join([w.strip() for w in partTuple[0].split(',')]))
@@ -54,7 +54,7 @@ with open('prolog/nouns.pl', encoding='utf-8') as f:
 					if '\\' in w:
 						wwLst.append(w.replace("\\", "")[1:-1])
 					else:
-						wwLst.append(w)	
+						wwLst.append(w)
 				nnLst[i] = ' '.join(wwLst)
 
 print('Enter a query phrase (empty line to quit):')
@@ -63,13 +63,13 @@ for line in sys.stdin:
 	if line == '\n': break
 	tokenized = word_tokenize(line)
 	# Stanford POSTagger
-	postagger = POSTagger(path_to_model=_path_to_model, path_to_jar=_path_to_jar)
-	POS = postagger.tag(tokenized)[0]
-	
+	postagger = StanfordPOSTagger(_path_to_model, _path_to_jar)
+	POS = postagger.tag(tokenized)
+
 	# Tuples = (index, ngram)
 	bigramTup = getBigram(tokenized)
 	trigramTup = getTrigram(tokenized)
-	
+
 	# Replaces words by ngram-noun in POS list
 	delLst = []
 	for ngramLst in [trigramTup, bigramTup]:
@@ -78,10 +78,10 @@ for line in sys.stdin:
 				delLst.extend([i+1, i+2])
 				POS[i] = (ngram, 'NN')
 			elif ngram in nnLst and len(ngram.split()) == 2:
-				delLst.append(i+1)	
+				delLst.append(i+1)
 				POS[i] = (ngram, 'NN')
-	for i in reversed(sorted(delLst)): del POS[i]	
-		
+	for i in reversed(sorted(delLst)): del POS[i]
+
 	queryNN = [(i, w[0]) for i, w in enumerate(POS) if 'NN' in w[1]]
 	# Checks if hypernym is in lexicon if word is not in lexicon
 	noMatch = False
@@ -89,7 +89,7 @@ for line in sys.stdin:
 	hypernymLst = []
 	existingNN = []
 	nMWords = []
-	for i, nn in queryNN:		
+	for i, nn in queryNN:
 		if (nn in nnLst) == False:
 			queryExists = False
 			ss = wn.synsets(nn)[0]
@@ -104,7 +104,7 @@ for line in sys.stdin:
 				nMWords.append(nn)
 		else:
 			existingNN.append(nn)
-	
+
 	lineToParse = ' '.join([w[0] for w in POS])
 
 	if queryExists:
