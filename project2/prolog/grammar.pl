@@ -108,8 +108,6 @@ det(_   ,_,  lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [].
 det(pl,_,  lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [several].
 det(pl,_,  lam(P,lam(Q, all(X,imp(app(P,X),app(Q,X)))))) --> [all].
 
-det(pl,_,  lam(P,lam(Q,some(X,some(Y,and(and(and(and(app(P,X),app(Q,X)),app(P,Y)),app(Q,Y)),not(eq,X,Y))))))) --> [two].
-
 det(sg,_,  lam(P,lam(Q,some(X,and(and(app(P,X),app(Q,X)),all(Y,eq(X,Y))))))) --> [exactly,one].
 det(pl,_,  lam(P,lam(Q,some(X,some(Y,and(and(and(and(and(app(P,X),app(Q,X)),app(P,Y)),app(Q,Y)),not(eq,X,Y)),all(Z,imp(and(app(P,Z),app(Q,Z)),not(or(eq(Z,X),eq(Z,Y))))))))))) --> [exactly,two].
 
@@ -125,6 +123,10 @@ det(pl,_,S) --> [seven], {num(7,S)}.
 det(pl,_,S) --> [eight], {num(8,S)}.
 det(pl,_,S) --> [nine],  {num(9,S)}.
 det(pl,_,S) --> [ten],   {num(10,S)}.
+
+det(Num,_,S)  --> [at,least],det(Num,_,S).
+%det(Num,_,S)  --> [at,most],det(Num,_,S).
+%det(Num,_,S)  --> [exactly],det(Num,_,S).
 
 num2([X],Prev,P,Q,   lam(P,lam(Q,some(X,and(and(app(P,X),app(Q,X)),not(eq(X,Prev))))))). %one
 num2([X|T],Prev,P,Q, lam(P,lam(Q,some(X,and(and(and(and(app(P,X),app(Q,X))),app(app(Rest,P),Q)),not(eq(X,Prev))))))) :- num2(T,X,P,Q,Rest).%two
