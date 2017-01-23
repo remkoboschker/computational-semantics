@@ -108,35 +108,40 @@ det(_   ,_,  lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [].
 det(pl,_,  lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [several].
 det(pl,_,  lam(P,lam(Q, all(X,imp(app(P,X),app(Q,X)))))) --> [all].
 
-det(sg,_,  lam(P,lam(Q,some(X,and(and(app(P,X),app(Q,X)),all(Y,eq(X,Y))))))) --> [exactly,one].
-det(pl,_,  lam(P,lam(Q,some(X,some(Y,and(and(and(and(and(app(P,X),app(Q,X)),app(P,Y)),app(Q,Y)),not(eq,X,Y)),all(Z,imp(and(app(P,Z),app(Q,Z)),not(or(eq(Z,X),eq(Z,Y))))))))))) --> [exactly,two].
+%det(sg,_,  lam(P,lam(Q,some(X,and(and(app(P,X),app(Q,X)),all(Y,eq(X,Y))))))) --> [exactly,one].
+%det(pl,_,  lam(P,lam(Q,some(X,some(Y,and(and(and(and(and(app(P,X),app(Q,X)),app(P,Y)),app(Q,Y)),not(eq,X,Y)),all(Z,imp(and(app(P,Z),app(Q,Z)),not(or(eq(Z,X),eq(Z,Y))))))))))) --> [exactly,two].
 
 % numericals
 %
-det(sg,_,S) --> [one],   {num(1,S)}.
-det(pl,_,S) --> [two],   {num(2,S)}.
-det(pl,_,S) --> [three], {num(3,S)}.
-det(pl,_,S) --> [four],  {num(4,S)}.
-det(pl,_,S) --> [five],  {num(5,S)}.
-det(pl,_,S) --> [six],   {num(6,S)}.
-det(pl,_,S) --> [seven], {num(7,S)}.
-det(pl,_,S) --> [eight], {num(8,S)}.
-det(pl,_,S) --> [nine],  {num(9,S)}.
-det(pl,_,S) --> [ten],   {num(10,S)}.
+det(Num,_,S) --> quant(Num,_,S).
 
-det(Num,_,S)  --> [at,least],det(Num,_,S).
+quant(sg,L,S) --> [one],   {num(1,L,S)}.
+quant(pl,L,S) --> [two],   {num(2,L,S)}.
+quant(pl,L,S) --> [three], {num(3,L,S)}.
+quant(pl,L,S) --> [four],  {num(4,L,S)}.
+quant(pl,L,S) --> [five],  {num(5,L,S)}.
+quant(pl,L,S) --> [six],   {num(6,L,S)}.
+quant(pl,L,S) --> [seven], {num(7,L,S)}.
+quant(pl,L,S) --> [eight], {num(8,L,S)}.
+quant(pl,L,S) --> [nine],  {num(9,L,S)}.
+quant(pl,L,S) --> [ten],   {num(10,L,S)}.
+
+quant(Num,_,S)  --> [at,least],quant(Num,_,S).
 %det(Num,_,S)  --> [at,most],det(Num,_,S).
-%det(Num,_,S)  --> [exactly],det(Num,_,S).
+%quant(Num,L,lam(P,lam(Q,app(app(S,P),lam(Y,and(app(Q,Y),all(X,imp(not(E),not(and(app(P,X),app(Q,X)))))))))))  --> [exactly],quant(Num,L,S),{exact(X,L,E)}.
 
-num2([X],Prev,P,Q,   lam(P,lam(Q,some(X,and(and(app(P,X),app(Q,X)),not(eq(X,Prev))))))). %one
-num2([X|T],Prev,P,Q, lam(P,lam(Q,some(X,and(and(and(and(app(P,X),app(Q,X))),app(app(Rest,P),Q)),not(eq(X,Prev))))))) :- num2(T,X,P,Q,Rest).%two
-num1([X|T], lam(P,lam(Q,some(X,and(and(and(app(P,X),app(Q,X))),app(app(Rest,P),Q)))))) :- num2(T,X,_,_,Rest).
+exact(Q,[X],eq(Q,X)).
+exact(Q,[X|Y],or(eq(Q,X),S)) :- exact(Q,Y,S).%recursively generates a list that states that Q must be an element in the list [X|Y]
+
+num2([X],Prev,P,Q,   lam(P,lam(Q,some(X,and(and(app(P,X),app(Q,X)),not(E)))))) :- exact(X,Prev,E). %one
+num2([X|T],Prev,P,Q, lam(P,lam(Q,some(X,and(and(and(and(app(P,X),app(Q,X))),app(app(Rest,P),Q)),not(E)))))) :- num2(T,[X|Prev],P,Q,Rest),exact(X,Prev,E).%two
+num1([X|T], lam(P,lam(Q,some(X,and(and(and(app(P,X),app(Q,X))),app(app(Rest,P),Q)))))) :- num2(T,[X],_,_,Rest).
 
 ll(0,[]) :- !.%create a List with a set Length (and anonymous elements)
 ll(Num,[_|L]) :- N1 is Num-1, ll(N1,L).
 
-num(1,lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))).
-num(Num,S) :- ll(Num,L), num1(L,S).
+num(1,[X],lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))).
+num(Num,L,S) :- ll(Num,L), num1(L,S).%L is a list of variables for each of the objects identified by the quantifier.
 
 % prepositions
 %
