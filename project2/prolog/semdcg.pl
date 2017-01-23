@@ -42,6 +42,13 @@ parse_from_file(FileIn,FileOut):-
    close(StreamIn),
    close(StreamOut).
 
+parse_and_write(Atom):-
+  downcase_atom(Atom,Down),
+  tokenize_atom(Down,Tokens),
+  s(Sem,Tokens,[]), !,
+  betaConvert(Sem,Red),
+  numbervars(Red,23,_),
+  write(Red).
 
 
 /* ------------------------------------------------

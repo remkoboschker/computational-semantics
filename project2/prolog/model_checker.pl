@@ -9,7 +9,7 @@
 variant(X,G,D,[g(X,V)|H]):-
    select(g(Y,_),G,H), X==Y, !,
    member(V,D).
-   
+
 
 /* ========================================================================
    Existential Quantification
@@ -34,7 +34,7 @@ satisfy(some(X,Formula),model(D,F),G,false):-
    Universal Quantification
 ========================================================================*/
 
-satisfy(all(X,Formula),Model,G,Polarity):- 
+satisfy(all(X,Formula),Model,G,Polarity):-
    satisfy(not(some(X,not(Formula))),Model,G,Polarity).
 
 
@@ -42,11 +42,11 @@ satisfy(all(X,Formula),Model,G,Polarity):-
    Conjunction
 ========================================================================*/
 
-satisfy(and(Formula1,Formula2),Model,G,true):- 
+satisfy(and(Formula1,Formula2),Model,G,true):-
    satisfy(Formula1,Model,G,true),
    satisfy(Formula2,Model,G,true).
 
-satisfy(and(Formula1,Formula2),Model,G,false):- 
+satisfy(and(Formula1,Formula2),Model,G,false):-
    satisfy(Formula1,Model,G,false);
    satisfy(Formula2,Model,G,false).
 
@@ -55,11 +55,11 @@ satisfy(and(Formula1,Formula2),Model,G,false):-
    Disjunction
 ========================================================================*/
 
-satisfy(or(Formula1,Formula2),Model,G,true):- 
+satisfy(or(Formula1,Formula2),Model,G,true):-
    satisfy(Formula1,Model,G,true);
    satisfy(Formula2,Model,G,true).
 
-satisfy(or(Formula1,Formula2),Model,G,false):- 
+satisfy(or(Formula1,Formula2),Model,G,false):-
    satisfy(Formula1,Model,G,false),
    satisfy(Formula2,Model,G,false).
 
@@ -68,7 +68,7 @@ satisfy(or(Formula1,Formula2),Model,G,false):-
    Implication
 ========================================================================*/
 
-satisfy(imp(Formula1,Formula2),Model,G,Polarity):- 
+satisfy(imp(Formula1,Formula2),Model,G,Polarity):-
    satisfy(or(not(Formula1),Formula2),Model,G,Polarity).
 
 
@@ -76,10 +76,10 @@ satisfy(imp(Formula1,Formula2),Model,G,Polarity):-
    Negation
 ========================================================================*/
 
-satisfy(not(Formula),Model,G,true):- 
+satisfy(not(Formula),Model,G,true):-
    satisfy(Formula,Model,G,false).
 
-satisfy(not(Formula),Model,G,false):- 
+satisfy(not(Formula),Model,G,false):-
    satisfy(Formula,Model,G,true).
 
 
@@ -87,12 +87,12 @@ satisfy(not(Formula),Model,G,false):-
    Equality
 ========================================================================*/
 
-satisfy(eq(X,Y),Model,G,true):- 
+satisfy(eq(X,Y),Model,G,true):-
    i(X,Model,G,Value1),
    i(Y,Model,G,Value2),
    Value1 = Value2.
 
-satisfy(eq(X,Y),Model,G,false):- 
+satisfy(eq(X,Y),Model,G,false):-
    i(X,Model,G,Value1),
    i(Y,Model,G,Value2),
    \+ Value1 = Value2.
@@ -103,13 +103,13 @@ satisfy(eq(X,Y),Model,G,false):-
 ========================================================================*/
 
 satisfy(pred(Symbol,1,[Argument]),model(D,F),G,true):-
-   i(Argument,model(D,F),G,Value), 
-   f(1,Symbol,F,Values),  
+   i(Argument,model(D,F),G,Value),
+   f(1,Symbol,F,Values),
    member(Value,Values).
 
 satisfy(pred(Symbol,1,[Argument]),model(D,F),G,false):-
-   i(Argument,model(D,F),G,Value), 
-   f(1,Symbol,F,Values),  
+   i(Argument,model(D,F),G,Value),
+   f(1,Symbol,F,Values),
    \+ member(Value,Values).
 
 
@@ -119,13 +119,13 @@ satisfy(pred(Symbol,1,[Argument]),model(D,F),G,false):-
 
 satisfy(pred(Symbol,2,[Arg1,Arg2]),model(D,F),G,true):-
    i(Arg1,model(D,F),G,Value1),
-   i(Arg2,model(D,F),G,Value2), 
+   i(Arg2,model(D,F),G,Value2),
    f(2,Symbol,F,Values),
    member((Value1,Value2),Values).
 
 satisfy(pred(Symbol,2,[Arg1,Arg2]),model(D,F),G,false):-
    i(Arg1,model(D,F),G,Value1),
-   i(Arg2,model(D,F),G,Value2), 
+   i(Arg2,model(D,F),G,Value2),
    f(2,Symbol,F,Values),
    \+ member((Value1,Value2),Values).
 
@@ -196,12 +196,22 @@ main(Formula,File):-
    open(File,read,Stream),
    read(Stream,ExtendedModel),
    part(ExtendedModel,Model),
-   close(Stream), 
+   close(Stream),
    wff(Formula,Wff,[],Vars),
-   g(Vars,Model,G), 
+   g(Vars,Model,G),
    satisfy(Wff,Model,G,true), !,
    format('\\includegraphics[width=120pt,height=90pt]{~p}~n',[File]).
 
+main_satisfying(Formula,File):-
+   open(File,read,Stream),
+   read(Stream,ExtendedModel),
+   part(ExtendedModel,Model),
+   close(Stream),
+   wff(Formula,Wff,[],Vars),
+   g(Vars,Model,G),
+   satisfy(Wff,Model,G,true), !,
+   File.
+   
 main(_,_).
 
 
