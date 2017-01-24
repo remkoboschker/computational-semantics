@@ -12,6 +12,10 @@ _path_to_jar ='./stanford-postagger-2014-08-27/stanford-postagger.jar'
 #from math import log
 
 DISPLAY = 10
+DEBUG = True
+
+
+
 
 def rankModels(model,query):
     """
@@ -43,7 +47,6 @@ def rankModels(model,query):
     cooc = coocurence = preproCooc()
     proModels = preproModel()
     qTokens = preproQuery()
-    proQuery = findCommonReading(qTokens,proModels)
     typical = typicality(proModels,proQuery,cooc)
     ranking = sort(typical)
 
@@ -54,7 +57,7 @@ def rankModels(model,query):
 
 def typicality(model,query,coocurenceMatrix):
     """ cosine similarity of the model to all query terms in their 'normal' context as vector space model
-
+    !!! renaming required
     INPUT:
     @query:         a string: the nlp query reresulting in the model output
     @model:         a list: GRIM models
@@ -65,6 +68,9 @@ def typicality(model,query,coocurenceMatrix):
 
 
     """
+
+    proQuery = findCommonReading(qTokens,proModels)
+
     weights = []
     for wq, qTerm in getWeights(query, cooc, weight = "df"):
         #innerTyp = 1 if innerTypicality == False else innerTypicality(model,cooc)
@@ -126,12 +132,12 @@ def innerTypicality(context, coocurenceMatrix, log = True, normalize = True ):
     return x
 
 def preproModel(model):
-    """ preprocesses the model into its basic terms using only the synsets in the model
+    """ preprocesses the model into its basic terms using only the synsets in the model and stripping all hypernyms
         'assumption: all models are already true for the query, therefor no more explicit parsing is relevat here'
         INPUT:
-            @query:     a string: the nlp string of the query
+            @model:     a string: the model ID = filename without path and file type
         OUTPUT:
-            @return:    a list: the synsets of each non stop word from the query
+            @return:    a list: the most specific senses from the model
     """
 
     x = hypernym.reduceModel(hypernym.loadModel("data/" +  model + ".mod")[1])
@@ -145,19 +151,22 @@ def preproModel(model):
     return senses
 
 def preproQuery(query):
-    """
-    'preprocesses the query into its basic terms, removing stopwords and finding senses'
-    'assumption: all models are already true for the query, therefor no more explicit parsing is relevat here'
-    INPUT:
-    @query:     a string: the nlp string of the query
-    OUTPUT:
-    @return:    a list: the synsets of each non stop word from the query
+    """ Preprocesses the query into its basic tokens, removing stopwords
+        ASSUMPTION: all models are already true for the query, therefor no more explicit parsing is relevat here'
+        # could also get senses here for less function calls in :~main(), but would imply an unintuitive handling (passing )
+        !!! requires to call :findCommonReading() for each model seperately! NOT what we want to map!!!
+        !!! we want ONE reading (= synset set) of the query, not many and TOTALLY not dependend on the model
+        !!! though the models are the only gold data we have
+        INPUT:
+            @query:     a string: the nlp string of the query
+        OUTPUT:
+            @return:    a list: the synsets of each non stop word from the query
     """
 
     qTokens = word_tokenize(line)
     qTokens = [token for token in qTokens if token not in STOPWORDS]
 
-    # project1.getSynset()
+
     return qTokens
 
 def findCommonReading(queryTerms,modelSynsets):
@@ -170,10 +179,8 @@ def findCommonReading(queryTerms,modelSynsets):
         OUTPUT:
             @return:            a list: senses for which there were common readings - else None
     """
-                i += 1
 
     querySenses = []
-    i = 0
     for term in queryTerms:
         senses = wn.synset(term)
         oldSensesLength = len(querySenses)
@@ -185,6 +192,9 @@ def findCommonReading(queryTerms,modelSynsets):
             querySenses.append(None)
 
     return querySenses
+
+def debug(msg):
+    if DEBUG: print(msg,file=sys.stderr)
 
 ################################################################################
 
