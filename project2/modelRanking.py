@@ -55,52 +55,124 @@ def rankModels(model,query):
     else:
         debug("No fitting models found.")
 
-def typicality(model,query,coocurenceMatrix):
+def typicality(models,query,coocurenceMatrix):
     """ cosine similarity of the model to all query terms in their 'normal' context as vector space model
-    !!! renaming required
-    INPUT:
-    @query:         a string: the nlp query reresulting in the model output
-    @model:         a list: GRIM models
-    @weight:        positive float - default = 1 : if hypernyms are used those words don't count as much
+        !!! renaming required
+        INPUT:
+            @query:         a string: the nlp query reresulting in the model output
+            @model:         a list:
+            @weight:        positive float - default = 1 : if hypernyms are used those words don't count as much
 
-    OUTPUT:
-    @return:        a list: ordered model IDs
-
-
+        OUTPUT:
+            @return:        a list: ordered model IDs
     """
-
     proQuery = findCommonReading(qTokens,proModels)
 
-    weights = []
-    for wq, qTerm in getWeights(query, cooc, weight = "df"):
-        #innerTyp = 1 if innerTypicality == False else innerTypicality(model,cooc)
-        for wm, mTerm in getWeights(model, weight = "tf"):
-            tf-idf = (wm * tf_m(model)) * (wq * idf_q(coocurenceMatrix[qTerm]))
-            #weights.append(wm * qm * coocurenceMatrix[qTerm][mTerm] * innerTyp)
-    score = sum(weights)
-    return score
-
-
+    vsmModel = vectorSpacing(model)
+    vsmQuery = vectorSpacing(query)
+###########################################################################
+    tf-idf_sums = []
+    for wq, qSense in getWeights(proQuery, cooc):
+        tf-idf = 0
+        for model in models:
+            tf-idf += tf_idf(wq * idf(coocurenceMatrix[sense]),tf(model))
 
 
 
 def getWeights(term,coocurenceMatrix, weight = 1):
-    """ Weights the
+    """ looks for the closed senese of @term in @coocurenceMatrix, weights the tf and idf dependend on the closeness
     INPUT:
-        @coocurenceMatrix:      a dictionary:
-        @weight:                a float: impact of the found term, indicating it's closeness to the original concept
+    @term:                  a string: a wordnet sense
+    @coocurenceMatrix:      a dictionary: vector space model representation
+    @weight:                a float: impact of the found term, indicating it's closeness to the original concept
     OUTPUT:
-        @weight:                a float: impact of the found term, indicating it's closeness to the original concept
-        @term:                  a wordnet sense: closest sense found in the @coocurenceMatrix
-                # reconsider if @coocurenceMatrix should be the orientation. probably needs to be
+    @weight:                a float: impact of the found term, indicating it's closeness to the original concept
+    @term:                  a wordnet sense: closest sense found in the @coocurenceMatrix
+    # reconsider if @coocurenceMatrix should be the orientation. probably needs to be. we definded it to be orientation
     """
+
+    if weight <= 0.05 or term == "entity.n.1": # or if entity
+    return 0
+elif mTerm in coocurenceMatrix:
+    return coocurenceMatrix[term1,term2]
+else:
+    return termTypicality(project1.hypernym(term),coocurenceMatrix,1/2 * weight)
+
+
+
+
+############################################################################
+
+
+    tf-idf_sums = []
+    for wq, qSense in getWeights(proQuery, cooc):
+        tf-idf = 0
+        for model in models:
+            for wm, mTerm in getWeights(model, cooc):
+            tf-idf += tf_idf(wq * idf(coocurenceMatrix[qSense]), wm * tf(model))
+
+
+def getWeights(term,vectorSpaceModel, scoring, weight = 1):
+    """ looks for the closed senese of @term in @vectorSpaceModel, weights the tf and idf dependend on the closeness
+    INPUT:
+    @term:                  a string: a wordnet sense
+    @vectorSpaceModel:      a dictionary: vector space model representation
+    @weight:                a float: impact of the found term, indicating it's closeness to the original concept
+    OUTPUT:
+    @weight:                a float: impact of the found term, indicating it's closeness to the original concept
+    @term:                  a string: wordnet sense, closest sense found in the @coocurenceMatrix
+    @frequency:             a float: weighted (???) frequency of term in @vectorSpaceModel
+    # reconsider if @coocurenceMatrix should be the orientation. probably needs to be. we definded it to be orientation
+    """
+    if scoring == "idf":
+        idf_t = log N/df_t
 
     if weight <= 0.05 or term == "entity.n.1": # or if entity
         return 0
     elif mTerm in coocurenceMatrix:
-        return coocurenceMatrix[term1,term2]
+        return coocurenceMatrix[term]
     else:
         return termTypicality(project1.hypernym(term),coocurenceMatrix,1/2 * weight)
+
+
+
+
+
+
+
+    return score
+
+def vectorSpacing(contextList):
+    """
+        INPUT:
+            @list:          a list: a list with each single entity in context
+
+        OUTPUT:
+            @return:        a dictionary: vector space model, unweighted, non-normalized
+    """
+
+    vsm = vectorSpaceModel = {}
+    for entry in contextList:
+        if entry not in vsm:
+            vsm[entry] = 1
+        else:
+            vsm[entry] += 1
+
+    return vsm
+
+def tf(model):
+    """
+        INPUT:
+            @model:          a dictionary: vector space model
+
+        OUTPUT:
+            @return:        a dictionary: vector space model, unweighted, non-normalized
+    """
+    for wm, mTerm in getWeights(model, cooc):
+
+
+def idf(absVector):
+
 
 
 
@@ -149,6 +221,7 @@ def preproModel(model):
             senses.append(str(a))
 
     return senses
+
 
 def preproQuery(query):
     """ Preprocesses the query into its basic tokens, removing stopwords
