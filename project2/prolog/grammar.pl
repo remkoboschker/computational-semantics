@@ -2,9 +2,9 @@
 %
 s(app(PT,app(NP,lam(X,some(Y,eq(Y,X)))))) --> np(_,NP), punct(PT).
 s(app(PT,app(NP,VP))) --> np(Num,NP), vp(dcl,Num,VP), punct(PT).
-s(app(PT,app(NP,app(AV,VP)))) --> [there], av(dcl,Num,prp,AV), np(Num,NP), vp(prp,Num,VP), punct(PT).%I don't like this, because in "there is a necklace", "is" isn't an av
 s(app(PT,app(NP,lam(X,some(Y,eq(Y,X)))))) --> [there, is],  np(sg,NP), punct(PT).%there is a single thing
 s(app(PT,app(NP,lam(X,some(Y,not(eq(X,Y))))))) --> [there, are],  np(pl,NP), punct(PT).%there are a multiple things
+s(app(PT,app(NP,app(AV,VP)))) --> [there], av(dcl,Num,prp,AV), np(Num,NP), vp(prp,Num,VP), punct(PT).%I don't like this, because in "there is a necklace", "is" isn't an av
 
 % punctuation
 %
@@ -63,6 +63,7 @@ n1(Num,Vowel,app(A,N)) --> a(Vowel,A), n2(Num,_,N).
 a(Vowel,Sem) --> a1(Vowel,Sem).
 a(Vowel,lam(P,lam(X,app(app(Sem,app(app(A1,P),X)),app(app(A2,P),X))))) --> a1(Vowel,A1), conj(Sem), a(_,A2).
 a1(Vowel,Sem) --> a0(Vowel,Sem).
+a1(_,Sem) --> iv(prp,_,Sem).
 
 % prepositions
 %
@@ -146,7 +147,7 @@ num(Num,L,S) :- ll(Num,L), num1(L,S).%L is a list of variables for each of the o
 % prepositions
 %
 prep0(lam(P,lam(Y,app(P,lam(X,s_supports(X,Y)))))) --> [on];[in].
-prep0(lam(P,lam(Y,app(P,lam(X,s_near(Y,X)))))) --> [with];[at];[next,to];[near].
+prep0(lam(P,lam(Y,app(P,lam(X,s_near(Y,X)))))) --> [with];[at];[next,to];[near];[from].
 prep0(lam(P,lam(Y,not(app(P,lam(X,s_near(Y,X))))))) --> [without].
 prep0(lam(P,lam(Y,app(P,lam(X,s_part_of(Y,X)))))) --> [of].
 prep0(lam(P,lam(Y,app(P,lam(X,s_occludes(X,Y)))))) --> [behind].
