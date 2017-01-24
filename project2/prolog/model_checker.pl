@@ -202,6 +202,8 @@ main(Formula,File):-
    satisfy(Wff,Model,G,true), !,
    format('\\includegraphics[width=120pt,height=90pt]{~p}~n',[File]).
 
+main(_,_).
+
 main_satisfying(Formula,File):-
    open(File,read,Stream),
    read(Stream,ExtendedModel),
@@ -210,9 +212,9 @@ main_satisfying(Formula,File):-
    wff(Formula,Wff,[],Vars),
    g(Vars,Model,G),
    satisfy(Wff,Model,G,true), !,
-   File.
-   
-main(_,_).
+   write(File).
+
+main_satisfying(_,_).
 
 
 

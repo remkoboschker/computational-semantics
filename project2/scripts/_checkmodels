@@ -1,21 +1,21 @@
 #!/bin/bash
 
-GRIM='/Users/bos/grim'
+GRIM='..'
 CHECKER='prolog/model_checker.pl'
 
 check()
 {
     FORMULA=$1
-    echo "\\documentclass{article}" 
-    echo "\\usepackage{graphicx}" 
-    echo "\\begin{document}" 
-    echo "\\begin{quote}" 
-    echo "\\verb+${FORMULA}+" 
-    echo "\\end{quote}" 
-    for MODEL in `ls ${GRIM}/data/*.mod`; do 
+    echo "\\documentclass{article}"
+    echo "\\usepackage{graphicx}"
+    echo "\\begin{document}"
+    echo "\\begin{quote}"
+    echo "\\verb+${FORMULA}+"
+    echo "\\end{quote}"
+    for MODEL in `ls ${GRIM}/data/*.mod`; do
 	swipl -g "['${CHECKER}'],main(${FORMULA},'${MODEL}'),halt." | sed "s/mod'/jpg'/" | tr -d "'"
     done
-    echo "\\end{document}" 
+    echo "\\end{document}"
 }
 
 if [ -e $CHECKER ]; then
