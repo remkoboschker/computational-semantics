@@ -144,6 +144,48 @@ def preproModel(model):
 
     return senses
 
+def preproQuery(query):
+    """
+    'preprocesses the query into its basic terms, removing stopwords and finding senses'
+    'assumption: all models are already true for the query, therefor no more explicit parsing is relevat here'
+    INPUT:
+    @query:     a string: the nlp string of the query
+    OUTPUT:
+    @return:    a list: the synsets of each non stop word from the query
+    """
+
+    qTokens = word_tokenize(line)
+    qTokens = [token for token in qTokens if token not in STOPWORDS]
+
+    # project1.getSynset()
+    return qTokens
+
+def findCommonReading(queryTerms,modelSynsets):
+    """ for disambiguation of query terms: finds a common reading in the model (which has ground truth/gold label annotation)
+        ASSUMPTION #1: the parser already found a common interpretation for the model, which makes an on theme interpretation likely
+        ASSUMPTION #2: computation for f():innerTypicality might be to costly
+        INPUT:
+            @modelSynsets:      a list: gold label senses from the model
+            @queryTerms:        a list: terms from the query that need to bee maped to synset meanings
+        OUTPUT:
+            @return:            a list: senses for which there were common readings - else None
+    """
+                i += 1
+
+    querySenses = []
+    i = 0
+    for term in queryTerms:
+        senses = wn.synset(term)
+        oldSensesLength = len(querySenses)
+        for sense in senses:
+            if sense in modelSynsets:
+                querySenses.append(sense)
+                break # only takes first one. can be improved but would further increase computation time
+        elif len(querySenses) <= oldSensesLength:
+            querySenses.append(None)
+
+    return querySenses
+
 ################################################################################
 
 # TODO: """"""
@@ -171,32 +213,9 @@ def preproCooc(coocurenceMatrix, normalize = True):
 
     return cleared
 
-def preproQuery(query):
-    """
-    'preprocesses the query into its basic terms, removing stopwords and finding senses'
-    'assumption: all models are already true for the query, therefor no more explicit parsing is relevat here'
-    INPUT:
-        @query:     a string: the nlp string of the query
-    OUTPUT:
-        @return:    a list: the synsets of each non stop word from the query
-    """
-
-    qTokens = word_tokenize(line)
-    qTokens = [token for token in qTokens if token not in STOPWORDS]
-
-    # project1.getSynset()
-    return qTokens
 
 
 
-def findCommonReading(queryTerms,modelSynsets):
-    """ for disambiguation of query terms: finds a common reading in the model (which has ground truth/gold label annotation)
-        INPUT:
-            @modelSynsets:      a list: gold label senses from the model
-            @queryTerms:        a list: terms from the query that need to bee maped to synset meanings
-        OUTPUT:
-            @return:            a list: senses for which there were common readings - else None
-    """
 
 def cosine(vectorA,vectorB):
     """    F AST C OSINE S CORE ( q )
