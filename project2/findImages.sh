@@ -13,17 +13,25 @@ done)
 echo ${models_that_satisfy_first_order_semantic_representation}
 five_most_relevant_models=`python3 rank.py '${sentence_with_most_specific_hypernym}' ${models_that_satisfy_first_order_semantic_representation}`
 echo ${five_most_relevant_models}
+images=${five_most_relevant_models//mod/jpg}
 document=`
 echo "\\documentclass{article}"
 echo "\\usepackage{graphicx}"
 echo "\\begin{document}"
 echo "\\begin{quote}"
-echo "\\verb+${FORMULA}+"
+echo "${sentence}"
 echo "\\end{quote}"
-for image in ${five_most_relevant_models//mod/jpg}; do
-  echo \\includegraphics[width=120pt,height=90pt]{${image}}
+echo "\\begin{quote}"
+echo "${sentence_with_most_specific_hypernym}"
+echo "\\end{quote}"
+echo "\\begin{quote}"
+echo "\\verb+${first_order_semantic_representation}+"
+echo "\\end{quote}"
+for image in ${images}; do
+  echo "\\includegraphics[width=120pt,height=90pt]{${image}}"
 done
 echo "\\end{document}"
 `
-pdflatex '${document}' > ./results/${sentence// /-}.pdf
+pdflatex -jobname=${sentence// /-} -output-directory=./results ${document}
+
 exit 0
