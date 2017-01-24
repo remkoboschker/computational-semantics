@@ -223,50 +223,53 @@ def getLexNN():
 ### MAIN ###
 
 nnLexLst = getLexNN()
-print('Enter a query phrase (empty line to quit):', file=sys.stderr)
-for line in sys.stdin:
-	if line == '\n': break
-	tokenized = word_tokenize(line)
+# print('Enter a query phrase (empty line to quit):', file=sys.stderr)
+# for line in sys.stdin:
+# 	if line == '\n': break
+line = sys.argv[1]
+tokenized = word_tokenize(line)
 
-	# Stanford POSTagger
-	postagger = StanfordPOSTagger(_path_to_model, _path_to_jar)
-	POSLst = postagger.tag(tokenized)
+# Stanford POSTagger
+postagger = StanfordPOSTagger(_path_to_model, _path_to_jar)
+POSLst = postagger.tag(tokenized)
 
-	# Generates ngram tuple lists (Tuples = (index, (ngram, POS))
-	unigramTup = getUnigram(tokenized)
-	bigramTup = getBigram(tokenized)
-	trigramTup = getTrigram(tokenized)
+# Generates ngram tuple lists (Tuples = (index, (ngram, POS))
+unigramTup = getUnigram(tokenized)
+bigramTup = getBigram(tokenized)
+trigramTup = getTrigram(tokenized)
 
-	# Bigrams and Trigrams in Lexicon
-	unigramLex = [u for u in nnLexLst if len(u.split()) == 1]
-	bigramLex = [b for b in nnLexLst if len(b.split()) == 2]
-	trigramLex = [t for t in nnLexLst if len(t.split()) == 3]
-	# Checks if ngram in query is in Lexicon
-	unigramMatch = [u for u in unigramTup if u[1][0].lower() in unigramLex]
-	bigramMatch = [b for b in bigramTup if b[1][0].lower() in bigramLex]
-	trigramMatch = [t for t in trigramTup if t[1][0].lower() in trigramLex]
+# Bigrams and Trigrams in Lexicon
+unigramLex = [u for u in nnLexLst if len(u.split()) == 1]
+bigramLex = [b for b in nnLexLst if len(b.split()) == 2]
+trigramLex = [t for t in nnLexLst if len(t.split()) == 3]
+# Checks if ngram in query is in Lexicon
+unigramMatch = [u for u in unigramTup if u[1][0].lower() in unigramLex]
+bigramMatch = [b for b in bigramTup if b[1][0].lower() in bigramLex]
+trigramMatch = [t for t in trigramTup if t[1][0].lower() in trigramLex]
 
-	# Checks if there are noun ngrams in POS list
-	nnLst = nnPOSNgrams(POSLst)
+# Checks if there are noun ngrams in POS list
+nnLst = nnPOSNgrams(POSLst)
 
-	# Disambiguates nouns
-	ngramLists = [trigramMatch, bigramMatch, unigramMatch]
-	POSLst = disambiguate(ngramLists, nnLst, POSLst)
+# Disambiguates nouns
+ngramLists = [trigramMatch, bigramMatch, unigramMatch]
+POSLst = disambiguate(ngramLists, nnLst, POSLst)
 
-	# Gets hypernym if noun is not in the lexicon
-	POSLst, noChange, hypernymLst = getHypernyms(POSLst)
+# Gets hypernym if noun is not in the lexicon
+POSLst, noChange, hypernymLst = getHypernyms(POSLst)
 
-	lineToParse = ' '.join([w[0] for w in POSLst])
-	print(POSLst)
-	if noChange == True:
-		pass
-	else:
-		oldNNStr = '\nNo results found for: ' + ', '.join([s[0] for s in hypernymLst]) + ". "
-		newNNStr = "Results found for hypernym(s): " + ', '.join([s[1] for s in hypernymLst])
-		print(oldNNStr, newNNStr, file=sys.stderr)
-	print('Query to parse: ' + lineToParse, file = sys.stderr)
+lineToParse = ' '.join([w[0] for w in POSLst])
+sys.stdout.write(lineToParse)
 
-	command = "bash scripts/_nlmodels '" + lineToParse + "' > output.tex; pdflatex output"
-	os.system(command)
-	print('Image search completed.', file=sys.stderr)
-	print('\nEnter a new query phrase (empty line to quit):', file=sys.stderr)
+# print(POSLst)
+# if noChange == True:
+# 	pass
+# else:
+# 	oldNNStr = '\nNo results found for: ' + ', '.join([s[0] for s in hypernymLst]) + ". "
+# 	newNNStr = "Results found for hypernym(s): " + ', '.join([s[1] for s in hypernymLst])
+# 	print(oldNNStr, newNNStr, file=sys.stderr)
+# print('Query to parse: ' + lineToParse, file = sys.stderr)
+#
+# command = "bash scripts/_nlmodels '" + lineToParse + "' > output.tex; pdflatex output"
+# os.system(command)
+# print('Image search completed.', file=sys.stderr)
+# print('\nEnter a new query phrase (empty line to quit):', file=sys.stderr)
