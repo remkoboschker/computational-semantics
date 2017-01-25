@@ -252,7 +252,7 @@ nnLst = nnPOSNgrams(POSLst)
 
 # Disambiguates nouns
 ngramLists = [trigramMatch, bigramMatch, unigramMatch]
-POSLst = disambiguate(ngramLists, nnLst, POSLst)
+# POSLst = disambiguate(ngramLists, nnLst, POSLst)
 
 # Gets hypernym if noun is not in the lexicon
 POSLst, noChange, hypernymLst = getHypernyms(POSLst)
