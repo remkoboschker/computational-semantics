@@ -300,7 +300,7 @@ def preproCooc(coocurenceMatrix, normalize = True):
 
 
 
-def cosine(vectorA,vectorB):
+def cosineSimilarity(vectorA,vectorB):
     """    F AST C OSINE S CORE ( q )
     1 float Scores [ N ] = 0
     2 for each d
@@ -316,6 +316,16 @@ def cosine(vectorA,vectorB):
     10 do Divide Scores [ d ] by Length [ d ]
     11 return Top K components of Scores []
     """
+
+    score = []
+    leng = [len(model) for model in models]
+    for term in query:
+        w_tq = weighting(term,query, score = "idf")
+        t_postingList = ?
+        for model in models:
+            for tf in tfs:
+                score.append(w_td)
+
 
 ##########
 ## MAIN ##
