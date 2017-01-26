@@ -18,8 +18,8 @@ vp(Mood,Num,app(AV,VP)) --> av(Mood,Num,Tense,AV), vp1(Tense,Num,VP).
 vp(Mood,Num,lam(X,and(app(VP,X),app(PP,X)))) --> vp1(Mood,Num,VP), pp(PP).
 vp(Mood,Num,lam(X,app(app(Sem,app(VP1,X)),app(VP2,X)))) --> vp1(Mood,Num,VP1), conj(Sem), vp(Mood,Num,VP2).
 
-vp1(Tense,Num,Sem) --> iv(Tense,Num,Sem).
 vp1(Tense,Num,app(TV,NP)) --> tv(Tense,Num,TV), np(_,NP).
+vp1(Tense,Num,Sem,Tokens,Sink) :- iv(Tense,Num,Sem,Tokens,Sink).
 vp1(Tense,Num,app(AV,IV)) --> av(Tense,Num,prp,AV), iv(prp,Num,IV).
 vp1(Tense,Num,app(AV,IV)) --> av(Tense,Num,psp,AV), iv(psp,Num,IV).
 vp1(Tense,Num,app(app(DV,NP1),NP2)) --> dv(Tense,Num,DV), np(_,NP1), np(_,NP2).

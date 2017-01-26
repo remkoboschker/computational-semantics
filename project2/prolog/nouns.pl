@@ -2025,4 +2025,4 @@ n0(pl,_,  lam(X,n_young_1(X)))   --> [youngs]; [offsprings].
 n0(sg,a,  lam(X,n_young_bird_1(X))) --> [young, bird].
 n0(pl,_,  lam(X,n_young_bird_1(X)))   --> [young, birds].
 
-%n0(_,_,   lam(X,n_entity_1(X))) --> [_].
+% n0(_,_,   lam(X,n_entity_1(X))) --> [_].
