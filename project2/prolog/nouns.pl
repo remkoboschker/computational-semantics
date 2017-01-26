@@ -1121,6 +1121,7 @@ n0(pl,_,  lam(X,n_medium_1(X)))   --> [mediums].
 n0(sg,a,  lam(X,n_melon_2(X))) --> [melon]; [melon, vine].
 n0(pl,_,  lam(X,n_melon_2(X)))   --> [melons]; [melon, vines].
 n0(pl,_,  lam(X,a_metal_1(X)))   --> [metallics]; [metals].
+n0(_,_,  lam(X,n_metal_1(X)))   --> [metal].
 n0(sg,a,  lam(X,n_microphone_1(X))) --> [microphone]; [mike].
 n0(pl,_,  lam(X,n_microphone_1(X)))   --> [microphones]; [mikes].
 n0(sg,a,  lam(X,n_milk_1(X))) --> [milk].

@@ -57,12 +57,12 @@ then
     first_order_semantic_representations=`swipl -g "[prolog/semdcg],parse_and_write('${sentence_with_most_specific_hypernym}'),halt."`
     echo ${first_order_semantic_representations}
 
-    highest_ranking_first_order_representation=`echo ${first_order_semantic_representations} | python3 highest-ranking-first-order-representation.py`
-    echo ${highest_ranking_first_order_representation}
+    # highest_ranking_first_order_representation=`echo ${first_order_semantic_representations} | python3 highest-ranking-first-order-representation.py`
+    # echo ${highest_ranking_first_order_representation}
 
     models_that_satisfy_first_order_semantic_representation=$(
     for model in `ls ../data/*.mod`; do
-        echo `swipl -g "[prolog/model_checker],main_satisfying(${highest_ranking_first_order_representation},'${model}'),halt."`
+        echo `swipl -g "[prolog/model_checker],main_satisfying(${first_order_semantic_representations},'${model}'),halt."`
     done)
     echo ${models_that_satisfy_first_order_semantic_representation}
 

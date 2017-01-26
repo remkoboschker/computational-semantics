@@ -92,7 +92,7 @@ A black cat is playing with a frog.
 A black cat is sitting on the chair.
 A black cat is wearing a hat.
 A black cocker spaniel and the sea.
-A black dig and a ginger kitten are standing near each other.
+A black dog and a ginger kitten are standing near each other.
 A black frog is playing with a cat.
 A black hand.
 A black lake and black blouse.
@@ -104,7 +104,7 @@ A blonde woman is wearing blue pants.
 A blond girl with a white dress.
 A blue bike is leaning against the wall.
 A blue bone and a white dog.
-A bold eagle is in front of a Canedian flag.
+A bold eagle is in front of a Canadian flag.
 A bottle is on the bench.
 A boy and a black shirt.
 A boy and a girl are jumping rope.
@@ -134,7 +134,7 @@ A boy is wearing a shirt.
 A boy is wearing blue pants.
 A boy is writing on paper.
 A boy with brown hair.
-A boy witn an orange top is standing with his bike.
+A boy with an orange top is standing with his bike.
 A brown cat is sitting on a man.
 A brown cocker spaniel and a black roof.
 A brown dog and white sheep.
@@ -142,7 +142,7 @@ A brown dog is chasing a cat.
 A bunny is crunching a celery stick.
 A bunny is munching his carrot.
 A businessman is holding a cellphone.
-A businessman is wearing a balck necktie.
+A businessman is wearing a black necktie.
 A businesswoman is holding the cellphone.
 A butterfly is on top of a frog.
 A carrot and a hand.
@@ -206,7 +206,7 @@ A dog and water.
 A dog is in the sea.
 A dog is looking at another dog.
 A dog is looking out of a car window.
-A dog is sitting behing the steering wheel.
+A dog is sitting behind the steering wheel.
 A dog is sitting in a car.
 A dog is sitting in a red car.
 A dog is sitting on a chair.
@@ -305,7 +305,7 @@ All tourists are Asian.
 All tourists are women.
 All tourists have a dress.
 A magpie flying past a tree.
-A magpie is perced on top of a tree.
+A magpie is perched on top of a tree.
 A man and a beach.
 A man and a guitar and a lake.
 A man has a beard.
@@ -355,7 +355,7 @@ A mouse is being chased by a cat.
 A mouse is being eaten by a cat.
 A mouse is sitting in the grass.
 A mouse is sitting on stone tiles.
-A mouse with black eyes is eating spagetthi.
+A mouse with black eyes is eating spaghetti.
 A mute swan and water.
 A mute swan is not in the water.
 A mute swan is not white.
@@ -365,7 +365,7 @@ An old couple is sitting down.
 An old couple is walking through the street.
 An old man and an old woman.
 An old woman is walking with and old man.
-An orange sky and a flock of sheep and ahorseman.
+An orange sky and a flock of sheep and a horseman.
 An osprey is eating a fish.
 An osprey is eating a fish.
 An osprey is flying over a lake.
