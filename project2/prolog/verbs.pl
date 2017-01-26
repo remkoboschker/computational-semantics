@@ -24,12 +24,6 @@ iv(dcl,pl, lam(X,some(Y,s_supports(Y,X)))) --> [stand].
 iv(bse,_,  lam(X,some(Y,s_supports(Y,X)))) --> [stood].
 iv(psp,_,  lam(X,some(Y,s_supports(Y,X)))) --> [stood].
 
-iv(prp,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flying].
-iv(dcl,sg, lam(X,not(some(Y,s_supports(Y,X))))) --> [flies].
-iv(dcl,pl, lam(X,not(some(Y,s_supports(Y,X))))) --> [fly].
-iv(bse,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flew].
-iv(psp,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flown].
-
 iv(_,_,  lam(X,X)) --> [_].
 
 % transitive verbs

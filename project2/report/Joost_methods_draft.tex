@@ -1,0 +1,33 @@
+\section{Method}\label{sec:met}
+A five-step pipeline was constructed in order to turn natural language queries into the five most relevant images. Each step will be discussed separately below. After all steps are completed, the selected images are piped into a \LaTeX file and compiled into a pdf.
+
+\subsection{Noun normalization}
+
+\subsection{The grammar}
+A prolog definite clause grammar (DCG) was used to interpret the natural language query and convert it into a semantic representation. It was expanded on work done by Johan Bos for the GRIM data set, with the main aim of making the system more robust. With this aim around 50 rules were added, and approximately 2000 nouns, 45 adjectives and 9 verbs were added to the lexicon. The latter two categories were added by hand, but as the number suggest an automatic approach was applied to adding the nouns.
+
+[LEONARDO NOUN PROJECT]
+
+Additionally, in order to dynamically be able to represent all numerical quantifiers - as the amount of objects was considered quite significant to the correctness of an image, a recursive predicate was defined to define any number of objects. This predicate unifies a list of variable names to a semantic representation of nested existential quantifiers for each of the variables and ensures that none of the variables can refer to the same object. This latter part requires a number of 'does not equal'-expression equal to all combinations of size 2 from the number of variables (${{n}\choose{2}}$, where $n$ is the number of variables and thus the value of the numerical quantifier), leading to large expressions quickly. The \texttt{num} predicate turns a number into the required list and unifies with the complete semantic representation, and the \texttt{quant} predicate was used to map the actual words of numerical quantifiers to the corresponding numerical value.
+
+Finally, to massively enhance the system's robustness, we allowed it to ignore parts of the sentence if words were unfamiliar. For nouns it was already ensured that all nouns that appear in the models also appear in the lexicon and that nouns in the queries were normalised to match one of these nouns, so nouns were ignored in this respect. However, for verbs and adjectives a rule was added that allowed any word to match these word types, returning a lambda expression that would lead resolve to nothing when applied to any other sentence structure, resulting in ignoring that part of the query.
+
+These so-called 'fallback rules' have a major downside: because any word can match these types, whether a word is of a certain type is only determined by that word type's appearance in the governing grammar rules. This leads to a large majority of the rules actually succeeding and the grammar yielding a plethora a parses, and a dramatic drop in accuracy if you were to just take the first parse. However, anytime a fallback rule was applied the content of a word was ignored, making these representation very unspecific. We use that property in the next step of the pipeline to filter out meaningless parses and preserve specificity whenever possible.
+
+\subsection{Representation sorting}
+As discussed in the previous section, the grammar will yield a large amount of possible parses due to the use of fallback rules, and whenever a fallback rule to parse a word that word will not add any information to the semantic representation. For example, the simple sentence 'a brown dog' will parse the following two ways:
+\begin{enumerate}
+    \item \texttt{some(X,and(n\_dog\_1(X),a\_brown\_1(X)))}
+    \item \texttt{some(X,n\_dog\_1(X)}
+\end{enumerate}
+The second representation is clearly less specific as the adjective 'brown' was ignored.
+
+During the second step in the pipeline a python script takes all parses given by the grammar and assess their specificness by counting the number of \emph{basic terms} it has, such as "\texttt{n\_dog\_1}" and "\texttt{"a\_brown\_1}". These terms are what actually is found back in the models and thus were considered to hold the most relevant information. Note that this method essentially ignores the relation between these terms, but inherently an expression with more terms also has a more complex relation, making for more specificness. This method assesses specificness in a very computationally light method, which is beneficial considering the large amount of input it receives.
+
+After scoring all possible parses for their number of basic terms the list of parses is sorted in a descending order based on this score, resulting in the most specific parse coming out first. The model checker will search for images that match the representation, and if it fails it will take the next, less specific parse. At the bottom of the list is always the representation corresponding to "there is an object", which matches with all images. Though that representation should not be used a lot, it means that the system will always yield some images. Additionally, even if all images are selected by the model checker the model selector (discussed in section \ref{sec:model_selection}) may find some relevance to certain images, benefiting performance.
+
+\subsection{The model checker}
+We used a model checker made by Johan Bos \ref{}. It is applied to all models in the data set, return whether the model satisfies the semantic representation in first-order logic. All models that satisfy are stored and piped into the next step.
+
+\subsection{Model selection}\label{sec:model_selection}
+[GUNNAR SELECTOR PROJECT]
