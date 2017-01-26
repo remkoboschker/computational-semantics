@@ -20,6 +20,12 @@ def addToMap(coocMap,w1,w2,val):
     else:
         coocMap[w1] = {w2:val}
     return coocMap
+    
+def get(coocMap,w1,w2):
+    if w1 in coocMap and w2 in coocMap[w1]:
+        return coocMap[w1][w2]
+    else:
+        return None
         
 
 for sen in sentences:
