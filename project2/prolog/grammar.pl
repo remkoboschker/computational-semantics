@@ -5,6 +5,8 @@ s(app(PT,app(NP,VP))) --> np(Num,NP), vp(dcl,Num,VP), punct(PT).
 s(app(PT,app(NP,lam(X,some(Y,eq(Y,X)))))) --> [there, is],  np(sg,NP), punct(PT).%there is a single thing
 s(app(PT,app(NP,lam(X,some(Y,not(eq(X,Y))))))) --> [there, are],  np(pl,NP), punct(PT).%there are a multiple things
 s(app(PT,app(NP,app(AV,VP)))) --> [there], av(dcl,Num,prp,AV), np(Num,NP), vp(prp,Num,VP), punct(PT).%I don't like this, because in "there is a necklace", "is" isn't an av
+s(app(PT,lam(X,lam(Y,and(app(NP1,X),and(app(NP2,Y),eq(X,Y))))))) --> np(sg,NP1), [is], np(_,NP2), punct(PT).
+% s() --> np(pl,NP1), [are], np(_,NP2), punct(PT).
 
 % punctuation
 %
@@ -16,14 +18,19 @@ punct(lam(F,F)) --> ['.'].
 vp(Mood,Num,Sem) --> vp1(Mood,Num,Sem).
 vp(Mood,Num,app(AV,VP)) --> av(Mood,Num,Tense,AV), vp1(Tense,Num,VP).
 vp(Mood,Num,lam(X,and(app(VP,X),app(PP,X)))) --> vp1(Mood,Num,VP), pp(PP).
+% is on the table
+vp(dcl,sg,lam(X,app(PP,X))) --> [is], pp(PP).
+vp(dcl,pl,lam(X,app(PP,X))) --> [are], pp(PP).
 vp(Mood,Num,lam(X,app(app(Sem,app(VP1,X)),app(VP2,X)))) --> vp1(Mood,Num,VP1), conj(Sem), vp(Mood,Num,VP2).
 
+
 vp1(Tense,Num,app(TV,NP)) --> tv(Tense,Num,TV), np(_,NP).
-vp1(Tense,Num,Sem,Tokens,Sink) :- iv(Tense,Num,Sem,Tokens,Sink).
+vp1(Tense,Num,Sem) --> iv(Tense,Num,Sem).
 vp1(Tense,Num,app(AV,IV)) --> av(Tense,Num,prp,AV), iv(prp,Num,IV).
 vp1(Tense,Num,app(AV,IV)) --> av(Tense,Num,psp,AV), iv(psp,Num,IV).
 vp1(Tense,Num,app(app(DV,NP1),NP2)) --> dv(Tense,Num,DV), np(_,NP1), np(_,NP2).
 vp1(Tense,Num,app(AV,app(A,lam(X,n_thing_12(X))))) --> av(Tense,Num,prp,AV), a(_,A).
+
 
 
 % passives
@@ -101,8 +108,8 @@ np0(sg,lam(P,not(some(X,and(n_person_1(X),app(P,X)))))) --> [nobody];[noone].
 % determiners
 %
 det(_ ,_,  lam(P,lam(Q,not(some(X,and(app(P,X),app(Q,X))))))) --> [no].
-det(sg,a,  lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [a].
-det(sg,an, lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [an].
+det(sg,a,  lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [a];[another].
+det(sg,an, lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [an];[another].
 det(sg,_,  lam(P,lam(Q, and(some(Y,app(P,Y)),all(X,imp(app(P,X),app(Q,X))))))) --> [every];[each].
 det(_ ,_,  lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [the];[some].
 det(_   ,_,  lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [].
@@ -160,10 +167,12 @@ av0(dcl,sg,bse) --> [does].
 av0(dcl,pl,bse) --> [do].
 av0(dcl,sg,prp) --> [is].
 av0(dcl,sg,pss) --> [is].
+av0(dcl,sg,psp) --> [is].
 av0(prp,_, prp) --> [being].
 av0(pss,_, prp) --> [being].
 av0(psp,_, prp) --> [been].
 av0(dcl,pl,prp) --> [are].
 av0(dcl,pl,pss) --> [are].
+av0(dcl,pl,psp) --> [are].
 av0(dcl,sg,psp) --> [has].
 av0(dcl,pl,psp) --> [have].

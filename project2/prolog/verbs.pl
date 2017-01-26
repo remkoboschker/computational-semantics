@@ -12,7 +12,7 @@ iv(dcl,pl, lam(X,not(some(Y,s_supports(Y,X))))) --> [fly].
 iv(bse,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flew].
 iv(psp,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flown].
 
-iv(prp,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [leaning].
+iv(prp,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [leaning];[sitting].
 iv(dcl,sg, lam(X,not(some(Y,s_supports(Y,X))))) --> [leans].
 iv(dcl,pl, lam(X,not(some(Y,s_supports(Y,X))))) --> [lean].
 iv(bse,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [leaned].
@@ -24,7 +24,20 @@ iv(dcl,pl, lam(X,some(Y,s_supports(Y,X)))) --> [stand].
 iv(bse,_,  lam(X,some(Y,s_supports(Y,X)))) --> [stood].
 iv(psp,_,  lam(X,some(Y,s_supports(Y,X)))) --> [stood].
 
-iv(_,_,  lam(X,X)) --> [_].
+iv(prp,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flying].
+iv(dcl,sg, lam(X,not(some(Y,s_supports(Y,X))))) --> [flies].
+iv(dcl,pl, lam(X,not(some(Y,s_supports(Y,X))))) --> [fly].
+iv(bse,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flew].
+iv(psp,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flown].
+
+% needs eq as a unit because otherwise you get a dangling variable
+iv(prp,_,  lam(X,eq(X,X))) --> [drinking];[coming];[looking];[shining];[running];[playing].
+iv(dcl,sg, lam(X,eq(X,X))) --> [drinks].
+iv(dcl,pl, lam(X,eq(X,X))) --> [drink].
+iv(bse,_,  lam(X,eq(X,X))) --> [drank].
+iv(psp,_,  lam(X,eq(X,X))) --> [drunk];[made];[parked].
+
+% iv(_,_,  lam(X,X)) --> [_].
 
 % transitive verbs
 %
@@ -47,7 +60,7 @@ tv(dcl,pl, lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kiss];[touch];[tie].
 tv(bse,_,  lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kissed];[touched];[tied].
 tv(psp,_,  lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kissed];[touched];[tied].
 
-tv(prp,_,  lam(P, lam(X,app(P,lam(Y,some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))) --> [eating].
+tv(prp,_,  lam(P, lam(X,app(P,lam(Y,some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))) --> [eating,drinking].
 tv(dcl,sg, lam(P, lam(X,app(P,lam(Y,some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))) --> [eats].
 tv(dcl,pl, lam(P, lam(X,app(P,lam(Y,some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))) --> [eat].
 tv(bse,_,  lam(P, lam(X,app(P,lam(Y,some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))) --> [ate].
@@ -59,7 +72,13 @@ tv(dcl,pl, lam(P,lam(X,app(P,lam(Y,s_near(X,Y)))))) --> [have].
 tv(bse,_,  lam(P,lam(X,app(P,lam(Y,s_near(X,Y)))))) --> [had].
 tv(psp,_,  lam(P,lam(X,app(P,lam(Y,s_near(X,Y)))))) --> [had].
 
-tv(_,_,    lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [_].
+tv(prp,_,  lam(P,lam(X,app(P,eq(X,X))))) --> [using].
+tv(dcl,sg, lam(P,lam(X,app(P,eq(X,X))))) --> [uses].
+tv(dcl,pl, lam(P,lam(X,app(P,eq(X,X))))) --> [use].
+tv(bse,_,  lam(P,lam(X,app(P,eq(X,X))))) --> [used].
+tv(psp,_,  lam(P,lam(X,app(P,eq(X,X))))) --> [used].
+
+% tv(_,_,    lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [_].
 
 % ditransitive verbs
 %
@@ -69,5 +88,5 @@ dv(dcl,pl, lam(P,lam(Q,lam(X,app(P,lam(Y,app(Q,lam(Z,'X'(X,Y,Z))))))))) --> [sen
 dv(bse,_,  lam(P,lam(Q,lam(X,app(P,lam(Y,app(Q,lam(Z,'X'(X,Y,Z))))))))) --> [send].
 dv(psp,_,  lam(P,lam(Q,lam(X,app(P,lam(Y,app(Q,lam(Z,'X'(X,Y,Z))))))))) --> [sent].
 
-dv(psp,_,  lam(P,lam(Q,lam(X,app(P,lam(Y,app(Q,lam(Z,and(and(not(eq(X,Y)),not(eq(Y,Z))),not(eq(X,Z))))))))))) --> [_].
+% dv(psp,_,  lam(P,lam(Q,lam(X,app(P,lam(Y,app(Q,lam(Z,and(and(not(eq(X,Y)),not(eq(Y,Z))),not(eq(X,Z))))))))))) --> [_].
 
