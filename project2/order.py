@@ -1,12 +1,16 @@
 #Using a windows terminal? Run "CHCP 65001" before this script to enable Unicode Character being printed to the terminal.
 
-from nltk.corpus import webtext
-from nltk.stem.porter import PorterStemmer
+from nltk.corpus import webtext, stopwords
+#from nltk.stem.porter import PorterStemmer
+import pickle
 
+stopWords = set(stopwords.words('english'))
 corpus = webtext
-stemmer = PorterStemmer()
+#stemmer = PorterStemmer()
 
-sentences = [[stemmer.stem(token.lower()) for token in s if token.isalpha()] for s in webtext.sents()]
+sentences = [[token.lower() for token in s if token.isalpha() and token not in stopWords] for s in webtext.sents()]
+#sentences = [[stemmer.stem(token.lower()) for token in s if token.isalpha()] for s in webtext.sents()]
+
 words = set([word for sen in sentences for word in sen])
 
 coocMap = {}
@@ -20,7 +24,7 @@ def addToMap(coocMap,w1,w2,val):
     else:
         coocMap[w1] = {w2:val}
     return coocMap
-        
+
 
 for sen in sentences:
     for idx1 in range(len(sen)):
@@ -30,5 +34,7 @@ for sen in sentences:
             coocMap = addToMap(coocMap,w1,w2,1)
             coocMap = addToMap(coocMap,w2,w1,1)
 
+with open('coocMap.pickle','wb') as f:
+    pickle.dump(coocMap,f)
+
 print(coocMap)
-        
