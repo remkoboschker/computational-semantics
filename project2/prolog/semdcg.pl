@@ -45,12 +45,15 @@ parse_from_file(FileIn,FileOut):-
 parse_and_write(Atom):-
   downcase_atom(Atom,Down),
   tokenize_atom(Down,Tokens),
-  s(Sem,Tokens,[]),
-  betaConvert(Sem,Red),
-  numbervars(Red,23,_),
-  write(Red),
-  nl,
-  fail; true.
+  findall(Red,(
+    s(Sem,Tokens,[]),
+    betaConvert(Sem,Red),
+    numbervars(Red,23,_)
+  ),L),
+  writeall(L).
+  
+writeall([]).
+writeall([H|T]) :- write(H),nl,writeall(T).
 
 
 /* ------------------------------------------------
