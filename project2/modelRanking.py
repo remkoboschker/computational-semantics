@@ -1,12 +1,18 @@
 
 from hypernym import loadModel, reduceModel
-from nltk import word_tokenize
-from nltk import stopwords
-from nltk.corpus import wordnet as wn
-from nltk.tag import StanfordPOSTagger
-_path_to_model = './stanford-postagger-2014-08-27/models/english-bidirectional-distsim.tagger'
-_path_to_jar ='./stanford-postagger-2014-08-27/stanford-postagger.jar'
+# from nltk import word_tokenize
+# from nltk import stopwords
+# from nltk.corpus import wordnet as wn
+# from nltk.tag import StanfordPOSTagger
+# _path_to_model = './stanford-postagger-2014-08-27/models/english-bidirectional-distsim.tagger'
+# _path_to_jar ='./stanford-postagger-2014-08-27/stanford-postagger.jar'
 
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+tfidf_vectorizer = TfidfVectorizer()
+# tfidf_matrix = tfidf_vectorizer.fit_transform(documents)
+# cosine_similarity(tfidf_matrix[0:1], tfidf_matrix)
 
 
 #from math import log
@@ -47,13 +53,55 @@ def rankModels(model,query):
     cooc = coocurence = preproCooc()
     proModels = preproModel()
     qTokens = preproQuery()
-    typical = typicality(proModels,proQuery,cooc)
-    ranking = sort(typical)
+    typ = {}
+    for model in proModels.keys():
+        typ[model] = typicality(proModels[model],proQuery,cooc)
+    ranking = sort(typ)
 
     if len(ranking)>0:
         return ranking[0:min([DISPLAY,len(ranking)])]
     else:
         debug("No fitting models found.")
+
+
+def typicality(model,proQuery,coocMap):
+
+    qSensesMatrix = getRelQueryTerms(proQuery,model)
+        """ calculating idf treating the "average" (in our corpus) context of a term as it's documents
+        """
+        qDoc = {} # sense -> frequency
+        ### very very bad with so deep nesting
+        ### problem: if one would fetch senses before it was unclear which sense to use
+        ### so still relying on model gold labels are well matched by nlp parser analysing the query
+        ### could have been solved in prolog while fetching the documents
+        for term in query:
+            for coocs in coocMap[term]: # all other terms coocuring with @term
+                for cooc in coocs: # taking one of the coocuring terms
+                    found = False
+                    for sense in wn.synsets(cooc): # taking one sense from the synset
+                        if sense in model.keys(): # actually at least one sense needs to be taken to accomplish vor largely different contexts
+                            found = True
+                            if sense not in qDoc:
+                                qDoc[sense] = coocMap[term][cooc]
+                            else:
+                                qDoc[sense] += coocMap[term][cooc]
+                    elif found == False: # adds at least one potential sense
+                        qDoc[sense] = coocMap[term][cooc]
+
+        return qDoc
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def typicality(models,query,coocurenceMatrix):
     """ cosine similarity of the model to all query terms in their 'normal' context as vector space model
@@ -66,7 +114,13 @@ def typicality(models,query,coocurenceMatrix):
         OUTPUT:
             @return:        a list: ordered model IDs
     """
+
+
     proQuery = findCommonReading(qTokens,proModels)
+
+
+    tfidf_matrix = tfidf_vectorizer.fit_transform(documents)
+    cosine_similarity(tfidf_matrix[0:1], tfidf_matrix)
 
     vsmModel = vectorSpacing(model)
     vsmQuery = vectorSpacing(query)
@@ -93,10 +147,10 @@ def getWeights(term,coocurenceMatrix, weight = 1):
 
     if weight <= 0.05 or term == "entity.n.1": # or if entity
     return 0
-elif mTerm in coocurenceMatrix:
-    return coocurenceMatrix[term1,term2]
-else:
-    return termTypicality(project1.hypernym(term),coocurenceMatrix,1/2 * weight)
+    elif mTerm in coocurenceMatrix:
+        return coocurenceMatrix[term1,term2]
+    else:
+        return termTypicality(project1.hypernym(term),coocurenceMatrix,1/2 * weight)
 
 
 
@@ -300,32 +354,34 @@ def preproCooc(coocurenceMatrix, normalize = True):
 
 
 
-def cosineSimilarity(vectorA,vectorB):
-    """    F AST C OSINE S CORE ( q )
-    1 float Scores [ N ] = 0
-    2 for each d
-    3 do Initialize Length [ d ] to the length of doc d
-    4 for each query term t
-    5 do calculate w t,q and fetch postings list for t
-    6
-    for each pair ( d, tf t,d ) in postings list
-    7
-    do add wf t,d to Scores [ d ]
-    8 Read the array Length [ d ]
-    9 for each d
-    10 do Divide Scores [ d ] by Length [ d ]
-    11 return Top K components of Scores []
+def cosineSimilarity(query,model):
+    """    FAST COSINE SCORE ( q ) Manning et al 2008, p.136
+
     """
 
-    score = []
+    #1 float Scores [ N ] = 0
+    scores = []
+    #2 for each d
+    #3 do Initialize Length [ d ] to the length of doc d
     leng = [len(model) for model in models]
+    #4 for each query term t
     for term in query:
+        #5 do calculate w t,q and fetch postings list for t
         w_tq = weighting(term,query, score = "idf")
         t_postingList = ?
+        # 6 for each pair ( d, tf t,d ) in postings list
         for model in models:
             for tf in tfs:
-                score.append(w_td)
-
+                # 7 do add wf t,d to Scores [ d ]
+                scores.append(w_td)
+        # 8 Read the array Length [ d ]
+    model_leng = len(models)
+    # 9 for each d
+    for i in range(len(scores)):
+        # 10 do Divide Scores [ d ] by Length [ d ]
+        scores[i] %= model_leng
+    # 11 return Top K components of Scores []
+    return scores
 
 ##########
 ## MAIN ##
