@@ -89,5 +89,4 @@ models = sys.argv[2:]
 scored = scoringTypicality(sentence_with_most_specific_hypernym,models)
 orderedScores = order(scored)
 
-
-sys.stdout.write(" ".join(models[:DISPLAY]))
+sys.stdout.write(" ".join(orderScores[:DISPLAY]))
