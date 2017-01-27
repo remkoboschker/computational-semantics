@@ -5,7 +5,8 @@ s(app(PT,app(NP,VP))) --> np(Num,NP), vp(dcl,Num,VP), punct(PT).
 s(app(PT,app(NP,lam(X,some(Y,eq(Y,X)))))) --> [there, is],  np(sg,NP), punct(PT).%there is a single thing
 s(app(PT,app(NP,lam(X,some(Y,not(eq(X,Y))))))) --> [there, are],  np(pl,NP), punct(PT).%there are a multiple things
 s(app(PT,app(NP,app(AV,VP)))) --> [there], av(dcl,Num,prp,AV), np(Num,NP), vp(prp,Num,VP), punct(PT).%I don't like this, because in "there is a necklace", "is" isn't an av
-s(app(PT,lam(X,lam(Y,and(app(NP1,X),and(app(NP2,Y),eq(X,Y))))))) --> np(sg,NP1), [is], np(_,NP2), punct(PT).
+% copula
+s(app(PT,app(NP1,lam(X,app(NP2, lam(Y,eq(Y,X))))))) --> np(sg,NP1), [is], np(_,NP2), punct(PT).
 % s() --> np(pl,NP1), [are], np(_,NP2), punct(PT).
 
 % punctuation
