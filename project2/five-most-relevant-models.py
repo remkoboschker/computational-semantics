@@ -9,9 +9,16 @@ DISPLAY = 10
 DEBUG = True
 
 def debug(msg):
-    if DEBUG: print(msg,file=sys.stderr)
-
-
+    if DEBUG:
+        if type(msg) == type(""):
+             print(msg,file=sys.stderr)
+        else:
+            # treat as iterable
+            try:
+                for it in msg:
+                    print(it,file=sys.stderr)
+            except:
+                print(msg,file=sys.stderr)
 
 def scoringTypicality(query,modelPaths):
     coocurenceMatrix = pickle.load(open('coocMap.pickle','rb'))
@@ -21,14 +28,14 @@ def scoringTypicality(query,modelPaths):
         for modelPath in modelPaths:
             model = preproModel(modelPath)
             # debug(model)
-            for mTerm in model.keys():
+            for mSense in model.keys():
                 if qTerm in coocurenceMatrix:
-                    if mTerm in coocurenceMatrix[qTerm]:
-                        if model not in scores:
-                            scores[model] = coocurenceMatrix[qTerm][mTerm]
-                            # debug(coocurenceMatrix[qTerm][mTerm])
+                    if mSense in coocurenceMatrix[qTerm]:
+                        if modelPath not in scores:
+                            scores[modelPath] = coocurenceMatrix[qTerm][mSense]
+                            # debug(coocurenceMatrix[qTerm][mSense])
                         else:
-                            scores[model] += coocurenceMatrix[qTerm][mTerm]
+                            scores[modelPath] += coocurenceMatrix[qTerm][mSense]
     return scores
 
 def preproModel(model):
@@ -39,8 +46,6 @@ def preproModel(model):
         OUTPUT:
             @return:    a list: the most specific senses from the model
     """
-
-    debug(model)
     rModel = reduceModel(loadModel(model)[1])[0]
     #reduceModel(loadModel('data/accordion-player-188286_640.mod')[1])[0].keys()
 
@@ -51,7 +56,6 @@ def preproModel(model):
         if k not in senses:
             senses[k[0:-5]] = len(rModel[k])
 
-    # debug(senses)
     return senses
 
 
@@ -79,27 +83,35 @@ def order(scores):
     # keys = [key for key in scores.keys()]
     # scores = [scores[key] for key in keys]
     # scoring = [keys,scores]
-    oScoring = sorted(scores, key = lambda cols:cols[1])
+    oScoring = sorted(scores, key = lambda cols:cols[1], reverse = True)
     return oScoring
 
-models = []
-sentence_with_most_specific_hypernym = sys.argv[0]
-for line in sys.stdin:
-    line = line.rstrip('\n')
-    models.append(line)
 
-if len(models) > 0:
-    scored = scoringTypicality(sentence_with_most_specific_hypernym,models)
-    debug(scored)
-    orderedScores = order(scored)
-    debug(orderedScores)
-    #sys.stdout.write(" ".join(orderedScores[:5]))
-    sys.stdout.write(" ".join(models[:5]))
-else:
-    # return five random?
+def main():
+
     models = []
+    sentence_with_most_specific_hypernym = sys.argv[1]
+    for line in sys.stdin:
+        line = line.rstrip('\n')
+        if line == "quit":
+            break
+        models.append(line)
+        debug(line)
+        debug("added")
+
+    if len(models) > 0:
+        scored = scoringTypicality(sentence_with_most_specific_hypernym,models)
+        orderedScores = order(scored)
+        debug(orderedScores)
+        debug("only the models:")
+        orSc = [sc[0] for sc in orderedScores[:5]]
+        debug(orSc)
+        #sys.stdout.write(" ".join(orderedScores[:5]))
+        sys.stdout.write(" ".join(orSc))
+    else:
+        # return five random?
+        models = []
 
 
-
-
-
+if __name__ == "__main__":
+    main()
