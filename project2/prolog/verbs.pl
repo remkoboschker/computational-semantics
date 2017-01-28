@@ -60,7 +60,7 @@ tv(dcl,pl, lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kiss];[touch];[tie].
 tv(bse,_,  lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kissed];[touched];[tied].
 tv(psp,_,  lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kissed];[touched];[tied].
 
-tv(prp,_,  lam(P, lam(X,app(P,lam(Y,some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))) --> [eating,drinking].
+tv(prp,_,  lam(P, lam(X,app(P,lam(Y,some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))) --> [eating];[drinking].
 tv(dcl,sg, lam(P, lam(X,app(P,lam(Y,some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))) --> [eats].
 tv(dcl,pl, lam(P, lam(X,app(P,lam(Y,some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))) --> [eat].
 tv(bse,_,  lam(P, lam(X,app(P,lam(Y,some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))) --> [ate].
@@ -72,11 +72,12 @@ tv(dcl,pl, lam(P,lam(X,app(P,lam(Y,s_near(X,Y)))))) --> [have].
 tv(bse,_,  lam(P,lam(X,app(P,lam(Y,s_near(X,Y)))))) --> [had].
 tv(psp,_,  lam(P,lam(X,app(P,lam(Y,s_near(X,Y)))))) --> [had].
 
-tv(prp,_,  lam(P,lam(X,app(P,eq(X,X))))) --> [using].
-tv(dcl,sg, lam(P,lam(X,app(P,eq(X,X))))) --> [uses].
-tv(dcl,pl, lam(P,lam(X,app(P,eq(X,X))))) --> [use].
-tv(bse,_,  lam(P,lam(X,app(P,eq(X,X))))) --> [used].
-tv(psp,_,  lam(P,lam(X,app(P,eq(X,X))))) --> [used].
+% non reflexives
+tv(prp,_,  lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [using];[playing].
+tv(dcl,sg, lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [uses].
+tv(dcl,pl, lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [use].
+tv(bse,_,  lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [used].
+tv(psp,_,  lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [used].
 
 % tv(_,_,    lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [_].
 

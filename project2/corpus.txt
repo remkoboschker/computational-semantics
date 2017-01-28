@@ -334,7 +334,7 @@ A man is riding his bike.
 A man is sitting on a white horse.
 A man is standing.
 A man is stroking a cat.
-A man is stting.
+A man is sitting.
 A man is touching a cheetah.
 A man is walking down the road.
 A man is walking in a field.

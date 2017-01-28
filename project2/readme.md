@@ -1,6 +1,7 @@
 run swipl -g "[prolog/semdcg],parse_from_file('corpus.txt','out3.txt'),halt."
 to check if a sentences in the corpus parse
 
+swipl -g "[prolog/semdcg],Exp=[the,girl,is,eating,noodles,'.'],s(Sem,Exp,[]),betaConvert(Sem,Red),numbervars(Red,23,_),write(Red),nl,fail;halt."
 
 todo:
 
