@@ -20,13 +20,13 @@ def scoringTypicality(query,modelPaths):
     for qTerm in pquery:
         for modelPath in modelPaths:
             model = preproModel(modelPath)
-            debug(model)
+            # debug(model)
             for mTerm in model.keys():
                 if qTerm in coocurenceMatrix:
                     if mTerm in coocurenceMatrix[qTerm]:
                         if model not in scores:
                             scores[model] = coocurenceMatrix[qTerm][mTerm]
-                            debug(coocurenceMatrix[qTerm][mTerm])
+                            # debug(coocurenceMatrix[qTerm][mTerm])
                         else:
                             scores[model] += coocurenceMatrix[qTerm][mTerm]
     return scores
@@ -51,7 +51,7 @@ def preproModel(model):
         if k not in senses:
             senses[k[0:-5]] = len(rModel[k])
 
-    debug(senses)
+    # debug(senses)
     return senses
 
 
@@ -88,15 +88,18 @@ for line in sys.stdin:
     line = line.rstrip('\n')
     models.append(line)
 
-debug(models)
 if len(models) > 0:
     scored = scoringTypicality(sentence_with_most_specific_hypernym,models)
+    debug(scored)
     orderedScores = order(scored)
+    debug(orderedScores)
+    #sys.stdout.write(" ".join(orderedScores[:5]))
+    sys.stdout.write(" ".join(models[:5]))
 else:
-    # return five random
+    # return five random?
     models = []
 
-sys.stdout.write(" ".join(models[:5]))
+
 
 
 

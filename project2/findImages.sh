@@ -18,7 +18,7 @@ then
     #echo ${first_order_representations_sorted_by_number_of_terms// /\\n}
 
     for representation in ${first_order_representations_sorted_by_number_of_terms}; do
-      models_that_satisfy_first_order_semantic_representation=$(
+      models_that_satisfy=$(
         for model in `ls ../data/*.mod`; do
           satisfying_model=`swipl -g "[prolog/model_checker],main_satisfying(${representation},'${model}'),halt."`
           # otherwise empty elements will be emitted
@@ -26,16 +26,18 @@ then
             echo $satisfying_model
           fi
         done)
-      number_of_models_that_satisfy=`echo ${models_that_satisfy_first_order_semantic_representation} | wc -w`
-      echo ${number_of_models_that_satisfy}
+      number_of_models_that_satisfy=`echo ${models_that_satisfy} | wc -w`
       if [ ${number_of_models_that_satisfy} -gt 0 ]; then
         break
       fi
     done
 
-    echo ${models_that_satisfy_first_order_semantic_representation}
+    echo ${models_that_satisfy}
 
-    five_most_relevant_models=`echo "${models_that_satisfy_first_order_semantic_representation// /\\n}" | python3 five-most-relevant-models.py '${sentence_with_most_specific_hypernym}'`
+    five_most_relevant_models=`
+      if [ ${#models_that_satisfy} -gt 0 ]; then
+        echo "${models_that_satisfy// /\\n}" | python3 five-most-relevant-models.py '${sentence_with_most_specific_hypernym}'
+      fi`
     echo ${five_most_relevant_models}
 
     images=${five_most_relevant_models//mod/jpg}
