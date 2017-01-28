@@ -38,7 +38,7 @@ then
       if [ ${#models_that_satisfy} -gt 0 ]; then
         echo "${models_that_satisfy// /\\n}" | `python3 five-most-relevant-models.py "${sentence_with_most_specific_hypernym}"`
       fi)
-    echo ${five_most_relevant_models}
+    echo "${five_most_relevant_models}"
 
     images=${five_most_relevant_models//mod/jpg}
     #echo ${images}

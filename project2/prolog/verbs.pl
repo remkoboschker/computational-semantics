@@ -31,7 +31,7 @@ iv(bse,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flew].
 iv(psp,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flown].
 
 % needs eq as a unit because otherwise you get a dangling variable
-iv(prp,_,  lam(X,eq(X,X))) --> [drinking];[coming];[looking];[shining];[running];[playing].
+iv(prp,_,  lam(X,eq(X,X))) --> [drinking];[coming];[looking];[shining];[running];[playing];[staring].
 iv(dcl,sg, lam(X,eq(X,X))) --> [drinks].
 iv(dcl,pl, lam(X,eq(X,X))) --> [drink].
 iv(bse,_,  lam(X,eq(X,X))) --> [drank].

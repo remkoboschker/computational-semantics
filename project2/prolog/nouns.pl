@@ -1,3 +1,6 @@
+n0(sg,a, lam(X,n_baby_1(X))) --> [baby].
+
+
 n0(sg,an, lam(X,eq(X,X))) --> [drinking].
 % nouns
 %
@@ -1346,6 +1349,7 @@ n0(pl,_,  lam(X,n_percussion_instrument_1(X)))   --> [percussion, instruments]; 
 n0(sg,a,  lam(X,n_performer_1(X))) --> [performer]; [performing, artist].
 n0(pl,_,  lam(X,n_performer_1(X)))   --> [performers]; [performing, artists].
 n0(sg,a,  lam(X,n_person_1(X))) --> [person]; [someone]; [somebody]; [mortal]; [soul].
+n0(pl,_,  lam(X,n_person_1(X))) --> [persons].
 n0(sg,an, lam(X,n_person_1(X))) --> [individual].
 n0(pl,_,  lam(X,n_person_1(X)))   --> [people]; [individuals]; [someones]; [somebodies]; [mortals]; [souls].
 n0(sg,a,  lam(X,n_personal_computer_1(X))) --> [personal, computer]; [pc]; [microcomputer].

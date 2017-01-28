@@ -98,13 +98,13 @@ def main():
         if line == "quit":
             break
         models.append(line)
-        debug(line)
-        debug("model added")
+        # debug(line)
+        # debug("model added")
 
     if len(models) > 0:
         scored = scoringTypicality(sentence_with_most_specific_hypernym,models)
         orderedScores = order(scored)
-        debug(orderedScores)
+        # debug(orderedScores)
         debug("5 highest ranking models")
         orSc = [sc[0] for sc in orderedScores[:5]]
         debug(orSc)
