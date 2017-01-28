@@ -1,3 +1,4 @@
+n0(sg,an, lam(X,eq(X,X))) --> [drinking].
 % nouns
 %
 n0(sg,an, lam(X,n_abstraction_6(X))) --> [abstraction]; [abstract, entity].
@@ -379,8 +380,8 @@ n0(sg,an, lam(X,n_cheetah_1(X))) --> [acinonyx, jubatus].
 n0(pl,_,  lam(X,n_cheetah_1(X)))   --> [cheetahs]; [chetahs]; [acinonyx, jubatuses].
 n0(sg,a,  lam(X,n_chemical_1(X))) --> [chemical]; [chemical, substance].
 n0(pl,_,  lam(X,n_chemical_1(X)))   --> [chemicals]; [chemical, substances].
-n0(sg,a,  lam(X,n_chihuahua_1(X))) --> [chihuahua].
-n0(pl,_,  lam(X,n_chihuahua_1(X)))   --> [chihuahuas].
+n0(sg,a,  lam(X,n_chihuahua_3(X))) --> [chihuahua].
+n0(pl,_,  lam(X,n_chihuahua_3(X)))   --> [chihuahuas].
 n0(sg,a,  lam(X,n_child_1(X))) --> [child]; [kid]; [youngster]; [minor]; [shaver]; [nipper]; [small, fry]; [tiddler]; [tike]; [tyke]; [fry]; [nestling].
 n0(pl,_,  lam(X,n_child_1(X)))   --> [children]; [kids]; [youngsters]; [minors]; [shavers]; [nippers]; [small, fries]; [tiddlers]; [tikes]; [tykes]; [fries]; [nestlings].
 n0(sg,a,  lam(X,n_child_2(X))) --> [child]; [kid].

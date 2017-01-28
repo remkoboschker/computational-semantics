@@ -6,23 +6,26 @@ then
   while read -r line
   do
     sentence=${line//[$'\r'$'\n']/}
-    #` echo "${line}" | tr -d '\n\r'`
-    # ` echo "${line}" | tr -d '\n\r'`
     echo ${sentence}
+
     sentence_with_most_specific_hypernym=`python3 grimSearch0.py "${sentence}"`
     echo ${sentence_with_most_specific_hypernym}
 
     first_order_semantic_representations=`swipl -g "[prolog/semdcg],parse_and_write('${sentence_with_most_specific_hypernym}'),halt."`
-    #echo ${first_order_semantic_representations}
+    #echo "${first_order_semantic_representations// /\\n}"
 
     first_order_representations_sorted_by_number_of_terms=`echo ${first_order_semantic_representations} | python3 first-order-representations-sorted-by-number-of-terms.py`
-    echo "${first_order_representations_sorted_by_number_of_terms// /\\n}"
+    #echo ${first_order_representations_sorted_by_number_of_terms// /\\n}
 
     for representation in ${first_order_representations_sorted_by_number_of_terms}; do
       models_that_satisfy_first_order_semantic_representation=$(
-      for model in `ls ../data/*.mod`; do
-          echo `swipl -g "[prolog/model_checker],main_satisfying(${representation},'${model}'),halt."`
-      done)
+        for model in `ls ../data/*.mod`; do
+          satisfying_model=`swipl -g "[prolog/model_checker],main_satisfying(${representation},'${model}'),halt."`
+          # otherwise empty elements will be emitted
+          if [ ${#satisfying_model} -gt 0 ]; then
+            echo $satisfying_model
+          fi
+        done)
       number_of_models_that_satisfy=`echo ${models_that_satisfy_first_order_semantic_representation} | wc -w`
       echo ${number_of_models_that_satisfy}
       if [ ${number_of_models_that_satisfy} -gt 0 ]; then
@@ -30,10 +33,10 @@ then
       fi
     done
 
-    echo "${models_that_satisfy_first_order_semantic_representation// /\\n}"
+    echo ${models_that_satisfy_first_order_semantic_representation}
 
     five_most_relevant_models=`echo ${models_that_satisfy_first_order_semantic_representation} | python3 five-most-relevant-models.py '${sentence_with_most_specific_hypernym}'`
-    #echo ${five_most_relevant_models}
+    echo ${five_most_relevant_models}
 
     images=${five_most_relevant_models//mod/jpg}
     #echo ${images}
