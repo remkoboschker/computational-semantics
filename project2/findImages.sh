@@ -35,7 +35,7 @@ then
 
     echo ${models_that_satisfy_first_order_semantic_representation}
 
-    five_most_relevant_models=`echo ${models_that_satisfy_first_order_semantic_representation} | python3 five-most-relevant-models.py '${sentence_with_most_specific_hypernym}'`
+    five_most_relevant_models=`echo "${models_that_satisfy_first_order_semantic_representation// /\\n}" | python3 five-most-relevant-models.py '${sentence_with_most_specific_hypernym}'`
     echo ${five_most_relevant_models}
 
     images=${five_most_relevant_models//mod/jpg}
