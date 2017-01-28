@@ -91,19 +91,21 @@ def main():
 
     models = []
     sentence_with_most_specific_hypernym = sys.argv[1]
+    debug("sentence input:")
+    debug(sentence_with_most_specific_hypernym)
     for line in sys.stdin:
         line = line.rstrip('\n')
         if line == "quit":
             break
         models.append(line)
         debug(line)
-        debug("added")
+        debug("model added")
 
     if len(models) > 0:
         scored = scoringTypicality(sentence_with_most_specific_hypernym,models)
         orderedScores = order(scored)
         debug(orderedScores)
-        debug("only the models:")
+        debug("5 highest ranking models")
         orSc = [sc[0] for sc in orderedScores[:5]]
         debug(orSc)
         #sys.stdout.write(" ".join(orderedScores[:5]))
