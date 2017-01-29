@@ -41,6 +41,10 @@ then
     done
 
     echo ""
+    echo "representation chosen:"
+    echo ${representation}
+
+    echo ""
     echo "models that satisfy the first sorted representation that is satisfied by at least one model:"
     echo ${models_that_satisfy}
 
@@ -57,7 +61,7 @@ then
     #echo ${images}
 
     document=`
-    echo "<html><body><h1>${line}<h2>${sentence_with_most_specific_hypernym}<h2>${first_order_semantic_representation}<ul>"
+    echo "<html><body><h1>${line}<h2>${sentence_with_most_specific_hypernym}<h2>${representation}<ul>"
     for image in ${images}; do
       echo "<li><img src=\"../${image}\"></li>"
     done
