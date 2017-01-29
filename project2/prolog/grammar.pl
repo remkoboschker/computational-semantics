@@ -105,6 +105,7 @@ conj(lam(P,lam(Q,and(P,Q)))) --> [but].
 
 % noun phrases
 %
+np0(sg,lam(P,some(X,and(n_entity_1(X),app(P,X)))))      --> [each,other].
 np0(sg,lam(P,some(X,and(n_entity_1(X),app(P,X)))))      --> [something].
 np0(sg,lam(P,some(X,and(n_person_1(X),app(P,X)))))      --> [somebody];[someone].
 np0(sg,lam(P, all(X,imp(n_person_1(X),app(P,X)))))      --> [everyone];[everybody].

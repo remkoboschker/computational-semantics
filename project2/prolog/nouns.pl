@@ -361,8 +361,8 @@ n0(sg,a,  lam(X,n_case_5(X))) --> [case].
 n0(pl,_,  lam(X,n_case_5(X)))   --> [cases].
 n0(sg,a,  lam(X,n_cassowary_1(X))) --> [cassowary].
 n0(pl,_,  lam(X,n_cassowary_1(X)))   --> [cassowaries].
-n0(sg,a,  lam(X,n_cat_1(X))) --> [cat]; [true, cat].
-n0(pl,_,  lam(X,n_cat_1(X)))   --> [cats]; [true, cats].
+n0(sg,a,  lam(X,n_cat_1(X))) --> [cat]; [true, cat];[kitten].
+n0(pl,_,  lam(X,n_cat_1(X)))   --> [cats]; [true, cats];[kittens].
 n0(sg,a,  lam(X,n_cat_food_1(X))) --> [cat, food].
 n0(pl,_,  lam(X,n_cat_food_1(X)))   --> [cat, foods].
 n0(sg,a,  lam(X,n_causal_agent_1(X))) --> [causal, agent]; [cause]; [causal, agency].

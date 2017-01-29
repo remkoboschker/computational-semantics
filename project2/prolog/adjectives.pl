@@ -28,6 +28,7 @@ a0(a,  lam(P,lam(X,and(a_metal_1(X),app(P,X))))) --> [metallic]; [metal].
 a0(an, lam(P,lam(X,and(a_ocher_1(X),app(P,X))))) --> [ocher]; [ochre].
 a0(an, lam(P,lam(X,and(a_old_1(X),app(P,X))))) --> [old].
 a0(an, lam(P,lam(X,and(a_orange_1(X),app(P,X))))) --> [orange]; [orangish].
+a0(a, lam(P,lam(X,and(a_orange_1(X),app(P,X))))) --> [ginger].
 a0(an, lam(P,lam(X,and(a_outdoor_1(X),app(P,X))))) --> [outdoor]; [out-of-door]; [outside].
 a0(a,  lam(P,lam(X,and(a_pink_1(X),app(P,X))))) --> [pink]; [pinkish].
 a0(a,  lam(P,lam(X,and(a_purple_1(X),app(P,X))))) --> [purple]; [violet]; [purplish].
@@ -48,3 +49,5 @@ a0(a,  lam(P,lam(X,and(a_white_1(X),app(P,X))))) --> [white].
 a0(a,  lam(P,lam(X,and(a_white_2(X),app(P,X))))) --> [white].
 a0(a,  lam(P,lam(X,and(a_wooden_1(X),app(P,X))))) --> [wooden].
 a0(a,  lam(P,lam(X,and(a_yellow_1(X),app(P,X))))) --> [yellow]; [yellowish]; [xanthous].
+
+% a0(_,  lam(P,lam(X,and(eq(X,X),app(P,X))))) --> [_].
