@@ -73,7 +73,9 @@ n1(Num,Vowel,app(A,N)) --> a(Vowel,A), n2(Num,_,N).
 a(Vowel,Sem) --> a1(Vowel,Sem).
 a(Vowel,lam(P,lam(X,app(app(Sem,app(app(A1,P),X)),app(app(A2,P),X))))) --> a1(Vowel,A1), conj(Sem), a(_,A2).
 a1(Vowel,Sem) --> a0(Vowel,Sem).
-a1(_,Sem) --> iv(prp,_,Sem).
+a1(_,lam(P, lam(X, and(app(Sem,X),app(P,X))))) --> iv(prp,_,Sem).
+
+% a barking dog
 
 % prepositions
 %
