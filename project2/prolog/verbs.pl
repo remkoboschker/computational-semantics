@@ -31,11 +31,11 @@ iv(bse,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flew].
 iv(psp,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flown].
 
 % needs eq as a unit because otherwise you get a dangling variable
-iv(prp,_,  lam(X,eq(X,X))) --> [drinking];[coming];[looking];[shining];[running];[playing];[staring].
-iv(dcl,sg, lam(X,eq(X,X))) --> [drinks].
-iv(dcl,pl, lam(X,eq(X,X))) --> [drink].
-iv(bse,_,  lam(X,eq(X,X))) --> [drank].
-iv(psp,_,  lam(X,eq(X,X))) --> [drunk];[made];[parked].
+iv(prp,_,  lam(X,eq(X,X))) --> [drinking];[coming];[looking];[shining];[running];[playing];[staring];[covering];[barking].
+iv(dcl,sg, lam(X,eq(X,X))) --> [drinks];[covers];[barks];[runs].
+iv(dcl,pl, lam(X,eq(X,X))) --> [drink];[cover];[bark];[run].
+iv(bse,_,  lam(X,eq(X,X))) --> [drank];[covered];[barked];[ran].
+iv(psp,_,  lam(X,eq(X,X))) --> [drunk];[made];[parked];[covered];[barked];[run].
 
 % iv(_,_,  lam(X,X)) --> [_].
 
@@ -73,11 +73,13 @@ tv(bse,_,  lam(P,lam(X,app(P,lam(Y,s_near(X,Y)))))) --> [had].
 tv(psp,_,  lam(P,lam(X,app(P,lam(Y,s_near(X,Y)))))) --> [had].
 
 % non reflexives
-tv(prp,_,  lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [using];[playing].
-tv(dcl,sg, lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [uses].
-tv(dcl,pl, lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [use].
-tv(bse,_,  lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [used].
-tv(psp,_,  lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [used].
+% the is a much better representation for containing using spatial relations. but for some reason,
+% these are not annotated in the models.
+tv(prp,_,  lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [using];[playing];[containing].
+tv(dcl,sg, lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [uses];[contains].
+tv(dcl,pl, lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [use];[contain].
+tv(bse,_,  lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [used];[contained].
+tv(psp,_,  lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [used];[contained].
 
 % tv(_,_,    lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [_].
 

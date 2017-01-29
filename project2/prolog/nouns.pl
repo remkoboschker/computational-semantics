@@ -1,5 +1,9 @@
-n0(sg,a, lam(X,n_baby_1(X))) --> [baby].
+n0(sg,a,  lam(X,n_man_1(X))) --> [beggar].
 
+n0(sg,a, lam(X,n_baby_1(X))) --> [baby].
+n0(pl,_, lam(X,n_baby_1(X))) --> [babies].
+n0(sg,a, lam(X,n_beer_1(X))) --> [beer].
+n0(pl,_, lam(X,n_beer_1(X))) --> [beer];[beers].
 
 n0(sg,an, lam(X,eq(X,X))) --> [drinking].
 % nouns
@@ -423,7 +427,7 @@ n0(pl,_,  lam(X,n_coat_3(X)))   --> [coats]; [pelages].
 n0(sg,a,  lam(X,n_cocker_1(X))) --> [cocker, spaniel]; [cocker].
 n0(sg,an, lam(X,n_cocker_1(X))) --> [english, cocker, spaniel].
 n0(pl,_,  lam(X,n_cocker_1(X)))   --> [cocker, spaniels]; [english, cocker, spaniels]; [cockers].
-n0(sg,a,  lam(X,n_coffee_1(X))) --> [coffee]; [java].
+n0(sg,_,  lam(X,n_coffee_1(X))) --> [coffee]; [java].
 n0(pl,_,  lam(X,n_coffee_1(X)))   --> [coffees]; [javas].
 n0(sg,a,  lam(X,n_coffee_cup_1(X))) --> [coffee, cup].
 n0(pl,_,  lam(X,n_coffee_cup_1(X)))   --> [coffee, cups].
@@ -719,8 +723,8 @@ n0(sg,a,  lam(X,n_foam_1(X))) --> [foam]; [froth].
 n0(pl,_,  lam(X,n_foam_1(X)))   --> [foams]; [froths].
 n0(sg,a,  lam(X,n_folding_chair_1(X))) --> [folding, chair].
 n0(pl,_,  lam(X,n_folding_chair_1(X)))   --> [folding, chairs].
-n0(sg,a,  lam(X,n_food_1(X))) --> [food]; [nutrient].
-n0(pl,_,  lam(X,n_food_1(X)))   --> [foods]; [nutrients].
+n0(sg,_,  lam(X,n_food_1(X))) --> [food]; [nutrient].
+n0(pl,_,  lam(X,n_food_1(X))) --> [foods]; [nutrients].
 n0(sg,a,  lam(X,n_food_2(X))) --> [food]; [solid, food].
 n0(pl,_,  lam(X,n_food_2(X)))   --> [foods]; [solid, foods].
 n0(sg,a,  lam(X,n_foodstuff_2(X))) --> [foodstuff]; [food, product].
@@ -1714,8 +1718,8 @@ n0(sg,a,  lam(X,n_stalk_2(X))) --> [stalk]; [stem].
 n0(pl,_,  lam(X,n_stalk_2(X)))   --> [stalks]; [stems].
 n0(sg,a,  lam(X,n_starches_1(X))) --> [starches].
 n0(pl,_,  lam(X,n_starches_1(X)))   --> [starcheses].
-n0(sg,a,  lam(X,n_steam_1(X))) --> [steam].
-n0(pl,_,  lam(X,n_steam_1(X)))   --> [steams].
+n0(sg,_,  lam(X,n_steam_1(X))) --> [steam].
+n0(pl,_,  lam(X,n_steam_1(X))) --> [steams].
 n0(sg,a,  lam(X,n_step_4(X))) --> [step]; [stair].
 n0(pl,_,  lam(X,n_step_4(X)))   --> [steps]; [stairs].
 n0(sg,a,  lam(X,n_stick_1(X))) --> [stick].
@@ -1808,6 +1812,7 @@ n0(sg,a,  lam(X,n_tattoo_1(X))) --> [tattoo].
 n0(pl,_,  lam(X,n_tattoo_1(X)))   --> [tattoos].
 n0(sg,a,  lam(X,n_tawny_owl_1(X))) --> [tawny, owl]; [strix, aluco].
 n0(pl,_,  lam(X,n_tawny_owl_1(X)))   --> [tawny, owls]; [strix, alucos].
+n0(sg,_,  lam(X,n_tea_1(X))) --> [tea]; [teatime].
 n0(sg,a,  lam(X,n_tea_2(X))) --> [tea]; [teatime].
 n0(sg,an, lam(X,n_tea_2(X))) --> [afternoon, tea].
 n0(pl,_,  lam(X,n_tea_2(X)))   --> [teas]; [afternoon, teas]; [teatimes].
@@ -1950,8 +1955,8 @@ n0(sg,a,  lam(X,n_ware_1(X))) --> [ware].
 n0(pl,_,  lam(X,n_ware_1(X)))   --> [wares].
 n0(sg,a,  lam(X,n_watch_1(X))) --> [watch]; [ticker].
 n0(pl,_,  lam(X,n_watch_1(X)))   --> [watches]; [tickers].
-n0(sg,a,  lam(X,n_water_1(X))) --> [water]; [h2o].
-n0(pl,_,  lam(X,n_water_1(X)))   --> [waters]; [h2os].
+n0(sg,_,  lam(X,n_water_1(X))) --> [water]; [h2o].
+n0(pl,_,  lam(X,n_water_1(X))) --> [waters]; [h2os].
 n0(sg,a,  lam(X,n_water_2(X))) --> [body, of, water]; [water].
 n0(pl,_,  lam(X,n_water_2(X)))   --> [body, of, waters]; [waters].
 n0(sg,a,  lam(X,n_water_6(X))) --> [water].
@@ -1999,8 +2004,8 @@ n0(pl,_,  lam(X,'n_woman\'s_clothing_1'(X)))   --> ['woman\'s', clothings].
 n0(sg,a,  lam(X,n_woman_1(X))) --> [woman].
 n0(sg,an, lam(X,n_woman_1(X))) --> [adult, female].
 n0(pl,_,  lam(X,n_woman_1(X)))   --> [women]; [adult, females].
-n0(sg,a,  lam(X,n_wood_1(X))) --> [wood].
-n0(pl,_,  lam(X,n_wood_1(X)))   --> [woods].
+n0(sg,_,  lam(X,n_wood_1(X))) --> [wood].
+n0(pl,_,  lam(X,n_wood_1(X))) --> [woods].
 n0(sg,a,  lam(X,n_wood_2(X))) --> [forest]; [wood]; [woods].
 n0(pl,_,  lam(X,n_wood_2(X)))   --> [forests]; [woods]; [woodses].
 n0(pl,_,  lam(X,a_wooden_1(X)))   --> [woodens].

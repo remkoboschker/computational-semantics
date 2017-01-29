@@ -56,12 +56,14 @@ np1(Num,app(app(Sem,app(Det,N1)),N2)) --> det(Num,Vowel,Det), n2(Num,Vowel,N1), 
 np1(Num,app(app(Sem,NP),N2)) --> np0(_,NP), poss(Sem), n2(Num,_,N2).
 np1(Num,Sem) --> np0(Num,Sem).
 
+
 % nouns
 %
 n2(Num,Vowel,Sem) --> n1(Num,Vowel,Sem).
 n2(Num,Vowel,lam(X,and(app(N,X),app(PP,X)))) --> n1(Num,Vowel,N), pp(PP).
 n2(Num,Vowel,app(app(Sem,N),VP)) --> n1(Num,Vowel,N), relpro(Sem), vp(dcl,Num,VP).
 n2(Num,Vowel,lam(X,app(app(Sem,app(N1,X)),app(N2,X)))) --> n1(Num,Vowel,N1), conj(Sem), n2(Num,_,N2).
+
 
 n1(Num,Vowel,Sem) --> n0(Num,Vowel,Sem).
 n1(Num,Vowel,app(A,N)) --> a(Vowel,A), n2(Num,_,N).
@@ -113,8 +115,7 @@ det(sg,a,  lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [a];[another].
 det(sg,an, lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [an];[another].
 det(sg,_,  lam(P,lam(Q, and(some(Y,app(P,Y)),all(X,imp(app(P,X),app(Q,X))))))) --> [every];[each].
 det(_ ,_,  lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [the];[some].
-% not sure how this rule below does what it does, but it is needed!
-det(_   ,_,  lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [].
+det(_,_,  lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [].
 det(pl,_,  lam(P,lam(Q,some(X,and(app(P,X),app(Q,X)))))) --> [several].
 det(pl,_,  lam(P,lam(Q, all(X,imp(app(P,X),app(Q,X)))))) --> [all].
 det(pl,_,  lam(P,lam(Q, some(X,and(app(P,X),not(app(Q,X))))))) --> [not,all].

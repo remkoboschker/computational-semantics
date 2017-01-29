@@ -1,5 +1,6 @@
 model([d1,d2,n1,n2,n3,n4,n5,n6],
 	[f(1,n_child_1,[d1]),
+	 f(1,n_baby_1,[d1]),
 	 f(1,n_juvenile_1,[d1]),
 	 f(1,n_person_1,[d1]),
 	 f(1,n_causal_agent_1,[d1]),
