@@ -44,15 +44,14 @@ then
     echo "models that satisfy the first sorted representation that is satisfied by at least one model:"
     echo ${models_that_satisfy}
 
-    five_most_relevant_models=${models_that_satisfy}
-    # $(
-    #   if [ ${#models_that_satisfy} -gt 0 ]; then
-    #     echo "${models_that_satisfy// /\\n}" | `python3 five-most-relevant-models.py "${sentence_with_most_specific_hypernym}"`
-    #   fi)
-    #
-    # echo ""
-    # echo "five most relevant models sorted by cooccurence of terms in model and sentence"
-    # echo "${five_most_relevant_models}"
+    five_most_relevant_models=$(
+      if [ ${#models_that_satisfy} -gt 0 ]; then
+        echo "${models_that_satisfy// /\\n}" | python3 dummy-five-most-relevant-models.py "${sentence_with_most_specific_hypernym}"
+      fi)
+
+    echo ""
+    echo "five most relevant models sorted by cooccurence of terms in model and sentence"
+    echo "${five_most_relevant_models}"
 
     images=${five_most_relevant_models//mod/jpg}
     #echo ${images}

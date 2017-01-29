@@ -75,7 +75,7 @@ tv(psp,_,  lam(P,lam(X,app(P,lam(Y,s_near(X,Y)))))) --> [had].
 % non reflexives
 % the is a much better representation for containing using spatial relations. but for some reason,
 % these are not annotated in the models.
-tv(prp,_,  lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [using];[playing];[containing];[opening];[tying];[jumping];[facing];[opening];[crunching];[munching].
+tv(prp,_,  lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [using];[playing];[containing];[opening];[tying];[jumping];[facing];[opening];[crunching];[munching];[wearing].
 tv(dcl,sg, lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [uses];[contains].
 tv(dcl,pl, lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [use];[contain].
 tv(bse,_,  lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [used];[contained].

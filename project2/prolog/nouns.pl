@@ -1911,7 +1911,7 @@ n0(sg,an, lam(X,n_upholstery_1(X))) --> [upholstery].
 n0(pl,_,  lam(X,n_upholstery_1(X)))   --> [upholsteries].
 n0(sg,an, lam(X,n_utensil_1(X))) --> [utensil].
 n0(pl,_,  lam(X,n_utensil_1(X)))   --> [utensils].
-n0(sg,a,  lam(X,n_vapor_1(X))) --> [vapor]; [vapour].
+n0(sg,_,  lam(X,n_vapor_1(X))) --> [vapor]; [vapour].
 n0(pl,_,  lam(X,n_vapor_1(X)))   --> [vapors]; [vapours].
 n0(sg,a,  lam(X,n_vascular_plant_1(X))) --> [vascular, plant]; [tracheophyte].
 n0(pl,_,  lam(X,n_vascular_plant_1(X)))   --> [vascular, plants]; [tracheophytes].
