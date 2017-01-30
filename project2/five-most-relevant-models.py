@@ -6,19 +6,7 @@ from hypernym import reduceModel, loadModel
 from nltk.corpus import wordnet as wn
 
 DISPLAY = 10
-DEBUG = True
-
-def debug(msg):
-    if DEBUG:
-        if type(msg) == type(""):
-             print(msg,file=sys.stderr)
-        else:
-            # treat as iterable
-            try:
-                for it in msg:
-                    print(it,file=sys.stderr)
-            except:
-                print(msg,file=sys.stderr)
+DEBUG = False
 
 def scoringTypicality(query,modelPaths):
     coocurenceMatrix = pickle.load(open('coocMap.pickle','rb'))
@@ -27,15 +15,12 @@ def scoringTypicality(query,modelPaths):
     for qTerm in pquery:
         for modelPath in modelPaths:
             model = preproModel(modelPath)
+            scores[modelPath] = 0
             # debug(model)
             for mSense in model.keys():
                 if qTerm in coocurenceMatrix:
                     if mSense in coocurenceMatrix[qTerm]:
-                        if modelPath not in scores:
-                            scores[modelPath] = coocurenceMatrix[qTerm][mSense]
-                            # debug(coocurenceMatrix[qTerm][mSense])
-                        else:
-                            scores[modelPath] += coocurenceMatrix[qTerm][mSense]
+                        scores[modelPath] += coocurenceMatrix[qTerm][mSense]
     return scores
 
 def preproModel(model):
@@ -88,31 +73,43 @@ def order(scores):
 
 
 def main():
-
     models = []
     sentence_with_most_specific_hypernym = sys.argv[1]
     debug("sentence input:")
     debug(sentence_with_most_specific_hypernym)
     for line in sys.stdin:
         line = line.rstrip('\n')
-        if line == "quit":
+        if line == "quit" or line == "\n":
             break
         models.append(line)
-        # debug(line)
-        # debug("model added")
+        debug(line)
+        debug("model considered for most relevant model")
 
     if len(models) > 0:
         scored = scoringTypicality(sentence_with_most_specific_hypernym,models)
         orderedScores = order(scored)
         # debug(orderedScores)
-        debug("5 highest ranking models")
+        debug("\n5 highest ranking models")
         orSc = [sc[0] for sc in orderedScores[:5]]
         debug(orSc)
         #sys.stdout.write(" ".join(orderedScores[:5]))
-        sys.stdout.write(" ".join(orSc))
+        sys.stdout.write("\n".join(orSc))
     else:
         # return five random?
         models = []
+
+def debug(msg):
+    if DEBUG:
+        if type(msg) == type(""):
+             print(msg,file=sys.stderr)
+        else:
+            # treat as iterable
+            try:
+                for it in msg:
+                    print(it,file=sys.stderr)
+            except:
+                print(msg,file=sys.stderr)
+
 
 
 if __name__ == "__main__":
