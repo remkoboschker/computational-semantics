@@ -1,6 +1,6 @@
 #!/bin/bash
 source ../venv/bin/activate
-p_mode="python"
+p_mode="python3"
 
 if [ -f "$1" ]
 then
@@ -26,6 +26,8 @@ then
     echo "first order semantic representations sorted by number of synsets:"
     echo -e "${first_order_representations_sorted_by_number_of_terms// /\\n}"
 
+    representation="no parse"
+    models_that_satisfy=""
     for representation in ${first_order_representations_sorted_by_number_of_terms}; do
       models_that_satisfy=$(
         for model in `ls ../data/*.mod`; do
@@ -55,7 +57,7 @@ then
       fi)
 
     echo ""
-    echo "five most relevant models sorted by cooccurence of terms in model and sentence"
+    echo "five most relevant models sorted by cooccurence of terms in model and sentence:"
     echo "${five_most_relevant_models}"
 
     images=${five_most_relevant_models//mod/jpg}
