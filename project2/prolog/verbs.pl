@@ -37,7 +37,7 @@ iv(dcl,pl, lam(X,eq(X,X))) --> [drink];[cover];[bark];[run];[walk].
 iv(bse,_,  lam(X,eq(X,X))) --> [drank];[covered];[barked];[ran];[walked].
 iv(psp,_,  lam(X,eq(X,X))) --> [drunk];[made];[parked];[covered];[barked];[run];[walked].
 
-% iv(_,_,  lam(X,eq(X,X))) --> [_].
+iv(_,_,  lam(X,eq(X,X))) --> [_].
 
 % transitive verbs
 %
@@ -81,7 +81,7 @@ tv(dcl,pl, lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [use];[contain].
 tv(bse,_,  lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [used];[contained].
 tv(psp,_,  lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [used];[contained].
 
-% tv(_,_,    lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [_].
+tv(_,_,    lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [_].
 
 % ditransitive verbs
 %

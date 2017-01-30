@@ -1,5 +1,6 @@
 #!/bin/bash
 source ../venv/bin/activate
+p_mode="python"
 
 if [ -f "$1" ]
 then
@@ -10,7 +11,7 @@ then
     echo "sentence:"
     echo ${sentence}
 
-    sentence_with_most_specific_hypernym=`python3 grimSearch0.py "${sentence}"`
+    sentence_with_most_specific_hypernym=`$p_mode grimSearch0.py "${sentence}"`
     echo ""
     echo "sentence with the most specific hypernym:"
     echo ${sentence_with_most_specific_hypernym}
@@ -20,7 +21,7 @@ then
     echo "first order semantic representations:"
     echo -e "${first_order_semantic_representations// /\\n}"
 
-    first_order_representations_sorted_by_number_of_terms=`echo ${first_order_semantic_representations} | python3 first-order-representations-sorted-by-number-of-terms.py`
+    first_order_representations_sorted_by_number_of_terms=`echo ${first_order_semantic_representations} | ${p_mode} first-order-representations-sorted-by-number-of-terms.py`
     echo ""
     echo "first order semantic representations sorted by number of synsets:"
     echo -e "${first_order_representations_sorted_by_number_of_terms// /\\n}"
@@ -50,7 +51,7 @@ then
 
     five_most_relevant_models=$(
       if [ ${#models_that_satisfy} -gt 0 ]; then
-        echo "${models_that_satisfy// /\\n}" | python3 dummy-five-most-relevant-models.py "${sentence_with_most_specific_hypernym}"
+        echo "${models_that_satisfy// /\\n}" | ${p_mode} dummy-five-most-relevant-models.py "${sentence_with_most_specific_hypernym}"
       fi)
 
     echo ""
