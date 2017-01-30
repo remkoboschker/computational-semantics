@@ -30,13 +30,13 @@ vp1(Tense,Num,Sem) --> iv(Tense,Num,Sem).
 vp1(Tense,Num,app(AV,IV)) --> av(Tense,Num,prp,AV), iv(prp,Num,IV).
 vp1(Tense,Num,app(AV,IV)) --> av(Tense,Num,psp,AV), iv(psp,Num,IV).
 vp1(Tense,Num,app(app(DV,NP1),NP2)) --> dv(Tense,Num,DV), np(_,NP1), np(_,NP2).
-vp1(Tense,Num,app(AV,app(A,lam(X,n_thing_12(X))))) --> av(Tense,Num,prp,AV), a(_,A).
+vp1(Tense,Num,app(AV,app(A,lam(X,n_entity_1(X))))) --> av(Tense,Num,prp,AV), a(_,A).
 
 
 
 % passives
 %
-vp1(pss,Num,lam(X,app(lam(P,some(Y,and(n_thing_12(Y),app(P,Y)))),app(TV,lam(Q,app(Q,X)))))) --> tv(psp,Num,TV).
+vp1(pss,Num,lam(X,app(lam(P,some(Y,and(n_entity_1(Y),app(P,Y)))),app(TV,lam(Q,app(Q,X)))))) --> tv(psp,Num,TV).
 vp1(pss,Num,lam(X,app(NP,app(TV,lam(Q,app(Q,X)))))) --> tv(psp,Num,TV), [by], np(_,NP).
 
 % auxiliary verbs
