@@ -1,3 +1,4 @@
+a0(_,  lam(P,lam(X,and(eq(X,X),app(P,X))))) --> [blind];[bold].
 a0(an, lam(P,lam(X,and(not(some(Y,s_supports(X,Y)),app(P,X)))))) --> [empty].
 % adjectives
 %

@@ -1,11 +1,5 @@
 
 
-iv(prp,_,  lam(X,some(Y,and(n_mouth_1(Y),and(s_part_of(Y,X),a_open_1(Y)))))) --> [smiling].
-iv(dcl,sg, lam(X,some(Y,and(n_mouth_1(Y),and(s_part_of(Y,X),a_open_1(Y)))))) --> [smiles].
-iv(dcl,pl, lam(X,some(Y,and(n_mouth_1(Y),and(s_part_of(Y,X),a_open_1(Y)))))) --> [smile].
-iv(bse,_,  lam(X,some(Y,and(n_mouth_1(Y),and(s_part_of(Y,X),a_open_1(Y)))))) --> [smile].
-iv(psp,_,  lam(X,some(Y,and(n_mouth_1(Y),and(s_part_of(Y,X),a_open_1(Y)))))) --> [smiled].
-
 iv(prp,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flying].
 iv(dcl,sg, lam(X,not(some(Y,s_supports(Y,X))))) --> [flies].
 iv(dcl,pl, lam(X,not(some(Y,s_supports(Y,X))))) --> [fly].
@@ -31,13 +25,13 @@ iv(bse,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flew].
 iv(psp,_,  lam(X,not(some(Y,s_supports(Y,X))))) --> [flown].
 
 % needs eq as a unit because otherwise you get a dangling variable
-iv(prp,_,  lam(X,eq(X,X))) --> [drinking];[coming];[looking];[shining];[running];[playing];[staring];[covering];[barking];[walking];[chilling];[biting];[sleeping];[swimming];[biking];[writing].
-iv(dcl,sg, lam(X,eq(X,X))) --> [drinks];[covers];[barks];[runs];[walks].
-iv(dcl,pl, lam(X,eq(X,X))) --> [drink];[cover];[bark];[run];[walk].
-iv(bse,_,  lam(X,eq(X,X))) --> [drank];[covered];[barked];[ran];[walked].
-iv(psp,_,  lam(X,eq(X,X))) --> [drunk];[made];[parked];[covered];[barked];[run];[walked].
+iv(prp,_,  lam(X,eq(X,X))) --> [drinking];[coming];[looking];[shining];[running];[playing];[staring];[covering];[barking];[walking];[chilling];[biting];[sleeping];[swimming];[biking];[writing];[smiling].
+iv(dcl,sg, lam(X,eq(X,X))) --> [drinks];[covers];[barks];[runs];[walks]:[smiles].
+iv(dcl,pl, lam(X,eq(X,X))) --> [drink];[cover];[bark];[run];[walk]:[smile].
+iv(bse,_,  lam(X,eq(X,X))) --> [drank];[covered];[barked];[ran];[walked]:[smiled].
+iv(psp,_,  lam(X,eq(X,X))) --> [drunk];[made];[parked];[covered];[barked];[run];[walked];[smiled].
 
-iv(_,_,  lam(X,eq(X,X))) --> [_].
+% iv(_,_,  lam(X,eq(X,X))) --> [_].
 
 % transitive verbs
 %
@@ -54,11 +48,11 @@ tv(dcl,pl, lam(P,lam(X,app(P,lam(Y,s_near(X,Y)))))) --> [chase].
 tv(bse,_,  lam(P,lam(X,app(P,lam(Y,s_near(X,Y)))))) --> [chased].
 tv(psp,_,  lam(P,lam(X,app(P,lam(Y,s_near(X,Y)))))) --> [chased].
 
-tv(prp,_,  lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kissing];[touching];[tying].
-tv(dcl,sg, lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kisses];[touches];[ties].
-tv(dcl,pl, lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kiss];[touch];[tie].
-tv(bse,_,  lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kissed];[touched];[tied].
-tv(psp,_,  lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kissed];[touched];[tied].
+tv(prp,_,  lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kissing];[touching];[tying];[eating];[drinking].
+tv(dcl,sg, lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kisses];[touches];[ties];[eats];[drinks].
+tv(dcl,pl, lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kiss];[touch];[tie];[eat];[drink].
+tv(bse,_,  lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kissed];[touched];[tied];[ate];[drank].
+tv(psp,_,  lam(P,lam(X,app(P,lam(Y,s_touch(X,Y)))))) --> [kissed];[touched];[tied];[eaten];[drunk].
 
 tv(prp,_,  lam(P, lam(X,app(P,lam(Y,some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))) --> [eating];[drinking].
 tv(dcl,sg, lam(P, lam(X,app(P,lam(Y,some(Z,and(n_mouth_1(Z),and(s_part_of(Z,X),s_touches(Z,Y))))))))) --> [eats];[drinks].
@@ -81,7 +75,7 @@ tv(dcl,pl, lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [use];[contain].
 tv(bse,_,  lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [used];[contained].
 tv(psp,_,  lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [used];[contained].
 
-tv(_,_,    lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [_].
+% tv(_,_,    lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))) --> [_].
 
 % ditransitive verbs
 %
