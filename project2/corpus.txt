@@ -467,7 +467,7 @@ Each student has a mouse.
 Each student is watching a television.
 Every boot is on the mat.
 Everyone is riding a bicycle.
-Everyone iswearing a helmet.
+Everyone is wearing a helmet.
 Everyone is wearing a red jacket.
 Every woman is wearing glasses.
 Exactly one cat is standing in the grass.

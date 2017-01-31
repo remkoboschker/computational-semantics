@@ -12,7 +12,7 @@ _path_to_model = './stanford-postagger-2014-08-27/models/english-bidirectional-d
 _path_to_jar ='./stanford-postagger-2014-08-27/stanford-postagger.jar'
 
 #manual java path assignment
-#os.environ['JAVAHOME']="C:/Program Files/Java/jre1.8.0_121/bin/"
+os.environ['JAVAHOME']="C:/Program Files/Java/jre1.8.0_111/bin/"
 
 def getHypernyms(POSLst):
 	''' Gets hypernym of noun in query if noun is not in the lexicon '''
