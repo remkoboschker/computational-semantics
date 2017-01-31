@@ -1,0 +1,20 @@
+script
+
+The script takes each sentence provided in the input file through the following processing steps.
+
+1. Use a part of speech tagger to find all the nouns. For adjoining nouns include all possible ngrams.
+2. For each of these nouns and ngrams check if it is in the lexicon. If it is, then leave it. If it is not, then go one up in the hypernym chain until the hypernym is in the lexicon and replace the noun with the hypernym.
+3. Parse the sentence with the semdcg parser, and return all first order semantic representations.
+4. Order all representations by the number of semantic terms, a wordnet noun or adjective synset or a spatial relation with the largest number first.
+5. Going down the list of ordered representations, check for all models if it satisfies the representation. If there is any such model, then return all that satisfy. If there is not one, then try the next representation. A maximum number of representations to check can be set. If no representation have any model that satisfy it, return an empty list and stop.
+6. For all models that satisfy the representation, return the corresponding image.
+7. Write an html-file containing the original sentence, the sentence with the unknown nouns substituted by a hypernym, the most specific parse that returned any model and a list of images corresponding to the models that satisfy the representation.
+
+changes we made to the semdcg system.
+
+1. For all models we extracted the adjective- and noun-terms. These terms correspond to wordnet synsets. We found the wordnet lemma's corresponding to the synsets. The adjectives were added to the adjective lexicon. The nouns were added to the noun lexicon together with the right indefinite article (a / an) and the plural forms of all the lemma's.
+2. Manually remove the indefinite article for the singular forms of uncountable nouns such as water, food, wood (the material).
+3. Manually add all the verbs that were in the corpus and in our groups test sentence set to the right type of verb using a semantics that always resolves to true:
+    intransitive[lam(X,eq(X,X))],
+    transitive[lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))], (assuming there are not reflexive verbs) ditransitive[lam(P,lam(Q,lam(X,app(P,lam(Y,app(Q,lam(Z,and(and(not(eq(X,Y)),not(eq(Y,Z))),not(eq(X,Z))))))))))]
+We did consider and tested with letting these rules match with any word, but this made the system very slow. Also the parses are more specific if the verb is of the right verb type (transitive, intransitive, ditransitive). On the other hand the sorting we did of the representations by the number of semantic terms would have prevented issues where an object of a transitive verbs might not have been part of the parse on a match of the verb as an intransitive one.
