@@ -21,14 +21,16 @@ then
     echo "first order semantic representations:"
     echo -e "${first_order_semantic_representations// /\\n}"
 
-    first_order_representations_sorted_by_number_of_terms=`echo ${first_order_semantic_representations} | ${p_mode} first-order-representations-sorted-by-number-of-terms.py`
+    first_order_representations_sorted_by_number_of_terms=`echo "${first_order_semantic_representations}" | ${p_mode} first-order-representations-sorted-by-number-of-terms.py`
     echo ""
     echo "first order semantic representations sorted by number of synsets:"
     echo -e "${first_order_representations_sorted_by_number_of_terms// /\\n}"
 
     representation="no parse"
     models_that_satisfy=""
+    idx=0
     for representation in ${first_order_representations_sorted_by_number_of_terms}; do
+      idx=`expr $idx + 1`
       models_that_satisfy=$(
         for model in `ls ../data/*.mod`; do
           satisfying_model=`swipl -g "[prolog/model_checker],main_satisfying(${representation},'${model}'),halt."`
@@ -39,6 +41,9 @@ then
         done)
       number_of_models_that_satisfy=`echo ${models_that_satisfy} | wc -w`
       if [ ${number_of_models_that_satisfy} -gt 0 ]; then
+        break
+      fi
+      if [ $2 -eq $idx ]; then
         break
       fi
     done
@@ -53,7 +58,7 @@ then
 
     five_most_relevant_models=$(
       if [ ${#models_that_satisfy} -gt 0 ]; then
-        echo "${models_that_satisfy// /\\n}" | ${p_mode} dummy-five-most-relevant-models.py "${sentence_with_most_specific_hypernym}"
+        echo "${models_that_satisfy// /\\n}" | ${p_mode} five-most-relevant-models.py "${sentence_with_most_specific_hypernym}"
       fi)
 
     echo ""
