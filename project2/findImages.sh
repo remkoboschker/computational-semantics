@@ -28,6 +28,7 @@ then
 
     representation="no parse"
     models_that_satisfy=""
+    number_of_models_that_satisfy=0
     idx=0
     for representation in ${first_order_representations_sorted_by_number_of_terms}; do
       idx=`expr $idx + 1`
@@ -74,7 +75,7 @@ then
       echo "<li><img src=\"../${image}\"></li>"
     done
     `
-    echo "${document}" > "./results/${number_of_models_that_satisfy}-${sentence// /-}html"
+    echo "${document}" > "./eval/${number_of_models_that_satisfy}-${sentence// /-}html"
 
   done < $1
 else
