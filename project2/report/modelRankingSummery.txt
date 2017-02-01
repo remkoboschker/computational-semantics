@@ -10,6 +10,7 @@ five-most-relevant-models.py
   for each query term the cooccurences are retrieved from a priorly created dictionary
   All candidate models are loaded and the wordnet senses (see GRIM documentation) of the terms are taken.
   hypernyms were exclueded for the scoring to make no entity count several times.
+  the senses are reduced from "n_man_1" to "man" to make them findable in the coocurence. The reason not using them is explained unter "Additional inspiration/ideas" for my first draft of the script, showing the problem I had with it
   The scores for each model are initialized to 0.
   For the model senses the model receives a score according to the number of its occurences in the coocurences of the query term.
   Therefor it self doesn't count and baises the data to the amount of apearences in the corpus but solely considers what is typically used in the same sentence.
