@@ -1,0 +1,86 @@
+
+five-most-relevant-models.py
+- ranks all valid models by their overall "typicallity" in the "context" provided by the query
+  "given the query, which are models with a high amount of descriptions associated with the query"
+  for that we constructed a matrix of cooccurences  from the nltk "webtext" corpus representing the typical contexts the query terms are found in.
+
+  Reasoning for webtext corpus: The assumption was that the corpus contains prototypical contexts of the words.
+
+  The scoring works as follows:
+  for each query term the cooccurences are retrieved from a priorly created dictionary
+  All candidate models are loaded and the wordnet senses (see GRIM documentation) of the terms are taken.
+  hypernyms were exclueded for the scoring to make no entity count several times.
+  The scores for each model are initialized to 0.
+  For the model senses the model receives a score according to the number of its occurences in the coocurences of the query term.
+  Therefor it self doesn't count and baises the data to the amount of apearences in the corpus but solely considers what is typically used in the same sentence.
+  The scores for each model sense in each query terms cooccurence are summed up and ranked against each other.
+
+
+  Additional inspiration/ideas:
+    the modelRanking.py file is commented in way more detail and contains approaches to more complex (and failed) "typicality"
+    Mostly impemented but not used our our ranking
+    Main improvements in that:
+      weight every query term according to it's typicality in regard to the rest of the query
+      weight every model term according to it's typicality  -- ' ' --
+      going up the hypernyms for a query / model term if it is not found in the cooccurences assigning it a lower weight.
+        Problem for query terms: unclear which sense in the wordnet synset is the right one
+          solution 1: choose sense which is used most often with other terms in query according to coocurences
+            --> circular !
+          solution 2: look in the candidate models for for "typical"  context.
+            --> assumes that parsing and proving is done right and model are 1. "gold standard", 2. there are enough models for all senses
+
+
+
+Notes:
+
+(Some notes I took while pondering how to solve the relevance problem. I haven't rewritten those, so i hope they are still understandable)
+
+What is actually relevant? Other than in recent keyword querys where a certain amount of terms is found/not found and compared to the whole knowledgebase (like tf-idf, makrov-chains) all models are supposed to be "true" in that they conform the logic/sematics. All are therefor COMPLETLY relevant in regard to the query. Ranking them, the issue is therefore to find "the relevantest" in a set of relevants.
+
+In case of alternating the query in order to find other possible combinations the relative number of actually found terms from the "original" mapping/NLP-query can be compared. The is no absolute correctness for a set of completely true relevant models.
+
+
+using heuristics: which?
+possible solutions - all faciliating "level of pureness" in different ways
+
+  pureness of semantics/logic
+    possible implementations: requires INPUT: @Models @NumberOfInterpretationsPerModel
+    -- results with only this one semantic interpretation and no(/few) others. Other possible interpretation rob  the interpretations clearness / prototipicality
+      possible implementations:
+        grab a list of interpretations for each function-model proving(???)
+        rank according to increasing number
+  pureness of surroundings / independendness / unaffectedness
+    possible implementations: all paralel to retrieval, requires INPUT: @functionRepresentation(querry), @Models
+    -- if something is one of many things it might be less important: BUT a lot of small things and one big vs few medium sized things and one small?
+        possible implementations:
+          for each model
+            find variables querried for in each mod
+            count list of variables(d1,d2,d3,...?) in model
+          rank according to highest ratio of variables
+    -- if something is described in very detail in comparrison to rest of varibales
+        possible implementations:
+          for each model
+            find variables querried for in each model
+            for each variable
+              count number of relations (~ detailedness)
+            sum details of variables
+          rank models according to most details regarding the query
+    -- if something is involved in some action/relation it is more important to the picture --> if there is some action and what is asked for is not part less relevant
+        possible implementations:
+          for each model
+            for each variable
+              count number of actions/verbs it is involved
+            find variables querried for in each model
+            build ratio between $generalInvolvedness vs. $qInvolvedness
+          rank models according to highest involvedness ratio
+    -- if something is small in comparrision to rest in picture
+        possible implementations:
+          for each model
+            find variables querried for in each model
+            load box size for retrieved models
+            find average rank of $queryVariables among all boxed
+            normalize to 0-1 scale against number of boxes
+          rank accrodring to normalized scale
+  prototypicality
+    possible implementationsementation
+    -- semantic embedding to find manliest man, doggiest dog etc from context. Assumption if someone is looking for a "prototypical golden retriever" he doesn't want a breed with another kind of dog. if he does so he would state it seperately and therefor would get other context based results

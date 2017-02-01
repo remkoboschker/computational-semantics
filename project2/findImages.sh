@@ -1,6 +1,6 @@
 #!/bin/bash
 source ../venv/bin/activate
-p_mode="python3"
+p_mode="python"
 
 if [ -f "$1" ]
 then
