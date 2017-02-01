@@ -2,13 +2,14 @@ script
 
 The script takes each sentence provided in the input file through the following processing steps.
 
-1. Use a part of speech tagger to find all the nouns. For adjoining nouns include all possible ngrams.
-2. For each of these nouns and ngrams check if it is in the lexicon. If it is, then leave it. If it is not, then go one up in the hypernym chain until the hypernym is in the lexicon and replace the noun with the hypernym.
-3. Parse the sentence with the semdcg parser, and return all first order semantic representations.
+1. Use the Stanford part of speech tagger to find all the nouns. For adjoining nouns include all possible ngrams.
+2. For each of these nouns and ngrams check if it is in the lexicon. If it is, then leave it. If it is not, then go one up in the hypernym chain until the hypernym is in the lexicon and replace the noun with the hypernym. In this way no noun will need to be parsed in the next step that is not in the lexicon as all nouns in the models were added to it.
+3. Parse the sentence with a prolog definite clause grammar, and return all first order semantic representations.
 4. Order all representations by the number of semantic terms, a wordnet noun or adjective synset or a spatial relation with the largest number first.
-5. Going down the list of ordered representations, check for all models if it satisfies the representation. If there is any such model, then return all that satisfy. If there is not one, then try the next representation. A maximum number of representations to check can be set. If no representation have any model that satisfy it, return an empty list and stop.
-6. For all models that satisfy the representation, return the corresponding image.
-7. Write an html-file containing the original sentence, the sentence with the unknown nouns substituted by a hypernym, the most specific parse that returned any model and a list of images corresponding to the models that satisfy the representation.
+5. Going down the list of ordered representations, check for all models if it satisfies the representation using a model checker provided by Johan. If there is any such model, then return all that satisfy. If there is not one, then try the next representation. A maximum number of representations to check can be set. If no representation has any model that satisfy it, return an empty list and stop.
+6. We rank the models that satisfy the most specific representation that is satisfied by at least one model are ranked by relevance. This is done by taking the sum of the co-occurence count of the non-hypernym wordnet synset name word parts that are in the model with all the words in the sentence. The co-occurence count is the number of times two words occur in the same sentence in the NLTK webtext corpus. The model with the highest sum is considered the most relevant.
+7. For the five models that were ranked most relevant, return the corresponding image.
+8. Write an html-file containing the original sentence, the sentence with the unknown nouns substituted by a hypernym, the most specific parse that returned any model and the list of five most relevant images found.
 
 changes we made to the semdcg system.
 
@@ -18,3 +19,43 @@ changes we made to the semdcg system.
     intransitive[lam(X,eq(X,X))],
     transitive[lam(P,lam(X,app(P,lam(Y,not(eq(X,Y))))))], (assuming there are not reflexive verbs) ditransitive[lam(P,lam(Q,lam(X,app(P,lam(Y,app(Q,lam(Z,and(and(not(eq(X,Y)),not(eq(Y,Z))),not(eq(X,Z))))))))))]
 We did consider and tested with letting these rules match with any word, but this made the system very slow. Also the parses are more specific if the verb is of the right verb type (transitive, intransitive, ditransitive). On the other hand the sorting we did of the representations by the number of semantic terms would have prevented issues where an object of a transitive verbs might not have been part of the parse on a match of the verb as an intransitive one.
+4.
+Additionally, in order to dynamically be able to represent all numerical quantifiers - as the amount of objects was considered quite significant to the correctness of an image, a recursive predicate was defined to define any number of objects. This predicate unifies a list of variable names to a semantic representation of nested existential quantifiers for each of the variables and ensures that none of the variables can refer to the same object. This latter part requires a number of 'does not equal'-expression equal to all combinations of size 2 from the number of variables (${{n}\choose{2}}$, where $n$ is the number of variables and thus the value of the numerical quantifier), leading to large expressions quickly. The \texttt{num} predicate turns a number into the required list and unifies with the complete semantic representation, and the \texttt{quant} predicate was used to map the actual words of numerical quantifiers to the corresponding numerical value
+5. added a predicate that takes a sentence and returns all parses.
+6. added a predicate to the modelchecker that returns only the filename without any formatting or markup.
+7. added rules to handle sentences with there is / are to signify existence
+8. added rules for sentences with is /are as copula connecting two noun phrases.
+9. added rules for sentences with is /are as copula connecting  a noun phrase and a prepositional phrase.
+10. added rules
+
+
+added more prepositions modeling them as spatial relations.
+
+add determiner not all
+
+add rule for using a present participle as an adjective
+
+added rule for matching each other as a nounphrase
+
+added rule for present progressive tensen constructions.
+
+added rules for using the present and past participles as adjectives
+
+++++++++++++++++++++++++++++++++++
+discussion.
+
+should have added one that combines sentences.
+
+
+
+observations at evaluation
+
+score 0.203
+
+spatials relations not rich enough in many models
+
+prepositions were an issue. We for instance had only one sense of "in". Also many cases we had a good result by not showing any picture, because the sentence was false. But these did not count. We did not show the right picture when there was an 'all' and the implication returned all pictures with no chairs in all chairs are striped. At least it should have shown pictures with chairs first. Also we handled the absence of spatial relations for the verbs, but not for the definitions of the prepostions. I was surprised by the number of sentences that did not get a parse.
+
+all nouns were actually in the lexicon
+1.
+
